@@ -1,4 +1,6 @@
 import React from 'react';
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
 import {
   Card,
   CardActions,
@@ -6,29 +8,29 @@ import {
   IconButton,
   FormControl,
   Select,
-  MenuItem,
   TextField,
   InputLabel,
   Divider,
   Button,
   Grid,
+  CardContent,
 } from '@material-ui/core';
-import 'date-fns';
-import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
-import { makeStyles } from '@material-ui/core/styles';
+
+import { red } from '@material-ui/core/colors';
+import StarRoundedIcon from '@material-ui/icons/StarRounded';
 import CloseIcon from '@material-ui/icons/Close';
-import CardContent from '@material-ui/core/CardContent';
-import { red, blue } from '@material-ui/core/colors';
-import StarIcon from '@material-ui/icons/Star';
+
+import { makeStyles } from '@material-ui/core/styles';
 import SelectPriority from './SelectPriority';
 import styles from './cardEditing.module.css';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    border: '1px solid var(--light-blue)',
     maxWidth: 345,
   },
   media: {
@@ -48,33 +50,33 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: red[500],
   },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
+  action: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    // margin: theme.spacing(1),
+    width: '100%',
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
+  },
+  startRoot: {
+    widht: '20px',
+  },
+  starColor: {
+    color: 'var(--light-gray)',
   },
 }));
 
 const CardEditing = () => {
   const classes = useStyles();
-  // const [expanded, setExpanded] = React.useState(false);
-  // const [state, setState] = React.useState({
-  //     age: '',
-  //     name: 'hai',
-  // });
-  // const handleExpandClick = () => {
-  //     setExpanded(!expanded);
-  // };
   const [chip, setChip] = React.useState('');
   const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const [difficulty, setDifficulty] = React.useState('');
 
-  // const inputLabel = React.useRef(null);
-  // const [labelWidth, setLabelWidth] = React.useState(0);
-  // React.useEffect(() => {
-  //     setLabelWidth(inputLabel.current.offsetWidth);
-  // }, []);
+  const handleChange = event => {
+    setDifficulty(event.target.value);
+  };
 
   const handleChange2 = event => {
     setChip(event.target.value);
@@ -85,17 +87,29 @@ const CardEditing = () => {
   };
 
   return (
-    <Card className={styles.cardWrapp}>
+    <Card className={classes.root}>
       <CardHeader
-        subheader={<SelectPriority />}
+        // subheaderTypographyProps={{ difficulty, handleChange }}
+        // subheader={<SelectPriority />}
         action={
-          <IconButton aria-label="settings">
-            <StarIcon />
-          </IconButton>
+          <>
+            <SelectPriority onChangeDiff={handleChange} value={difficulty} />
+            <IconButton
+              aria-label="settings"
+              color="inherit"
+              classes={{
+                root: classes.startRoot,
+                colorInherit: classes.starColor,
+              }}
+            >
+              <StarRoundedIcon />
+            </IconButton>
+          </>
         }
+        classes={{ action: classes.action }}
       />
       <CardContent>
-        <form className={classes.root} noValidate autoComplete="off">
+        <form noValidate autoComplete="off">
           <InputLabel htmlFor="standard-basic">CREATE NEW QUEST</InputLabel>
           <TextField id="standard-basic" />
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -139,28 +153,10 @@ const CardEditing = () => {
           <CloseIcon />
         </IconButton>
         <Divider orientation="vertical" flexItem />
-        <Button>CLOSE</Button>
+        <Button>START</Button>
       </CardActions>
     </Card>
   );
 };
 
 export default CardEditing;
-
-{
-  /* <FormControl className={classes.formControl}>
-<Select
-  value={age}
-  onChange={handleChange}
-  displayEmpty
-  className={classes.selectEmpty}
->
-  <MenuItem value="" disabled>
-    Priority
-  </MenuItem>
-  <MenuItem value={0}>Low</MenuItem>
-  <MenuItem value={1}>Normal</MenuItem>
-  <MenuItem value={2}>High</MenuItem>
-</Select>
-</FormControl> */
-}
