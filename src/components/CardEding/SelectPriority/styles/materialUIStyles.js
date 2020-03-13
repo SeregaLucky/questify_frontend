@@ -9,6 +9,7 @@ export const formControlStyles = makeStyles({
 export const selectStyles = makeStyles({
   select: {
     color: 'var(--light-gray)',
+    fontFamily: 'HelveticaNeueCyrRoman, sans-serif',
   },
   icon: {
     fill: 'var(--light-blue)',
@@ -17,8 +18,10 @@ export const selectStyles = makeStyles({
 export const placeholderStyles = makeStyles({
   root: {
     color: 'var(--light-gray)',
+    fontFamily: 'HelveticaNeueCyrRoman, sans-serif',
     '&:focus': {
       color: 'var(--light-gray)',
+      fontFamily: 'HelveticaNeueCyrRoman, sans-serif',
     },
   },
 });

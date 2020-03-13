@@ -3,6 +3,6 @@
   border: 1px solid var(--light-blue);
 }
 
-/* .MuiSelect-icon {
-    fill: red
-} */
+.createTextTitle {
+  margin: auto;
+}

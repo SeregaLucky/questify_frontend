@@ -66,6 +66,25 @@ const useStyles = makeStyles(theme => ({
   starColor: {
     color: 'var(--light-gray)',
   },
+  label: {
+    textAlign: 'center',
+    fontFamily: 'HelveticaNeueCyrBold, sans-serif',
+    color: 'var(--light-gray)',
+  },
+  cardContent: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  textField: {
+    color: 'var(--light-blue)',
+    borderColor: 'var(--light-blue)',
+    '&:focus': {
+      '&.MuiInput-underline:after': {
+        borderColor: 'var(--light-blue)',
+      },
+    },
+  },
 }));
 
 const CardEditing = () => {
@@ -73,6 +92,7 @@ const CardEditing = () => {
   const [chip, setChip] = React.useState('');
   const [selectedDate, setSelectedDate] = React.useState(new Date());
   const [difficulty, setDifficulty] = React.useState('');
+  const [text, setText] = React.useState('');
 
   const handleChange = event => {
     setDifficulty(event.target.value);
@@ -85,33 +105,49 @@ const CardEditing = () => {
   const handleDateChange = date => {
     setSelectedDate(date);
   };
+  const handleChangeText = event => {
+    setText(event.target.value);
+  };
 
+  const inputProps = {
+    value: text,
+    onChange: handleChangeText,
+  };
+  // console.log('state', chip,
+  //   selectedDate,
+  //   difficulty,
+  //   text);
   return (
     <Card className={classes.root}>
-      <CardHeader
-        // subheaderTypographyProps={{ difficulty, handleChange }}
-        // subheader={<SelectPriority />}
-        action={
-          <>
-            <SelectPriority onChangeDiff={handleChange} value={difficulty} />
-            <IconButton
-              aria-label="settings"
-              color="inherit"
-              classes={{
-                root: classes.startRoot,
-                colorInherit: classes.starColor,
-              }}
-            >
-              <StarRoundedIcon />
-            </IconButton>
-          </>
-        }
-        classes={{ action: classes.action }}
-      />
-      <CardContent>
-        <form noValidate autoComplete="off">
-          <InputLabel htmlFor="standard-basic">CREATE NEW QUEST</InputLabel>
-          <TextField id="standard-basic" />
+      <form noValidate autoComplete="off">
+        <CardHeader
+          action={
+            <>
+              <SelectPriority onChangeDiff={handleChange} value={difficulty} />
+              <IconButton
+                aria-label="settings"
+                color="inherit"
+                classes={{
+                  root: classes.startRoot,
+                  colorInherit: classes.starColor,
+                }}
+              >
+                <StarRoundedIcon />
+              </IconButton>
+            </>
+          }
+          classes={{ action: classes.action }}
+        />
+        <CardContent className={classes.cardContent}>
+          <InputLabel className={classes.label} htmlFor="name-quest">
+            CREATE NEW QUEST
+          </InputLabel>
+          <TextField
+            className={classes.textField}
+            id="name-quest"
+            type="text"
+            inputProps={inputProps}
+          />
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Grid container justify="space-around">
               <KeyboardDatePicker
@@ -129,10 +165,8 @@ const CardEditing = () => {
               />
             </Grid>
           </MuiPickersUtilsProvider>
-        </form>
-      </CardContent>
-      <CardActions disableSpacing>
-        <FormControl variant="filled" className={classes.formControl}>
+        </CardContent>
+        <CardActions disableSpacing>
           <InputLabel htmlFor="filled-age-native-simple">Age</InputLabel>
           <Select
             native
@@ -148,13 +182,14 @@ const CardEditing = () => {
             <option value={20}>Twenty</option>
             <option value={30}>Thirty</option>
           </Select>
-        </FormControl>
-        <IconButton aria-label="close">
-          <CloseIcon />
-        </IconButton>
-        <Divider orientation="vertical" flexItem />
-        <Button>START</Button>
-      </CardActions>
+
+          <IconButton aria-label="close">
+            <CloseIcon />
+          </IconButton>
+          <Divider orientation="vertical" flexItem />
+          <Button>START</Button>
+        </CardActions>
+      </form>
     </Card>
   );
 };

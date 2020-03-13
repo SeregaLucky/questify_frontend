@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  FormControl,
-  Select,
-  MenuItem,
-  SvgIcon,
-  Input,
-} from '@material-ui/core';
+import { FormControl, Select, MenuItem, SvgIcon } from '@material-ui/core';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import * as styles from './styles/materialUIStyles';
 
@@ -17,85 +11,83 @@ const SelectPriority = ({ value, onChangeDiff }) => {
 
   return (
     <>
-      <FormControl className={form.root}>
-        <Select
-          value={value}
-          onChange={onChangeDiff}
-          displayEmpty
-          disableUnderline
+      <Select
+        value={value}
+        onChange={onChangeDiff}
+        displayEmpty
+        disableUnderline
+        classes={{
+          icon: select.icon,
+          select: select.select,
+        }}
+      >
+        <MenuItem
+          value=""
+          disabled
           classes={{
-            icon: select.icon,
-            select: select.select,
+            root: placeholder.root,
           }}
         >
-          <MenuItem
-            value=""
-            disabled
+          Difficulty
+        </MenuItem>
+        <MenuItem
+          value="easy"
+          classes={{
+            root: placeholder.root,
+          }}
+        >
+          <SvgIcon
+            fontSize="inherit"
+            color="primary"
             classes={{
-              root: placeholder.root,
+              root: iconClasses.root,
+              fontSizeInherit: iconClasses.fontSizeInherit,
+              colorPrimary: iconClasses.colorPrimary,
             }}
           >
-            Difficulty
-          </MenuItem>
-          <MenuItem
-            value="easy"
+            <FiberManualRecordIcon />
+          </SvgIcon>
+          Easy
+        </MenuItem>
+        <MenuItem
+          value="normal"
+          classes={{
+            root: placeholder.root,
+          }}
+        >
+          <SvgIcon
+            fontSize="inherit"
+            color="secondary"
             classes={{
-              root: placeholder.root,
+              root: iconClasses.root,
+              fontSizeInherit: iconClasses.fontSizeInherit,
+              colorSecondary: iconClasses.colorSecondary,
             }}
           >
-            <SvgIcon
-              fontSize="inherit"
-              color="primary"
-              classes={{
-                root: iconClasses.root,
-                fontSizeInherit: iconClasses.fontSizeInherit,
-                colorPrimary: iconClasses.colorPrimary,
-              }}
-            >
-              <FiberManualRecordIcon />
-            </SvgIcon>
-            Easy
-          </MenuItem>
-          <MenuItem
-            value="normal"
+            <FiberManualRecordIcon />
+          </SvgIcon>
+          Normal
+        </MenuItem>
+        <MenuItem
+          value="high"
+          classes={{
+            root: placeholder.root,
+          }}
+        >
+          <SvgIcon
+            fontSize="inherit"
+            color="action"
             classes={{
-              root: placeholder.root,
+              root: iconClasses.root,
+              fontSizeInherit: iconClasses.fontSizeInherit,
+              colorAction: iconClasses.colorAction,
             }}
           >
-            <SvgIcon
-              fontSize="inherit"
-              color="secondary"
-              classes={{
-                root: iconClasses.root,
-                fontSizeInherit: iconClasses.fontSizeInherit,
-                colorSecondary: iconClasses.colorSecondary,
-              }}
-            >
-              <FiberManualRecordIcon />
-            </SvgIcon>
-            Normal
-          </MenuItem>
-          <MenuItem
-            value="high"
-            classes={{
-              root: placeholder.root,
-            }}
-          >
-            <SvgIcon
-              fontSize="inherit"
-              color="action"
-              classes={{
-                root: iconClasses.root,
-                fontSizeInherit: iconClasses.fontSizeInherit,
-                colorAction: iconClasses.colorAction,
-              }}
-            >
-              <FiberManualRecordIcon />
-            </SvgIcon>
-            High
-          </MenuItem>
-        </Select>
-      </FormControl>
+            <FiberManualRecordIcon />
+          </SvgIcon>
+          High
+        </MenuItem>
+      </Select>
     </>
   );
 };
