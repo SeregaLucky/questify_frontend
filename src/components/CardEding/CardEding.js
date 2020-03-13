@@ -13,7 +13,6 @@ import {
   Button,
   Grid,
 } from '@material-ui/core';
-
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -25,6 +24,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import CardContent from '@material-ui/core/CardContent';
 import { red, blue } from '@material-ui/core/colors';
 import StarIcon from '@material-ui/icons/Star';
+import SelectPriority from './SelectPriority';
 import styles from './cardEditing.module.css';
 
 const useStyles = makeStyles(theme => ({
@@ -67,8 +67,8 @@ const CardEditing = () => {
   // const handleExpandClick = () => {
   //     setExpanded(!expanded);
   // };
-  const [age, setAge] = React.useState('');
   const [chip, setChip] = React.useState('');
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   // const inputLabel = React.useRef(null);
   // const [labelWidth, setLabelWidth] = React.useState(0);
@@ -76,13 +76,9 @@ const CardEditing = () => {
   //     setLabelWidth(inputLabel.current.offsetWidth);
   // }, []);
 
-  const handleChange = event => {
-    setAge(event.target.value);
-  };
   const handleChange2 = event => {
     setChip(event.target.value);
   };
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   const handleDateChange = date => {
     setSelectedDate(date);
@@ -91,23 +87,7 @@ const CardEditing = () => {
   return (
     <Card className={styles.cardWrapp}>
       <CardHeader
-        subheader={
-          <FormControl className={classes.formControl}>
-            <Select
-              value={age}
-              onChange={handleChange}
-              displayEmpty
-              className={classes.selectEmpty}
-            >
-              <MenuItem value="" disabled>
-                Priority
-              </MenuItem>
-              <MenuItem value={0}>Low</MenuItem>
-              <MenuItem value={1}>Normal</MenuItem>
-              <MenuItem value={2}>High</MenuItem>
-            </Select>
-          </FormControl>
-        }
+        subheader={<SelectPriority />}
         action={
           <IconButton aria-label="settings">
             <StarIcon />
@@ -166,3 +146,21 @@ const CardEditing = () => {
 };
 
 export default CardEditing;
+
+{
+  /* <FormControl className={classes.formControl}>
+<Select
+  value={age}
+  onChange={handleChange}
+  displayEmpty
+  className={classes.selectEmpty}
+>
+  <MenuItem value="" disabled>
+    Priority
+  </MenuItem>
+  <MenuItem value={0}>Low</MenuItem>
+  <MenuItem value={1}>Normal</MenuItem>
+  <MenuItem value={2}>High</MenuItem>
+</Select>
+</FormControl> */
+}
