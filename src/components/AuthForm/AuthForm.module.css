@@ -32,7 +32,7 @@
   background-color: #ff851c;
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 768px) {
   .authFormWrapper {
     width: 326px;
     margin-left: 68px;
@@ -54,7 +54,7 @@
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1920px) {
   .authFormWrapper {
     width: 948px;
     display: flex;
