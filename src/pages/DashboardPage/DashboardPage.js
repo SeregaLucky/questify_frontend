@@ -6,7 +6,7 @@ const DashboardPage = () => {
     <>
       DashboardPage
       {/* Uncommit for checking */}
-      {/* <CardEding /> */}
+      <CardEding />
     </>
   );
 };
