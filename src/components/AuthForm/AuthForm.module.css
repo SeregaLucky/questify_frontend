@@ -5,7 +5,7 @@
 }
 
 .authFormTitle {
-  color: #c1cdd1;
+  color: var(--light-gray);
   font-family: 'HelveticaNeueCyrRoman', sans-serif;
   font-size: 14px;
   margin-bottom: 30px;
@@ -14,9 +14,9 @@
 .authInput {
   border: none;
   width: 182px;
-  border-bottom: 2px solid #00d8ff;
+  border-bottom: 2px solid var(--light-blue);
   height: 30px;
-  color: #00d8ff;
+  color: var(--light-blue);
   font-family: 'HelveticaNeueCyrLightRoman', sans-serif;
   font-size: 21px;
   margin-right: 10px;
@@ -29,15 +29,15 @@
   border-radius: 50%;
   font-family: 'HelveticaNeueCyrBold', sans-serif;
   color: #fff;
-  background-color: #ff851c;
+  background-color: var(--orange);
 }
 
-@media (min-width: 1920px) {
+@media (min-width: 768px) {
   .authFormWrapper {
     width: 326px;
-    margin-left: 68px;
-    margin-right: auto;
+    margin: 0;
   }
+
   .authFormTitle {
     font-size: 18px;
   }
@@ -54,7 +54,7 @@
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1920px) {
   .authFormWrapper {
     width: 948px;
     display: flex;
