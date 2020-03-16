@@ -73,7 +73,7 @@ class DirectionsSelect extends Component {
           </div>
         ) : (
           <button type="button" className={btnStuff}>
-            {itemStatus}{' '}
+            {itemStatus}
             <div
               className={
                 itemStatus !== 'some one' ? btnIconDropDisable : btnIconDrop
