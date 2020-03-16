@@ -1,11 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const formControlStyles = makeStyles({
-  formControl: {
-    minWidth: 120,
-  },
-});
-
 export const selectStyles = makeStyles({
   select: {
     color: 'var(--light-gray)',

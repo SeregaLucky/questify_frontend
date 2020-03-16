@@ -1,10 +1,9 @@
 import React from 'react';
-import { FormControl, Select, MenuItem, SvgIcon } from '@material-ui/core';
+import { Select, MenuItem, SvgIcon } from '@material-ui/core';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import * as styles from './styles/materialUIStyles';
 
 const SelectPriority = ({ value, onChangeDiff }) => {
-  const form = styles.formControlStyles();
   const select = styles.selectStyles();
   const placeholder = styles.placeholderStyles();
   const iconClasses = styles.iconStyles();
@@ -56,8 +55,8 @@ const SelectPriority = ({ value, onChangeDiff }) => {
           }}
         >
           <SvgIcon
-            fontSize="inherit"
             color="secondary"
+            fontSize="inherit"
             classes={{
               root: iconClasses.root,
               fontSizeInherit: iconClasses.fontSizeInherit,
@@ -75,8 +74,8 @@ const SelectPriority = ({ value, onChangeDiff }) => {
           }}
         >
           <SvgIcon
-            fontSize="inherit"
             color="action"
+            fontSize="inherit"
             classes={{
               root: iconClasses.root,
               fontSizeInherit: iconClasses.fontSizeInherit,
