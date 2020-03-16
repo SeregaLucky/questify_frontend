@@ -33,9 +33,8 @@ const Footer = ({ value, onChange }) => {
       <div className={styles.wrapBtn}>
         <IconButton
           aria-label="close"
-          color="inherit"
           classes={{
-            colorInherit: actionsStyles.crossBtn,
+            label: actionsStyles.crossBtn,
           }}
         >
           <CloseIcon />

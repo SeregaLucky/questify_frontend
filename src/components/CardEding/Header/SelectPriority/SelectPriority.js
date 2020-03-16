@@ -1,7 +1,7 @@
 import React from 'react';
 import { Select, MenuItem, SvgIcon } from '@material-ui/core';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
-import * as styles from './styles/materialUIStyles';
+import * as styles from '../../styles/materialUIStyles';
 
 const SelectPriority = ({ value, onChangeDiff }) => {
   const select = styles.selectStyles();

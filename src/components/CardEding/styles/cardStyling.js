@@ -26,9 +26,9 @@ export const header = makeStyles(theme => ({
   startRoot: {
     widht: '20px',
   },
-  starColor: {
-    color: 'var(--light-gray)',
-  },
+  // starColor: {
+  //   color: 'var(--light-gray)',
+  // },
   action: {
     display: 'flex',
     justifyContent: 'space-between',

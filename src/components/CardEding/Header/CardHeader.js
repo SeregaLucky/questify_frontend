@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardHeader, IconButton } from '@material-ui/core';
 import StarRoundedIcon from '@material-ui/icons/StarRounded';
-import SelectPriority from '../SelectPriority';
+import SelectPriority from './SelectPriority';
 import { header } from '../styles/cardStyling';
 
 const CardHeaderSection = ({ value, onChange }) => {
@@ -14,10 +14,10 @@ const CardHeaderSection = ({ value, onChange }) => {
             <SelectPriority onChangeDiff={onChange} value={value} />
             <IconButton
               aria-label="settings"
-              color="inherit"
+              color="secondary"
               classes={{
                 root: headerStyles.startRoot,
-                colorInherit: headerStyles.starColor,
+                // colorInherit: headerStyles.starColor,
               }}
             >
               <StarRoundedIcon />
