@@ -6,10 +6,9 @@ import Card from '../../components/Card/Card';
 const DashboardPage = () => {
   return (
     <>
-      cardEditing
-      DashboardPage
+      cardEditing DashboardPage
       {/* Uncommit for checking */}
-      {/* <CardEding /> */}
+      <CardEding />
       <Header />
       <Card />
     </>
