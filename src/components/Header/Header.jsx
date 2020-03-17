@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import cubok from './../../assets/icons/cubok.png';
 import logout_icon from './../../assets/icons/logout_icon.png';
-import { connect } from 'formik';
+// import { connect } from 'formik';
 
 function Header({ userName = 'Sohn’s Quest Log' }) {
   return (
