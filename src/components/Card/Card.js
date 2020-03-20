@@ -1,54 +1,49 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import CompletedModal from '../CompletedModal/CompletedModal';
+import tasksOperations from '../../redux/tasks/tasksOperations';
+import tasksSelectors from '../../redux/tasks/tasksSelectors';
+import { connect } from 'react-redux';
 
-export default class Card extends Component {
+class Card extends Component {
   state = {
     isModalOpen: false,
-    quest: {
-      name: 'Visit a dentist with!!!!!!',
-      done: false,
-    },
   };
 
-  openModal = () => this.setState({ isModalOpen: true });
+  openModal = () => {this.setState({ isModalOpen: true })};
 
   closeModal = () => this.setState({ isModalOpen: false });
 
-  closeQuest = () =>
-    this.setState(state => ({
-      isModalOpen: false,
-      quest: { ...state.quest, done: true },
-    }));
+  handleCloseQuest = () => {
+    this.props.updateQuest({ done: true });
+    this.setState({ isModalOpen: false });
+  };
 
-  /// fetch must be change to axios//
-  //   fetchQuest = () => {
-  //     const questId = this.match.params.questId;
-  //     api.fetchQuest(questId).then(quest => {
-  //       this.setState({ ...this.state, quest });
-  //     });
-  //   };
-  //   componentDidMount() {
-  //     this.fetchQuest();
-  //   }
 
   render() {
-    const { isModalOpen, quest } = this.state;
+    const { isModalOpen } = this.state;
 
     return (
-      <div>
-        <span>Place for Modal</span>
-        <button type="button" onClick={this.openModal}>
-          done
-        </button>
-        {isModalOpen && (
-          <CompletedModal
-            onCloseModal={this.closeModal}
-            onCloseQuest={this.closeQuest}
-            taskName={quest.name}
-          />
-        )}
-      </div>
+        <div>
+          {!this.props.isDone && (<button type="button" onClick={this.openModal}>
+            done
+          </button>)}
+          {isModalOpen && (
+            <CompletedModal
+              onCloseModal={this.closeModal}
+              onCloseQuest={this.handleCloseQuest}
+              taskName={this.props.name}
+            />
+          )}
+        </div>
     );
   }
 }
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    updateQuest: (data) => dispatch(tasksOperations.updateQuest(ownProps.id, data)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Card);

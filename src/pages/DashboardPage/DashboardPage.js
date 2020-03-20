@@ -1,16 +1,14 @@
 import React from 'react';
-import CardEding from '../../components/CardEding/CardEding';
 import Header from '../../components/Header/Header';
-import Card from '../../components/Card/Card';
+import TodayList from '../../components/TodayList/TodayList';
 
-const DashboardPage = () => {
+const DashboardPage = ({ quests = [] }) => {
   return (
     <>
-      cardEditing DashboardPage
-      {/* Uncommit for checking */}
-      <CardEding />
       <Header />
-      <Card />
+      <div>
+        <TodayList quests={quests} />
+      </div>
     </>
   );
 };
