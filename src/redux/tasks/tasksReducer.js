@@ -1,7 +1,53 @@
 import { combineReducers } from 'redux';
 import tasksTypes from './tasksTypes';
 
-const tasksReducer = (state = [], { type, payload }) => {
+const tasksReducer = (
+  state = {
+    error: null,
+    tasks: {
+      error: null,
+      quests: [
+        {
+          today: false,
+          tomorrow: false,
+          done: true,
+          dueDate: '2019-03-16T14:13:33.954Z',
+        },
+        {
+          today: false,
+          tomorrow: false,
+          done: true,
+          dueDate: '2019-03-17T14:13:53.954Z',
+        },
+        {
+          today: false,
+          tomorrow: false,
+          done: false,
+          dueDate: '2020-03-18T14:13:53.954Z',
+        },
+        {
+          today: false,
+          tomorrow: false,
+          done: false,
+          dueDate: '2020-03-18T14:12:53.954Z',
+        },
+        {
+          today: false,
+          tomorrow: false,
+          done: false,
+          dueDate: '2020-03-18T14:11:53.954Z',
+        },
+        {
+          today: false,
+          tomorrow: false,
+          done: true,
+          dueDate: '2020-03-18T14:13:55.954Z',
+        },
+      ],
+    },
+  },
+  { type, payload },
+) => {
   switch (type) {
     case tasksTypes.GET_ALL_QUESTS_SUCCESS:
       return payload.tasks;
