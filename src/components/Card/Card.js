@@ -7,30 +7,30 @@ import { connect } from 'react-redux';
 
 class Card extends Component {
   state = {
-    isModalOpen: false,
+    isCompletedModalOpen: false,
   };
 
-  openModal = () => {this.setState({ isModalOpen: true })};
+  openCompletedModal = () => {this.setState({ isCompletedModalOpen: true })};
 
-  closeModal = () => this.setState({ isModalOpen: false });
+  closeCompletedModal = () => this.setState({ isCompletedModalOpen: false });
 
   handleCloseQuest = () => {
     this.props.updateQuest({ done: true });
-    this.setState({ isModalOpen: false });
+    this.setState({ isCompletedModalOpen: false });
   };
 
 
   render() {
-    const { isModalOpen } = this.state;
+    const { isCompletedModalOpen } = this.state;
 
     return (
         <div>
-          {!this.props.isDone && (<button type="button" onClick={this.openModal}>
+          {!this.props.isDone && (<button type="button" onClick={this.openCompletedModal}>
             done
           </button>)}
-          {isModalOpen && (
+          {isCompletedModalOpen && (
             <CompletedModal
-              onCloseModal={this.closeModal}
+              onCloseModal={this.closeCompletedModal}
               onCloseQuest={this.handleCloseQuest}
               taskName={this.props.name}
             />
