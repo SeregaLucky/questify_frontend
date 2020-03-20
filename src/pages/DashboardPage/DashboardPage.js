@@ -45,7 +45,6 @@ class DashboardPage extends Component {
   render() {
     return (
       <>
-        cardEditing DashboardPage
         {/* Uncommit for checking */}
         {/* <CardEding /> */}
         <Header />
@@ -60,7 +59,9 @@ class DashboardPage extends Component {
           </div>
           <div className={styles.tomorrow}>
             <p className={styles.text}>tomorrow</p>
-            <div className={styles.card}>7</div>
+            <div className={styles.card}>
+              <CardEding />{' '}
+            </div>
             <div className={styles.card}>8</div>
             <div className={styles.card}>9</div>
           </div>
@@ -98,14 +99,6 @@ class DashboardPage extends Component {
   }
 }
 
-// const DashboardPage = () => {
-//   return (
-//     <>
-//       DashboardPage
-//       {/* Uncommit for checking */}
-//       <CardEding />
-//     </>
-//   );
 const mapStateToProps = state => {
   return {
     collection: {

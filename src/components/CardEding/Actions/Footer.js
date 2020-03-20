@@ -9,6 +9,7 @@ import {
 import CloseIcon from '@material-ui/icons/Close';
 import { actions } from '../styles/cardStyling';
 import styles from '../styles/cardEditing.module.css';
+import ComplexitySelect from '../../ComplexitySelect/ComplexitySelect';
 
 const Footer = ({ value, onChange }) => {
   const actionsStyles = actions();
@@ -29,6 +30,7 @@ const Footer = ({ value, onChange }) => {
         <option value={20}>Twenty</option>
         <option value={30}>Thirty</option>
       </Select>
+      {/* <ComplexitySelect value={value} handleDestination={onChange} /> */}
       {/* ---------------- */}
       <div className={styles.wrapBtn}>
         <IconButton
