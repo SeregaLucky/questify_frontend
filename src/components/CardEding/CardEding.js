@@ -6,7 +6,7 @@ import {
   CardActions,
   CardHeader,
   IconButton,
-  Select,
+  // Select,
   TextField,
   InputLabel,
   Divider,
@@ -28,6 +28,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './styles/muiTheme';
 import SelectPriority from './SelectPriority';
 import { general, header, content, actions } from './styles/cardStyling';
+import DicretionsSelect from '../DirectionsSelect/DirectionsSelect';
 import styles from './styles/cardEditing.module.css';
 
 const CardEditing = () => {
@@ -47,7 +48,10 @@ const CardEditing = () => {
   const handleDifficulty = ({ target }) => setDifficulty(target.value);
   const handleChangeText = ({ target }) => setText(target.value);
   const handleDateChange = date => setSelectedDate(date);
-  const handleDestination = ({ target }) => setChip(target.value);
+  const handleDestination = target => {
+    console.log(target);
+    setChip(target);
+  };
 
   //------- Date helper ----------
   const formatDate = pickedDate => {
@@ -141,7 +145,11 @@ const CardEditing = () => {
           </CardContent>
           <CardActions disableSpacing className={actionsStyles.cardActions}>
             {/* Here goes the DirectionSelect instead of my Select component */}
-            <Select
+            <DicretionsSelect
+              value={chip}
+              handleDestination={handleDestination}
+            />
+            {/* <Select
               native
               value={chip}
               onChange={handleDestination}
@@ -154,7 +162,7 @@ const CardEditing = () => {
               <option value={10}>Ten</option>
               <option value={20}>Twenty</option>
               <option value={30}>Thirty</option>
-            </Select>
+            </Select> */}
             {/* ---------------- */}
             <div className={styles.wrapBtn}>
               <IconButton

@@ -100,6 +100,7 @@ class DashboardPage extends Component {
   }
 }
 
+
 const mapStateToProps = state => {
   return {
     collection: {
