@@ -1,0 +1,76 @@
+.authFormWrapper {
+  width: 248px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.authFormTitle {
+  color: var(--light-gray);
+  font-family: 'HelveticaNeueCyrRoman', sans-serif;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.authInput {
+  border: none;
+  width: 182px;
+  border-bottom: 2px solid var(--light-blue);
+  height: 30px;
+  color: var(--light-blue);
+  font-family: 'HelveticaNeueCyrLightRoman', sans-serif;
+  font-size: 21px;
+  margin-right: 10px;
+}
+
+.authButton {
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  font-family: 'HelveticaNeueCyrBold', sans-serif;
+  color: #fff;
+  background-color: var(--orange);
+}
+
+@media (min-width: 768px) {
+  .authFormWrapper {
+    width: 326px;
+    margin: 0;
+  }
+
+  .authFormTitle {
+    font-size: 18px;
+  }
+
+  .authInput {
+    width: 178px;
+    font-family: 'HelveticaNeueCyrLightLight', sans-serif;
+  }
+
+  .authButton {
+    width: 70px;
+    height: 70px;
+    font-size: 23px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .authFormWrapper {
+    width: 948px;
+    display: flex;
+    padding-top: 50px;
+    align-items: center;
+  }
+
+  .authFormTitle {
+    margin-bottom: 0;
+    font-size: 30px;
+    margin-right: 22px;
+  }
+
+  .authInput {
+    width: 273px;
+    font-size: 30px;
+    margin-right: 22px;
+  }
+}
