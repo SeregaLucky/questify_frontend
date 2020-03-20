@@ -14,12 +14,12 @@ const {
 class DirectionsSelect extends Component {
   state = {
     list: [
-      { label: 'STUFF' },
-      { label: 'FAMILY' },
-      { label: 'HEALTH' },
-      { label: 'LEARNING' },
-      { label: 'LEISURE' },
-      { label: 'WORK' },
+      { label: 'Stuff' },
+      { label: 'Family' },
+      { label: 'Health' },
+      { label: 'Learning' },
+      { label: 'Leisure' },
+      { label: 'Work' },
     ],
     isOpen: false,
     itemStatus: null,
@@ -36,7 +36,7 @@ class DirectionsSelect extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.value !== this.props.value) {
       this.setState({
-        itemStatus: this.props.value,
+        itemStatus: this.props.value.toUpperCase(),
       });
     }
   }
@@ -51,7 +51,6 @@ class DirectionsSelect extends Component {
   render() {
     const { isOpen, itemStatus, list } = this.state;
     const { handleDestination } = this.props;
-    console.log(this.generateColor());
     return (
       <div className={dropdown} onClick={this.toggle}>
         {isOpen ? (
@@ -66,7 +65,7 @@ class DirectionsSelect extends Component {
                   key={i}
                   onClick={() => handleDestination(elem.label)}
                 >
-                  {elem.label}
+                  {elem.label.toUpperCase()}
                 </li>
               ))}
             </ul>
