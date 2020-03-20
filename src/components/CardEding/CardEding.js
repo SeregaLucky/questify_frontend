@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+// import { compose } from 'redux';
+// import { connect, useDispatch } from 'react-redux';
+// import T from 'prop-types';
 import { isToday, isTomorrow, format, isValid } from 'date-fns';
 import Card from '@material-ui/core/Card';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -23,6 +26,13 @@ const CardEditing = () => {
   const handleChangeText = ({ target }) => setText(target.value);
   const handleDateChange = date => setSelectedDate(date);
   const handleDestination = ({ target }) => setChip(target.value);
+  // const dispatch = useDispatch();
+  // const handleSubmit = useCallback(() => dispatch(cardOperations.addCard({ difficulty, text, selectedDate, chip })))
+
+  // e => {
+  //   e.preventDefault();
+  //   this.props.createUpdateCard(difficulty, text, selectedDate, chip);
+  // }
 
   //------- Date helper ----------
   const formatDate = pickedDate => {
@@ -41,6 +51,7 @@ const CardEditing = () => {
   return (
     <ThemeProvider theme={theme}>
       <Card className={generalStyles.root}>
+        {/* onSubmit={handleSubmit} */}
         <form noValidate autoComplete="off">
           <CardHeaderSection value={difficulty} onChange={handleDifficulty} />
           <ContentSection
