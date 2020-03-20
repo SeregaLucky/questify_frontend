@@ -2,37 +2,44 @@ import React, { Component } from 'react';
 
 import styles from './DirectionsSelect.module.css';
 
-const { dropdown, btnStuff, boxDropDown, btnIconDrop, liStuff } = styles;
+const {
+  dropdown,
+  btnStuff,
+  boxDropDown,
+  btnIconDrop,
+  btnIconDropDisable,
+  liStuff,
+} = styles;
 
 class DirectionsSelect extends Component {
   state = {
     list: [
-      { label: 'STUFF' },
-      { label: 'FAMILY' },
-      { label: 'HEALTH' },
-      { label: 'LEARNING' },
-      { label: 'LEISURE' },
-      { label: 'WORK' },
+      { label: 'Stuff' },
+      { label: 'Family' },
+      { label: 'Health' },
+      { label: 'Learning' },
+      { label: 'Leisure' },
+      { label: 'Work' },
     ],
     isOpen: false,
     itemStatus: null,
   };
 
   componentDidMount() {
-    if (this.state.itemStatus === null) {
+    if (this.state.itemStatus !== this.props.value) {
       this.setState({
-        itemStatus: 'SOME ONE',
+        itemStatus: 'some one',
       });
     }
   }
 
-  chooseItem = value => {
-    if (this.state.itemStatus !== value) {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.value !== this.props.value) {
       this.setState({
-        itemStatus: value,
+        itemStatus: this.props.value.toUpperCase(),
       });
     }
-  };
+  }
 
   toggle = () => this.setState(state => ({ isOpen: !state.isOpen }));
 
@@ -43,6 +50,8 @@ class DirectionsSelect extends Component {
 
   render() {
     const { isOpen, itemStatus, list } = this.state;
+    const { handleDestination } = this.props;
+
     return (
       <div className={dropdown} onClick={this.toggle}>
         {isOpen ? (
@@ -55,16 +64,21 @@ class DirectionsSelect extends Component {
                 <li
                   className={liStuff}
                   key={i}
-                  onClick={() => this.chooseItem(elem.label)}
+                  onClick={() => handleDestination(elem.label)}
                 >
-                  {elem.label}
+                  {elem.label.toUpperCase()}
                 </li>
               ))}
             </ul>
           </div>
         ) : (
           <button type="button" className={btnStuff}>
-            {itemStatus} <div className={btnIconDrop}></div>
+            {itemStatus}
+            <div
+              className={
+                itemStatus !== 'some one' ? btnIconDropDisable : btnIconDrop
+              }
+            ></div>
           </button>
         )}
       </div>

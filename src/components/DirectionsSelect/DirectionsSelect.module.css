@@ -4,6 +4,7 @@
   border-bottom-right-radius: 20px;
   width: 150px;
   height: 40px;
+  margin-left: -40px;
   background-color: aquamarine;
 }
 .boxDropDown {
