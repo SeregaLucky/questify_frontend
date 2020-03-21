@@ -7,6 +7,7 @@ import Quests from '../../redux/tasks/tasksSelectors';
 import CardEding from '../../components/CardEding/CardEding';
 import Header from '../../components/Header/Header';
 import CreateQuestButton from '../../components/CreateQuestButton';
+import CardEditing from '../../components/CardEding/CardEding';
 
 // dueDate: "2020-03-24T11:57:29.2929+02:00"
 // name: "Hello world"
@@ -73,10 +74,10 @@ class DashboardPage extends Component {
           <div className={styles.tomorrow}>
             <p className={styles.text}>tomorrow</p>
             <div className={styles.card}>
-              <CardEding questData={questData} />{' '}
+              <CardContainer questData={questData} />
             </div>
             <div className={styles.card}>
-              <CardContainer questData={questData} />
+              <CardContainer qestData={{}} newCard={true} />
             </div>
             <div className={styles.card}>9</div>
           </div>

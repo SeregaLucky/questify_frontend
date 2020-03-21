@@ -1,9 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
-import { CardHeader, IconButton } from '@material-ui/core';
+import { CardHeader } from '@material-ui/core';
 import { isToday, isTomorrow, format, isValid, parseISO } from 'date-fns';
 import CardContent from '@material-ui/core/CardContent';
-import StarRoundedIcon from '@material-ui/icons/StarRounded';
 import Typography from '@material-ui/core/Typography';
 import StarIcon from './starIcon';
 import { content } from '../CardEding/styles/cardStyling';
@@ -14,11 +13,13 @@ const Card = ({ questData, onClick }) => {
   const cardContentStyles = content();
 
   const formatDate = pickedDate => {
-    const x = parseISO(pickedDate);
-    if (isToday(x)) return 'Today';
-    if (isTomorrow(x)) return 'Tomorrow';
-    return isValid(x) ? format(x, 'dd MMMM yyyy') : 'Invalid date';
+    if (isToday(pickedDate)) return 'Today';
+    if (isTomorrow(pickedDate)) return 'Tomorrow';
+    return isValid(pickedDate)
+      ? format(pickedDate, 'dd MMMM yyyy')
+      : 'Invalid date';
   };
+
   return (
     <div onClick={onClick} role="presentation">
       <CardHeader

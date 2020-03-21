@@ -13,37 +13,27 @@ import Footer from './Actions/Footer';
 import authSelectors from '../../redux/auth/authSelectors';
 import tasksOperations from '../../redux/tasks/tasksOperations';
 
-const CardEditing = ({ cancelEditing, questData }) => {
-  //--------state-------
-  const [difficulty, setDifficulty] = React.useState(
-    questData.difficulty || '',
-  );
-  const [name, setText] = React.useState(questData.name || '');
-  const [dueDate, setSelectedDate] = React.useState(
-    parseISO(questData.dueDate) || new Date(),
-  );
-  const [group, setGroup] = React.useState(questData.group || '');
+const CardEditing = ({
+  cancelEditing,
+  questData,
+  handleDifficulty,
+  handleChangeText,
+  handleDateChange,
+  handleDestination,
+}) => {
+  const { difficulty, dueDate, group, name, questId } = questData;
 
   //------- styles -----------------
   const generalStyles = general();
 
-  //--------- handlers -------------
-  const handleDifficulty = ({ target }) => setDifficulty(target.value);
-  const handleChangeText = ({ target }) => setText(target.value);
-  const handleDateChange = date => setSelectedDate(date);
-
-  const handleDestination = ({ target }) => setGroup(target.value);
-  // const userId = useSelector(store => authSelectors.getUserId(store));
   const userId = '5e68c62a4a36bf664bacf714';
-  // console.log(userId2)
-  // console.log(questData.questId)
   const dispatch = useDispatch();
   const handleSubmit = e => {
     e.preventDefault();
     //if editing
     if (questData.questId)
       return dispatch(
-        tasksOperations.updateQuest(questData.questId, {
+        tasksOperations.updateQuest(questId, {
           difficulty,
           dueDate,
           group,
@@ -54,12 +44,8 @@ const CardEditing = ({ cancelEditing, questData }) => {
     dispatch(
       tasksOperations.addQuest({ difficulty, dueDate, group, name, userId }),
     );
+    cancelEditing();
   };
-
-  // e => {
-  //   e.preventDefault();
-  //   this.props.createUpdateCard(difficulty, text, selectedDate, chip);
-  // }
 
   //------- Date helper ----------
   const formatDate = pickedDate => {
@@ -101,12 +87,6 @@ CardEditing.propTypes = {
     group: T.string.isRequired,
   }),
 };
-
-// const mapStateToProps = store => ({
-//   userId: authSelectors.getUserId(store)
-// });
-
-// export default connect(mapStateToProps)(CardEditing);
 
 export default CardEditing;
 
