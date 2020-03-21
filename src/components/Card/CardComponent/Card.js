@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { CardHeader } from '@material-ui/core';
-import { isToday, isTomorrow, format, isValid, parseISO } from 'date-fns';
+import { isToday, isTomorrow, format, isValid } from 'date-fns';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import StarIcon from './starIcon';

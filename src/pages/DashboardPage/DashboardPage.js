@@ -1,27 +1,20 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
 import { connect } from 'react-redux';
-import CardContainer from '../../components/Card/CardContainer';
+//For card rendering ------------
+import CardContainer from '../../components/Card';
+//-----------------
 import * as styles from './DashboardPage.module.css';
 import Quests from '../../redux/tasks/tasksSelectors';
-import CardEding from '../../components/CardEding/CardEding';
 import Header from '../../components/Header/Header';
 import CreateQuestButton from '../../components/CreateQuestButton';
-import CardEditing from '../../components/CardEding/CardEding';
 
-// dueDate: "2020-03-24T11:57:29.2929+02:00"
-// name: "Hello world"
-// group: "Productivity"
-// difficulty: "Hard"
-// userId: "5e68c62a4a36bf664bacf714"
+//Existing card
+//<CardContainer questData={questData} />
 
-const questData = {
-  questId: '5e74dddeba2453135f060c1c',
-  difficulty: 'Easy',
-  name: 'Java Script',
-  dueDate: '2020-03-30T20:14:36.363Z',
-  group: 'Health',
-};
+//New card
+//<CardContainer qestData={{}} newCard={true} />
+
 class DashboardPage extends Component {
   state = {
     isDoneOpen: false,
@@ -59,8 +52,6 @@ class DashboardPage extends Component {
   render() {
     return (
       <>
-        {/* Uncommit for checking */}
-        {/* <CardEding /> */}
         <Header />
         <div className={styles.container}>
           <div className={styles.today}>
@@ -74,11 +65,9 @@ class DashboardPage extends Component {
           <div className={styles.tomorrow}>
             <p className={styles.text}>tomorrow</p>
             <div className={styles.card}>
-              <CardContainer questData={questData} />
-            </div>
-            <div className={styles.card}>
               <CardContainer qestData={{}} newCard={true} />
             </div>
+            <div className={styles.card}>8</div>
             <div className={styles.card}>9</div>
           </div>
 

@@ -9,7 +9,7 @@ import {
 import CloseIcon from '@material-ui/icons/Close';
 import { actions } from '../styles/cardStyling';
 import styles from '../styles/cardEditing.module.css';
-import DirectionsSelect from '../../DirectionsSelect/DirectionsSelect';
+// import DirectionsSelect from '../../../DirectionsSelect/DirectionsSelect';
 
 const Footer = ({ value, onChange, cancelEditing }) => {
   const actionsStyles = actions();

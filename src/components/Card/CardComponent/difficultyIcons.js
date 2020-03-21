@@ -1,5 +1,5 @@
 import React from 'react';
-import { Select, MenuItem, SvgIcon } from '@material-ui/core';
+import { SvgIcon } from '@material-ui/core';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import * as styles from '../CardEding/styles/materialUIStyles';
 
