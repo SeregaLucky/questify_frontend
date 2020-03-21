@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://questify.goit.co.ua';
+axios.defaults.baseURL = 'https://questify.goit.co.ua/api/';
 
-const axiosRegister = data => {
-  return axios.post('/api/login', data).then(response => {
-    return response;
-  });
+const updateQuest = (id, data) => {
+  return axios.put(`/quests/${id}`, data);
 };
 
-export default { axiosRegister };
+export default { updateQuest };
