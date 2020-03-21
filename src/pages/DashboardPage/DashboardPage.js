@@ -8,6 +8,19 @@ import CardEding from '../../components/CardEding/CardEding';
 import Header from '../../components/Header/Header';
 import CreateQuestButton from '../../components/CreateQuestButton';
 
+// dueDate: "2020-03-24T11:57:29.2929+02:00"
+// name: "Hello world"
+// group: "Productivity"
+// difficulty: "Hard"
+// userId: "5e68c62a4a36bf664bacf714"
+
+const questData = {
+  questId: '5e74dddeba2453135f060c1c',
+  difficulty: 'Easy',
+  name: 'Java Script',
+  dueDate: '2020-03-30T20:14:36.363Z',
+  group: 'Health',
+};
 class DashboardPage extends Component {
   state = {
     isDoneOpen: false,
@@ -60,7 +73,7 @@ class DashboardPage extends Component {
           <div className={styles.tomorrow}>
             <p className={styles.text}>tomorrow</p>
             <div className={styles.card}>
-              <CardEding />{' '}
+              <CardEding questData={questData} />{' '}
             </div>
             <div className={styles.card}>8</div>
             <div className={styles.card}>9</div>
