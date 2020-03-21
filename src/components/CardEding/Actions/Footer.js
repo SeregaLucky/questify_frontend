@@ -11,7 +11,7 @@ import { actions } from '../styles/cardStyling';
 import styles from '../styles/cardEditing.module.css';
 import DirectionsSelect from '../../DirectionsSelect/DirectionsSelect';
 
-const Footer = ({ value, onChange }) => {
+const Footer = ({ value, onChange, cancelEditing }) => {
   const actionsStyles = actions();
   return (
     <CardActions disableSpacing className={actionsStyles.cardActions}>
@@ -35,6 +35,8 @@ const Footer = ({ value, onChange }) => {
       <div className={styles.wrapBtn}>
         <IconButton
           aria-label="close"
+          type="button"
+          onClick={cancelEditing}
           classes={{
             label: actionsStyles.crossBtn,
           }}

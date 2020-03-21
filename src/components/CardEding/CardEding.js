@@ -13,7 +13,7 @@ import Footer from './Actions/Footer';
 import authSelectors from '../../redux/auth/authSelectors';
 import tasksOperations from '../../redux/tasks/tasksOperations';
 
-const CardEditing = ({ isEditing, questData }) => {
+const CardEditing = ({ cancelEditing, questData }) => {
   //--------state-------
   const [difficulty, setDifficulty] = React.useState(
     questData.difficulty || '',
@@ -81,7 +81,11 @@ const CardEditing = ({ isEditing, questData }) => {
             formatDate={formatDate}
             onChangeDate={handleDateChange}
           />
-          <Footer value={group} onChange={handleDestination} />
+          <Footer
+            value={group}
+            onChange={handleDestination}
+            cancelEditing={cancelEditing}
+          />
         </form>
       </Card>
     </ThemeProvider>

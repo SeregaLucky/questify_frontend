@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
 import { connect } from 'react-redux';
-
+import CardContainer from '../../components/Card/CardContainer';
 import * as styles from './DashboardPage.module.css';
 import Quests from '../../redux/tasks/tasksSelectors';
 import CardEding from '../../components/CardEding/CardEding';
@@ -75,7 +75,9 @@ class DashboardPage extends Component {
             <div className={styles.card}>
               <CardEding questData={questData} />{' '}
             </div>
-            <div className={styles.card}>8</div>
+            <div className={styles.card}>
+              <CardContainer questData={questData} />
+            </div>
             <div className={styles.card}>9</div>
           </div>
 
