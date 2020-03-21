@@ -28,7 +28,10 @@ const Footer = ({ value, onChange, cancelEditing }) => {
         <option value="" />
         <option value="Family">Family</option>
         <option value="Health">Health</option>
-        <option value="Leasure">Leasure</option>
+        <option value="Leisure">Leisure</option>
+        <option value="Stuff">Stuff</option>
+        <option value="Learning">Learning</option>
+        <option value="Work">Work</option>
       </Select>
       {/* <DirectionsSelect value={value} handleDestination={onChange} /> */}
       {/* ---------------- */}
