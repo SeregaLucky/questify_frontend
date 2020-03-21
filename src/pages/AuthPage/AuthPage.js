@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './AuthPage.module.css';
 import AuthForm from '../../components/AuthForm';
-
 const AuthPage = () => {
   return (
     <>
