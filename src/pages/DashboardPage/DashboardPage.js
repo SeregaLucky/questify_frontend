@@ -10,31 +10,6 @@ import Header from '../../components/Header/Header';
 class DashboardPage extends Component {
   state = {
     isDoneOpen: false,
-    // collection: {
-    //   dueDate: '2019-03-16T14:13:53.954Z',
-    // },
-
-    // collection
-    // [
-    // {
-    //   today: false,
-    //   tomorrow: false,
-    //   done: true,
-    //   dueDate: '2019-03-16T14:13:53.954Z',
-    // },
-    //   {
-    //     today: false,
-    //     tomorrow: false,
-    //     done: true,
-    //     dueDate: '2019-03-17T14:13:53.954Z',
-    //   },
-    //   {
-    //     today: false,
-    //     tomorrow: false,
-    //     done: false,
-    //     dueDate: '2019-03-17T14:13:53.954Z',
-    //   },
-    // ],
   };
 
   handleClick = e => {
@@ -59,9 +34,11 @@ class DashboardPage extends Component {
           </div>
           <div className={styles.tomorrow}>
             <p className={styles.text}>tomorrow</p>
-            <div className={styles.card}>7</div>
-            <div className={styles.card}>8</div>
-            <div className={styles.card}>9</div>
+            {this.props.collection.tomorrow.map(item => (
+              <div key={shortid.generate()} className={styles.card}>
+                {item.dueDate}
+              </div>
+            ))}
           </div>
 
           <div className={styles.done}>
@@ -81,15 +58,6 @@ class DashboardPage extends Component {
                   </div>
                 ))
               : null}
-            {/* {this.state.isDoneOpen
-              ? this.state.collection
-                  .filter(items => items.done)
-                  .map(item => (
-                    <div key={shortid.generate()} className={styles.card}>
-                      {item.dueDate}
-                    </div>
-                  ))
-              : null} */}
           </div>
         </div>
       </>
@@ -103,6 +71,7 @@ const mapStateToProps = state => {
       all: Quests.getAllQuests(state),
       done: Quests.getDoneQuests(state),
       today: Quests.getTodayQuests(state),
+      tomorrow: Quests.getTomorowQuests(state),
     },
   };
 };
