@@ -6,6 +6,7 @@ import * as styles from './DashboardPage.module.css';
 import Quests from '../../redux/tasks/tasksSelectors';
 import CardEding from '../../components/CardEding/CardEding';
 import Header from '../../components/Header/Header';
+import CreateQuestButton from '../../components/CreateQuestButton';
 
 class DashboardPage extends Component {
   state = {
