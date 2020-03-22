@@ -5,18 +5,29 @@
 }
 
 .authFormTitle {
-  color: #c1cdd1;
+  color: var(--light-gray);
   font-family: 'HelveticaNeueCyrRoman', sans-serif;
   font-size: 14px;
   margin-bottom: 30px;
 }
 
+.formContainer {
+  display: flex;
+  align-items: center;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .authInput {
+  text-transform: capitalize;
   border: none;
   width: 182px;
-  border-bottom: 2px solid #00d8ff;
+  border-bottom: 2px solid var(--light-blue);
   height: 30px;
-  color: #00d8ff;
+  color: var(--light-blue);
   font-family: 'HelveticaNeueCyrLightRoman', sans-serif;
   font-size: 21px;
   margin-right: 10px;
@@ -29,14 +40,31 @@
   border-radius: 50%;
   font-family: 'HelveticaNeueCyrBold', sans-serif;
   color: #fff;
-  background-color: #ff851c;
+  background-color: var(--orange);
+  transition: all 0.5s ease-out;
 }
 
-@media (min-width: 1920px) {
+.authButton:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+.authButton:active {
+  box-shadow: inset 2px 2px 2px 2px hsla(0, 0%, 0%, 0.2);
+}
+
+.invalidFeedback {
+  /* display: inline-flex; */
+  font-family: 'HelveticaNeueCyrLightRoman', sans-serif;
+  font-size: 12px;
+  color: #f44336;
+  width: 180px;
+  /* margin: 0; */
+  padding-top: 5px;
+}
+
+@media (min-width: 768px) {
   .authFormWrapper {
     width: 326px;
-    margin-left: 68px;
-    margin-right: auto;
+    margin: 0;
   }
   .authFormTitle {
     font-size: 18px;
@@ -54,7 +82,7 @@
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1920px) {
   .authFormWrapper {
     width: 948px;
     display: flex;
@@ -63,6 +91,7 @@
   }
 
   .authFormTitle {
+    font-family: 'HelveticaNeueCyrLightRoman', sans-serif;
     margin-bottom: 0;
     font-size: 30px;
     margin-right: 22px;
