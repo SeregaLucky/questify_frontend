@@ -3,5 +3,6 @@
 const isAuth = store => {
   return store.auth.nickname;
 };
+const getUserId = store => store.auth.userId;
 
-export default isAuth;
+export default { isAuth, getUserId };

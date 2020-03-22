@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
 import { connect } from 'react-redux';
-
+//For card rendering ------------
+import CardContainer from '../../components/Card';
+//-----------------
 import * as styles from './DashboardPage.module.css';
 import Quests from '../../redux/tasks/tasksSelectors';
-import CardEding from '../../components/CardEding/CardEding';
 import Header from '../../components/Header/Header';
 import CreateQuestButton from '../../components/CreateQuestButton';
 import TodayList from '../../components/TodayList';
+
+//Existing card
+//<CardContainer questData={questData} />
+
+//New card
+//<CardContainer qestData={{}} newCard={true} />
 
 class DashboardPage extends Component {
   state = {
@@ -46,9 +53,6 @@ class DashboardPage extends Component {
   render() {
     return (
       <>
-        cardEditing DashboardPage
-        {/* Uncommit for checking */}
-        {/* <CardEding /> */}
         <Header />
         <div className={styles.container}>
           <div className={styles.today}>
@@ -62,7 +66,9 @@ class DashboardPage extends Component {
           </div>
           <div className={styles.tomorrow}>
             <p className={styles.text}>tomorrow</p>
-            <div className={styles.card}>7</div>
+            <div className={styles.card}>
+              <CardContainer qestData={{}} newCard={true} />
+            </div>
             <div className={styles.card}>8</div>
             <div className={styles.card}>9</div>
           </div>
