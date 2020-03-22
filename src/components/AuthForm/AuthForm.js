@@ -12,9 +12,9 @@ import styles from './AuthForm.module.css';
 
 class AuthForm extends Component {
   render() {
-    // if (this.props.isAuth) {
-    //   return <Redirect to={routes.DASHBOARD_PAGE} />;
-    // }
+    if (this.props.isAuth) {
+      return <Redirect to={routes.DASHBOARD_PAGE} />;
+    }
     return (
       <div>
         <Formik

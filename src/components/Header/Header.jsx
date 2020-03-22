@@ -5,10 +5,9 @@ import { Link, Redirect } from 'react-router-dom';
 import cubok from './../../assets/icons/cubok.png';
 import logout_icon from './../../assets/icons/logout_icon.png';
 import { routes } from '../../routes';
-// import { connect } from 'formik';
 
-function Header({ userName = 'sasd', onLogOut }) {
-  return (
+function Header({ user, onLogOut }) {
+  return user ? (
     <div className={style.fluid}>
       <div className={style.container}>
         {/* Logo */}
@@ -16,9 +15,9 @@ function Header({ userName = 'sasd', onLogOut }) {
 
         {/* Name */}
         <div className={style.user}>
-          {/* <p className={style.firstLetter}>{userName[0]}</p> */}
-          <p className={style.firstLetter}>s</p>
-          <p className={style.name}>{userName}</p>
+          <p className={style.firstLetter}>{user[0]}</p>
+          {/* <p className={style.firstLetter}>s</p> */}
+          <p className={style.name}>{user}</p>
         </div>
 
         {/* Future */}
@@ -33,6 +32,8 @@ function Header({ userName = 'sasd', onLogOut }) {
         </div>
       </div>
     </div>
+  ) : (
+    <Redirect to={routes.AUTH_PAGE} />
   );
 }
 

@@ -24,6 +24,8 @@ const registerUser = data => dispatch => {
     });
 };
 
-const logoutUser = () => dispatch => {};
+const logoutUser = () => dispatch => {
+  dispatch(authActions.logOutSuccess());
+};
 
 export default { registerUser, logoutUser };

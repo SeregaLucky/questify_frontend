@@ -1,13 +1,12 @@
-import Header from './Header';
-import { getNickName } from '../../redux/auth/authSelectors';
 import { connect } from 'react-redux';
 import authOperations from '../../redux/auth/authOperations';
-import authActions from '../../redux/auth/authActions';
+import isAuth from '../../redux/auth/authSelectors';
+import Header from './Header';
 
-const mapStateToProps = state => ({ userName: getNickName(state) });
+const mapStateToProps = state => ({ user: isAuth(state) });
 
-const mapDispatchToProps = dispatch => ({
-  onLogOut: () => dispatch(authActions.logOutSuccess),
-});
+const mapDispatchToProps = {
+  onLogOut: authOperations.logoutUser,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
