@@ -34,10 +34,10 @@ const nicknameReducer = (state = null, { type, payload }) => {
 
 const emailReducer = (state = null, { type, payload }) => {
   switch (type) {
-    case authTypes.REGISTER_SUCCESS:
-      return payload.email;
-    case authTypes.LOGOUT_SUCCESS:
-      return null;
+    // case authTypes.REGISTER_SUCCESS:
+    //   return payload.email;
+    // case authTypes.LOGOUT_SUCCESS:
+    //   return null;
 
     default:
       return state;
@@ -47,7 +47,7 @@ const emailReducer = (state = null, { type, payload }) => {
 const userIdReducer = (state = null, { type, payload }) => {
   switch (type) {
     case authTypes.REGISTER_SUCCESS:
-      return payload.userId;
+      return payload._id;
     case authTypes.LOGOUT_SUCCESS:
       return null;
 
@@ -58,10 +58,10 @@ const userIdReducer = (state = null, { type, payload }) => {
 
 const tokenReducer = (state = null, { type, payload }) => {
   switch (type) {
-    case authTypes.REGISTER_SUCCESS:
-      return payload.token;
-    case authTypes.LOGOUT_SUCCESS:
-      return null;
+    // case authTypes.REGISTER_SUCCESS:
+    //   return payload.token;
+    // case authTypes.LOGOUT_SUCCESS:
+    //   return null;
 
     default:
       return state;

@@ -7,7 +7,7 @@ const tasksReducer = (state = [], { type, payload }) => {
       return payload.tasks;
 
     case tasksTypes.ADD_QUEST_SUCCESS:
-      return [...state, payload.task];
+      return [...state, payload.data];
 
     case tasksTypes.DELETE_QUEST_SUCCESS:
       return state.filter(el => el._id !== payload.id);
