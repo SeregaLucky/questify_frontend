@@ -1,5 +1,5 @@
 //add notification library for displaying success/error messages
-import api from '../../servises/api-authi';
+import api from '../../servises/api';
 import authActions from './authActions';
 import tasksActions from '../tasks/tasksActions';
 

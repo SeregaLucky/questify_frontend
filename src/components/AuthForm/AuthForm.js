@@ -5,16 +5,16 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 
 import authFormSchema from './validationAuthForm';
 import authOperations from '../../redux/auth/authOperations';
-import isAuth from '../../redux/auth/authSelectors';
+import authSelectors from '../../redux/auth/authSelectors';
 import { routes } from '../../routes';
 
 import styles from './AuthForm.module.css';
 
 class AuthForm extends Component {
   render() {
-    // if (this.props.isAuth) {
-    //   return <Redirect to={routes.DASHBOARD_PAGE} />;
-    // }
+    if (this.props.isAuth) {
+      return <Redirect to={routes.DASHBOARD_PAGE} />;
+    }
     return (
       <div>
         <Formik
@@ -54,7 +54,7 @@ class AuthForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  isAuth: isAuth(state),
+  isAuth: authSelectors.isAuth(state),
 });
 
 const mapDispatchToProps = dispatch => ({

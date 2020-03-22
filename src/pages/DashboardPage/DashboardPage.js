@@ -8,7 +8,7 @@ import * as styles from './DashboardPage.module.css';
 import Quests from '../../redux/tasks/tasksSelectors';
 import Header from '../../components/Header/Header';
 import CreateQuestButton from '../../components/CreateQuestButton';
-import TodayList from '../../components/TodayList';
+import TodayList from '../../components/TodayList/TodayList';
 
 //Existing card
 //<CardContainer questData={questData} />
