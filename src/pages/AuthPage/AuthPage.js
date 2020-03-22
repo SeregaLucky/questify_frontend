@@ -3,8 +3,8 @@ import clsx from 'clsx';
 
 import styles from './AuthPage.module.css';
 
-import image__1 from '../../assets/images/landing-layer1.png';
-import image__2 from '../../assets/images/landing-layer2.png';
+// import image__1 from '../../assets/images/landing-layer1.png';
+// import image__2 from '../../assets/images/landing-layer2.png';
 
 import AuthForm from '../../components/AuthForm';
 
@@ -21,16 +21,16 @@ const AuthPage = () => {
 
           <AuthForm />
 
-          <img
+          {/* <img
             className={clsx(styles.image, styles.image__1)}
             src={image__1}
             alt="Questify 1"
-          />
-          <img
+          /> */}
+          {/* <img
             className={clsx(styles.image, styles.image__2)}
             src={image__2}
             alt="Questify 2"
-          />
+          /> */}
           <div className={clsx(styles.rectangle, styles.rectangle__grey)}></div>
           <div className={clsx(styles.rectangle, styles.rectangle__blue)}></div>
         </div>
