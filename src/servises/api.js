@@ -8,6 +8,7 @@ axios.defaults.headers.put['Content-Type'] = 'application/json';
 
 const createQuest = credentials => axios.post('/quests', credentials);
 const updateQuest = (questId, data) => axios.put(`/quests/${questId}`, data);
+const deleteQuest = questId => axios.delete(`/quests/${questId}`);
 
 const axiosRegister = data => {
   return axios.post('/login', data).then(response => {
@@ -18,5 +19,6 @@ const axiosRegister = data => {
 export default {
   createQuest,
   updateQuest,
+  deleteQuest,
   axiosRegister,
 };

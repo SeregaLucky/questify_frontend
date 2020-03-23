@@ -26,9 +26,6 @@ export const header = makeStyles(theme => ({
   startRoot: {
     widht: '20px',
   },
-  // starColor: {
-  //   color: 'var(--light-gray)',
-  // },
   action: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -84,5 +81,14 @@ export const actions = makeStyles(theme => ({
   },
   crossBtn: {
     color: '#f50057',
+  },
+  // deleteEditRoot: {
+  //   width: '20px',
+  // },
+  delete: {
+    color: '#ee6f9c',
+  },
+  done: {
+    color: '#37ce12',
   },
 }));
