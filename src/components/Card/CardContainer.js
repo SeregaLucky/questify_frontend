@@ -19,6 +19,7 @@ const CardContainer = ({ questData, newCard }) => {
   );
   const [group, setGroup] = React.useState(questData ? questData.group : '');
   const questId = questData ? questData.questId : '';
+  const done = questData ? questData.done : false;
 
   //----------handlers------------
   const handleDifficulty = ({ target }) => setDifficulty(target.value);
@@ -40,6 +41,7 @@ const CardContainer = ({ questData, newCard }) => {
               dueDate,
               group,
               questId: questId,
+              done,
             }}
             onClick={handleEditing}
           />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import clsx from 'clsx';
 import { CardHeader } from '@material-ui/core';
 import { isToday, isTomorrow, format, isValid } from 'date-fns';
@@ -8,8 +9,22 @@ import StarIcon from './starIcon';
 import { content } from '../CardEding/styles/cardStyling';
 import styles from './card.module.css';
 import Difficulty from './Difficulty';
+import CompletedModal from '../../CompletedModal/CompletedModal';
+import tasksOperations from '../../../redux/tasks/tasksOperations';
 
 const Card = ({ questData, onClick }) => {
+  //-----completedModal-------//
+  const [openCompletedModal, setIsCompletedModalOpen] = React.useState(false);
+  const { questId, done } = questData;
+  const dispatch = useDispatch();
+  const handleOpenCompletedModal = () => setIsCompletedModalOpen(true);
+  const handleCloseCompletedModal = () => setIsCompletedModalOpen(false);
+  const handleCloseQuest = () => {
+    if (questId && !done)
+      return dispatch(tasksOperations.updateQuest(questId, { done: true }));
+    setIsCompletedModalOpen(false);
+  };
+
   const cardContentStyles = content();
 
   const formatDate = pickedDate => {
@@ -42,6 +57,19 @@ const Card = ({ questData, onClick }) => {
       >
         <Typography variant="body2">{questData.group}</Typography>
       </div>
+      {/* ---Button for opening modal-----*/}
+      {!done && (
+        <button type="button" onClick={handleOpenCompletedModal}>
+          done
+        </button>
+      )}
+      {openCompletedModal && (
+        <CompletedModal
+          onCloseModal={handleCloseCompletedModal}
+          onCloseQuest={handleCloseQuest}
+          taskName={questData.name}
+        />
+      )}
     </div>
   );
 };
