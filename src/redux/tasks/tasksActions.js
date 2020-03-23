@@ -23,10 +23,10 @@ const addQuestStart = () => ({
   type: tasksTypes.ADD_QUEST_START,
 });
 
-const addQuestSuccess = role => ({
+const addQuestSuccess = data => ({
   type: tasksTypes.ADD_QUEST_SUCCESS,
   payload: {
-    role,
+    data,
   },
 });
 

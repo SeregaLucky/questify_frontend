@@ -26,9 +26,9 @@ export const header = makeStyles(theme => ({
   startRoot: {
     widht: '20px',
   },
-  starColor: {
-    color: 'var(--light-gray)',
-  },
+  // starColor: {
+  //   color: 'var(--light-gray)',
+  // },
   action: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -46,8 +46,10 @@ export const content = makeStyles(theme => ({
   },
   cardContent: {
     display: 'flex',
+    flexDirection: 'column',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    marginBottom: '1.2em',
   },
   textField: {
     width: '260px',
@@ -67,6 +69,9 @@ export const content = makeStyles(theme => ({
   },
   input: {
     textAlign: 'center',
+  },
+  gutterBottom: {
+    marginBottom: '35px',
   },
 }));
 
