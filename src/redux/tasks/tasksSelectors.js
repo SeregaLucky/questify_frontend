@@ -1,7 +1,7 @@
 // const getAllQuests = store => store.tasks.tasks;
 const getAllQuests = store => {
-  console.log(store.tasks.tasks.tasks.quests);
-  return store.tasks.tasks.tasks.quests;
+  // console.log(store.tasks.tasks.tasks.quests);
+  return store.tasks.tasks;
 };
 
 const getTodayQuests = store => {
