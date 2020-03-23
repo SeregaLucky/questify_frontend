@@ -24,19 +24,22 @@ class Card extends Component {
     const { isCompletedModalOpen } = this.state;
 
     return (
+      <>
         <div>
           {!this.props.isDone && (<button type="button" onClick={this.openCompletedModal}>
             done
           </button>)}
-          {isCompletedModalOpen && (
+        </div>
+        {isCompletedModalOpen && (
             <CompletedModal
               onCloseModal={this.closeCompletedModal}
               onCloseQuest={this.handleCloseQuest}
-              taskName={this.props.name}
-            />
-          )}
-        </div>
+              taskName={this.props.name}/>
+        )}
+      </>  
     );
+          
+        
   }
 }
 

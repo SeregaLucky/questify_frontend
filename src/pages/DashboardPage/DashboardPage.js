@@ -7,7 +7,6 @@ import Quests from '../../redux/tasks/tasksSelectors';
 import CardEding from '../../components/CardEding/CardEding';
 import Header from '../../components/Header/Header';
 import CreateQuestButton from '../../components/CreateQuestButton';
-import TodayList from '../../components/TodayList';
 
 class DashboardPage extends Component {
   state = {
@@ -53,7 +52,6 @@ class DashboardPage extends Component {
         <div className={styles.container}>
           <div className={styles.today}>
             <p className={styles.text}>today</p>
-            {/* <TodayList quests={this.props.collection.today} /> */}
             {this.props.collection.today.map(item => (
               <div key={shortid.generate()} className={styles.card}>
                 {item.dueDate}
