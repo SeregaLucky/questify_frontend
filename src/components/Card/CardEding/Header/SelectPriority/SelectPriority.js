@@ -1,7 +1,7 @@
 import React from 'react';
 import { Select, MenuItem, SvgIcon } from '@material-ui/core';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
-import * as styles from './styles/materialUIStyles';
+import * as styles from '../../styles/materialUIStyles';
 
 const SelectPriority = ({ value, onChangeDiff }) => {
   const select = styles.selectStyles();
@@ -30,7 +30,7 @@ const SelectPriority = ({ value, onChangeDiff }) => {
           Difficulty
         </MenuItem>
         <MenuItem
-          value="easy"
+          value="Easy"
           classes={{
             root: placeholder.root,
           }}
@@ -49,7 +49,7 @@ const SelectPriority = ({ value, onChangeDiff }) => {
           Easy
         </MenuItem>
         <MenuItem
-          value="normal"
+          value="Normal"
           classes={{
             root: placeholder.root,
           }}
@@ -68,7 +68,7 @@ const SelectPriority = ({ value, onChangeDiff }) => {
           Normal
         </MenuItem>
         <MenuItem
-          value="high"
+          value="Hard"
           classes={{
             root: placeholder.root,
           }}

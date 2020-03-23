@@ -1,5 +1,3 @@
-@import '../../stylesheet/vars.css';
-
 .container {
   display: grid;
   justify-items: center;

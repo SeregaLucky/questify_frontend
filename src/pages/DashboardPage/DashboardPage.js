@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
 import { connect } from 'react-redux';
-
+//For card rendering ------------
+import CardContainer from '../../components/Card';
+//-----------------
 import * as styles from './DashboardPage.module.css';
 import Quests from '../../redux/tasks/tasksSelectors';
-import CardEding from '../../components/CardEding/CardEding';
 import Header from '../../components/Header/Header';
 import CreateQuestButton from '../../components/CreateQuestButton';
+import TodayList from '../../components/TodayList/TodayList';
+
+//Existing card
+//<CardContainer questData={questData} />
+
+//New card
+//<CardContainer qestData={{}} newCard={true} />
 
 class DashboardPage extends Component {
   state = {
@@ -40,18 +48,21 @@ class DashboardPage extends Component {
 
   handleClick = e => {
     this.setState(state => ({ isDoneOpen: !state.isDoneOpen }));
+    // this.state.isDoneOpen = true;
+    // this.setState(state => ({ isDoneOpen: true }));
   };
 
   render() {
     return (
       <>
-        cardEditing DashboardPage
-        {/* Uncommit for checking */}
-        {/* <CardEding /> */}
         <Header />
         <div className={styles.container}>
           <div className={styles.today}>
             <p className={styles.text}>today</p>
+            {this.state.isDoneOpen ? (
+              <CardContainer qestData={{}} newCard={true} />
+            ) : null}
+            {/* <TodayList quests={this.props.collection.today} /> */}
             {this.props.collection.today.map(item => (
               <div key={shortid.generate()} className={styles.card}>
                 {item.dueDate}
@@ -60,7 +71,9 @@ class DashboardPage extends Component {
           </div>
           <div className={styles.tomorrow}>
             <p className={styles.text}>tomorrow</p>
-            <div className={styles.card}>7</div>
+            <div className={styles.card}>
+              <CardContainer qestData={{}} newCard={true} />
+            </div>
             <div className={styles.card}>8</div>
             <div className={styles.card}>9</div>
           </div>
@@ -91,6 +104,7 @@ class DashboardPage extends Component {
                     </div>
                   ))
               : null} */}
+            <CreateQuestButton handleClick={this.handleClick} />
           </div>
         </div>
       </>
