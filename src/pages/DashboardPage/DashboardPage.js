@@ -19,31 +19,6 @@ import TodayList from '../../components/TodayList/TodayList';
 class DashboardPage extends Component {
   state = {
     isDoneOpen: false,
-    // collection: {
-    //   dueDate: '2019-03-16T14:13:53.954Z',
-    // },
-
-    // collection
-    // [
-    // {
-    //   today: false,
-    //   tomorrow: false,
-    //   done: true,
-    //   dueDate: '2019-03-16T14:13:53.954Z',
-    // },
-    //   {
-    //     today: false,
-    //     tomorrow: false,
-    //     done: true,
-    //     dueDate: '2019-03-17T14:13:53.954Z',
-    //   },
-    //   {
-    //     today: false,
-    //     tomorrow: false,
-    //     done: false,
-    //     dueDate: '2019-03-17T14:13:53.954Z',
-    //   },
-    // ],
   };
 
   handleClick = e => {
@@ -58,19 +33,21 @@ class DashboardPage extends Component {
           <div className={styles.today}>
             <p className={styles.text}>today</p>
             {/* <TodayList quests={this.props.collection.today} /> */}
+            {}
             {this.props.collection.today.map(item => (
               <div key={shortid.generate()} className={styles.card}>
-                {item.dueDate}
+                <CardContainer qestData={{}} />
               </div>
             ))}
           </div>
+
           <div className={styles.tomorrow}>
             <p className={styles.text}>tomorrow</p>
-            <div className={styles.card}>
-              <CardContainer qestData={{}} newCard={true} />
-            </div>
-            <div className={styles.card}>8</div>
-            <div className={styles.card}>9</div>
+            {this.props.collection.tomorrow.map(item => (
+              <div key={shortid.generate()} className={styles.card}>
+                <CardContainer qestData={{}} />
+              </div>
+            ))}
           </div>
 
           <div className={styles.done}>
@@ -86,19 +63,10 @@ class DashboardPage extends Component {
             {this.state.isDoneOpen
               ? this.props.collection.done.map(item => (
                   <div key={shortid.generate()} className={styles.card}>
-                    {item.dueDate}
+                    <CardContainer qestData={{}} />
                   </div>
                 ))
               : null}
-            {/* {this.state.isDoneOpen
-              ? this.state.collection
-                  .filter(items => items.done)
-                  .map(item => (
-                    <div key={shortid.generate()} className={styles.card}>
-                      {item.dueDate}
-                    </div>
-                  ))
-              : null} */}
           </div>
         </div>
       </>
@@ -112,6 +80,7 @@ const mapStateToProps = state => {
       all: Quests.getAllQuests(state),
       done: Quests.getDoneQuests(state),
       today: Quests.getTodayQuests(state),
+      tomorrow: Quests.getTomorowQuests(state),
     },
   };
 };
