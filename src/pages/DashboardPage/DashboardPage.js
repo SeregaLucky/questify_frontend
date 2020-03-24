@@ -16,16 +16,6 @@ import TodayList from '../../components/TodayList/TodayList';
 //New card
 //<CardContainer qestData={{}} newCard={true} />
 
-const userId = '5e792bb0f3a5ab0f6260b603';
-
-const questData = {
-  questId: '5e792bb0f3a5ab0f6260b605',
-  difficulty: 'Easy',
-  dueDate: '2019-05-31T14:13:42.015Z',
-  name: 'Hello',
-  group: 'Productivity',
-};
-
 class DashboardPage extends Component {
   state = {
     isDoneOpen: false,
@@ -79,7 +69,6 @@ class DashboardPage extends Component {
               : null}
           </div>
         </div>
-        <CardContainer questData={questData} />
       </>
     );
   }
