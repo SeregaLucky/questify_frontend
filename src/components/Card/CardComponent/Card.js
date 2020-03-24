@@ -8,8 +8,9 @@ import StarIcon from './starIcon';
 import { content } from '../CardEding/styles/cardStyling';
 import styles from './card.module.css';
 import Difficulty from './Difficulty';
+import EditDeleteButtons from './DeleteEditButtons/editDeleteButtons';
 
-const Card = ({ questData, onClick }) => {
+const Card = ({ questData, onClickEditing, onClickDone, onClickDelete }) => {
   const cardContentStyles = content();
 
   const formatDate = pickedDate => {
@@ -21,7 +22,7 @@ const Card = ({ questData, onClick }) => {
   };
 
   return (
-    <div onClick={onClick} role="presentation">
+    <div onClick={onClickEditing} role="presentation">
       <CardHeader
         title={<Difficulty difficulty={questData.difficulty} />}
         action={<StarIcon />}
@@ -34,13 +35,20 @@ const Card = ({ questData, onClick }) => {
           {formatDate(questData.dueDate)}
         </Typography>
       </CardContent>
-      <div
-        className={clsx(
-          styles.chip,
-          questData.group === 'Health' && styles['chipBg-health'],
-        )}
-      >
-        <Typography variant="body2">{questData.group}</Typography>
+      <div className={styles.foterWrapper}>
+        <div
+          className={clsx(
+            styles.chip,
+            questData.group === 'Health' && styles['chipBg-health'],
+          )}
+        >
+          <Typography variant="body2">{questData.group}</Typography>
+        </div>
+        <EditDeleteButtons
+          done={questData.done}
+          onClickDone={onClickDone}
+          onClickDelete={onClickDelete}
+        />
       </div>
     </div>
   );
