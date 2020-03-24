@@ -26,8 +26,7 @@ const EditDeleteButtons = ({ done, onClickDone, onClickDelete }) => {
         >
           <DeleteForeverIcon />
         </IconButton>
-        {done &
-        (
+        {done && (
           <IconButton
             aria-label="close"
             type="button"
