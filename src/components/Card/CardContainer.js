@@ -68,6 +68,7 @@ const CardContainer = ({ questData, newCard }) => {
               name,
               dueDate,
               group,
+              done,
               questId: questId,
             }}
             onClickEditing={handleEditing}

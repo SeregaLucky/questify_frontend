@@ -11,7 +11,7 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import { actions } from '../../CardEding/styles/cardStyling';
 import styles from '../card.module.css';
 
-const EditDeleteButtons = ({ onClickDone, onClickDelete }) => {
+const EditDeleteButtons = ({ done, onClickDone, onClickDelete }) => {
   const actionsStyles = actions();
   return (
     <>
@@ -26,16 +26,19 @@ const EditDeleteButtons = ({ onClickDone, onClickDelete }) => {
         >
           <DeleteForeverIcon />
         </IconButton>
-        <IconButton
-          aria-label="close"
-          type="button"
-          onClick={onClickDone}
-          classes={{
-            label: actionsStyles.done,
-          }}
-        >
-          <DoneOutlineIcon />
-        </IconButton>
+        {done &
+        (
+          <IconButton
+            aria-label="close"
+            type="button"
+            onClick={onClickDone}
+            classes={{
+              label: actionsStyles.done,
+            }}
+          >
+            <DoneOutlineIcon />
+          </IconButton>
+        )}
       </div>
     </>
   );

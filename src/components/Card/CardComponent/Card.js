@@ -45,6 +45,7 @@ const Card = ({ questData, onClickEditing, onClickDone, onClickDelete }) => {
           <Typography variant="body2">{questData.group}</Typography>
         </div>
         <EditDeleteButtons
+          done={questData.done}
           onClickDone={onClickDone}
           onClickDelete={onClickDelete}
         />
