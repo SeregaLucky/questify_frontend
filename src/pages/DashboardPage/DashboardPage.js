@@ -36,16 +36,7 @@ class DashboardPage extends Component {
             {}
             {this.props.collection.today.map(item => (
               <div key={shortid.generate()} className={styles.card}>
-                <CardContainer
-                  qestData={{
-                    questId: item._id,
-                    item.difficulty,
-                    item.name,
-                    item.dueDate,
-                    item.group,
-                    item.done,
-                  }}
-                />
+                <CardContainer qestData={{}} />
               </div>
             ))}
           </div>
@@ -54,17 +45,7 @@ class DashboardPage extends Component {
             <p className={styles.text}>tomorrow</p>
             {this.props.collection.tomorrow.map(item => (
               <div key={shortid.generate()} className={styles.card}>
-                <CardContainer
-                  qestData={{
-                    questId: item._id,
-                    item.difficulty,
-                    item.name,
-                    item.dueDate,
-                    item.group,
-                    item.done,
-                  }}
-                />
-                {console.log(`item:  ${JSON.stringify(item)}`)}
+                <CardContainer qestData={{}} />
               </div>
             ))}
           </div>
@@ -82,16 +63,7 @@ class DashboardPage extends Component {
             {this.state.isDoneOpen
               ? this.props.collection.done.map(item => (
                   <div key={shortid.generate()} className={styles.card}>
-                    <CardContainer
-                      qestData={{
-                        questId: item._id,
-                        item.difficulty,
-                        item.name,
-                        item.dueDate,
-                        item.group,
-                        item.done,
-                      }}
-                    />
+                    <CardContainer qestData={{}} />
                   </div>
                 ))
               : null}
