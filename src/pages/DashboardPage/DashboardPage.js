@@ -37,7 +37,7 @@ class DashboardPage extends Component {
             {this.props.collection.today.map(item => (
               <div key={shortid.generate()} className={styles.card}>
                 <CardContainer
-                  qestData={{
+                  questData={{
                     questId: item._id,
                     difficulty: item.difficulty,
                     name: item.name,
@@ -55,7 +55,7 @@ class DashboardPage extends Component {
             {this.props.collection.tomorrow.map(item => (
               <div key={shortid.generate()} className={styles.card}>
                 <CardContainer
-                  qestData={{
+                  questData={{
                     questId: item._id,
                     difficulty: item.difficulty,
                     name: item.name,
@@ -82,7 +82,7 @@ class DashboardPage extends Component {
               ? this.props.collection.done.map(item => (
                   <div key={shortid.generate()} className={styles.card}>
                     <CardContainer
-                      qestData={{
+                      questData={{
                         questId: item._id,
                         difficulty: item.difficulty,
                         name: item.name,
