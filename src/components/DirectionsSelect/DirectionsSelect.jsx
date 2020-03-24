@@ -9,6 +9,7 @@ const {
   btnIconDrop,
   btnIconDropDisable,
   liStuff,
+  ulStuff,
 } = styles;
 
 class DirectionsSelect extends Component {
@@ -58,7 +59,7 @@ class DirectionsSelect extends Component {
             <div type="button" className={btnStuff}>
               {itemStatus} <div className={btnIconDrop}></div>
             </div>
-            <ul>
+            <ul className={ulStuff}>
               {list.map((elem, i) => (
                 <li
                   className={liStuff}
