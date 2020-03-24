@@ -63,7 +63,6 @@
       'p p'
       'card card';
     grid-template-columns: 1fr 1fr;
-    /* grid-template-rows: 4px repeat(2, 1fr); */
     grid-template-rows: auto;
     grid-column-gap: 40px;
   }
@@ -73,7 +72,6 @@
       'p p'
       'card card';
     grid-template-columns: 1fr 1fr;
-    /* grid-template-rows: 4px 1fr; */
     grid-template-rows: auto;
     grid-column-gap: 40px;
     padding-bottom: 74px;
@@ -102,9 +100,7 @@
     grid-template-areas:
       'p p p'
       'card card card';
-    /* 'card card card'; */
     grid-template-columns: repeat(3, 1fr);
-    /* grid-template-rows: 4px 1fr; */
     grid-template-rows: auto;
     grid-row-gap: 26px;
     margin-bottom: 66px;
@@ -115,7 +111,6 @@
       'p p p'
       'card card card';
     grid-template-columns: repeat(3, 1fr);
-    /* grid-template-rows: 4px 1fr; */
     grid-template-rows: auto;
     grid-row-gap: 36px;
     padding-bottom: 74px;
@@ -147,7 +142,6 @@
       'p p p p p'
       'card card card card card';
     grid-template-columns: repeat(5, 1fr);
-    /* grid-template-rows: 4px 1fr; */
     grid-template-rows: auto;
     grid-column-gap: 42px;
     grid-row-gap: 30px;
@@ -158,7 +152,6 @@
       'p p p p p'
       'card card card card card';
     grid-template-columns: repeat(5, 1fr);
-    /* grid-template-rows: 4px 1fr; */
     grid-template-rows: auto;
     grid-row-gap: 30px;
     grid-column-gap: 42px;

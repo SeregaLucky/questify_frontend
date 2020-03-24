@@ -4,9 +4,9 @@ const registerStart = () => ({
   type: authTypes.REGISTER_START,
 });
 
-const registerSuccess = ({ nickname, email, userId, token }) => ({
+const registerSuccess = ({ nickname, email, _id, token }) => ({
   type: authTypes.REGISTER_SUCCESS,
-  payload: { nickname, email, userId, token },
+  payload: { nickname, email, _id, token },
 });
 
 const registerFailure = error => ({

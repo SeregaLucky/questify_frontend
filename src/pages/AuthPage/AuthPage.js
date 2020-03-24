@@ -2,6 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 
 import styles from './AuthPage.module.css';
+
 import image__1 from '../../assets/images/landing-layer1.png';
 import image__2 from '../../assets/images/landing-layer2.png';
 

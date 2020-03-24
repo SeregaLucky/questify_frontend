@@ -23,6 +23,7 @@ export const placeholderStyles = makeStyles({
 export const iconStyles = makeStyles({
   root: {
     marginRight: '10px',
+    width: '18px',
   },
   colorPrimary: {
     color: 'var(--light-blue)',
