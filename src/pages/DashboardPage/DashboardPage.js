@@ -39,11 +39,11 @@ class DashboardPage extends Component {
                 <CardContainer
                   qestData={{
                     questId: item._id,
-                    difficulty: item.difficulty,
-                    name: item.name,
-                    dueDate: item.dueDate,
-                    group: item.group,
-                    done: item.done,
+                    item.difficulty,
+                    item.name,
+                    item.dueDate,
+                    item.group,
+                    item.done,
                   }}
                 />
               </div>
@@ -57,11 +57,11 @@ class DashboardPage extends Component {
                 <CardContainer
                   qestData={{
                     questId: item._id,
-                    difficulty: item.difficulty,
-                    name: item.name,
-                    dueDate: item.dueDate,
-                    group: item.group,
-                    done: item.done,
+                    item.difficulty,
+                    item.name,
+                    item.dueDate,
+                    item.group,
+                    item.done,
                   }}
                 />
                 {console.log(`item:  ${JSON.stringify(item)}`)}
@@ -85,11 +85,11 @@ class DashboardPage extends Component {
                     <CardContainer
                       qestData={{
                         questId: item._id,
-                        difficulty: item.difficulty,
-                        name: item.name,
-                        dueDate: item.dueDate,
-                        group: item.group,
-                        done: item.done,
+                        item.difficulty,
+                        item.name,
+                        item.dueDate,
+                        item.group,
+                        item.done,
                       }}
                     />
                   </div>
