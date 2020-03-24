@@ -7,6 +7,7 @@ import theme from './CardEding/styles/muiTheme';
 import { general } from './CardEding/styles/cardStyling';
 import Content from './CardComponent/Card';
 import CardEditing from './CardEding/CardEding';
+import CompletedModal from '../CompletedModal/CompletedModal';
 import tasksOperations from '../../redux/tasks/tasksOperations';
 
 const CardContainer = ({ questData, newCard }) => {
@@ -59,35 +60,44 @@ const CardContainer = ({ questData, newCard }) => {
 
   const generalStyles = general();
   return (
-    <ThemeProvider theme={theme}>
-      <Card className={generalStyles.root}>
-        {!isEditing && (
-          <Content
-            questData={{
-              difficulty,
-              name,
-              dueDate,
-              group,
-              done,
-              questId: questId,
-            }}
-            onClickEditing={handleEditing}
-            onClickDone={handleDoneWithModal}
-            onClickDelete={handleDeleteWithModal}
-          />
-        )}
-        {isEditing && (
-          <CardEditing
-            questData={{ difficulty, name, dueDate, group }}
-            cancelEditing={handleEditing}
-            handleDifficulty={handleDifficulty}
-            handleChangeText={handleChangeText}
-            handleDateChange={handleDateChange}
-            handleDestination={handleDestination}
-          />
-        )}
-      </Card>
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        <Card className={generalStyles.root}>
+          {!isEditing && (
+            <Content
+              questData={{
+                difficulty,
+                name,
+                dueDate,
+                group,
+                done,
+                questId: questId,
+              }}
+              onClickEditing={handleEditing}
+              onClickDone={handleOpenCloseModal}
+              onClickDelete={handleDeleteWithModal}
+            />
+          )}
+          {isEditing && (
+            <CardEditing
+              questData={{ difficulty, name, dueDate, group }}
+              cancelEditing={handleEditing}
+              handleDifficulty={handleDifficulty}
+              handleChangeText={handleChangeText}
+              handleDateChange={handleDateChange}
+              handleDestination={handleDestination}
+            />
+          )}
+        </Card>
+      </ThemeProvider>
+      {modal && (
+        <CompletedModal
+          taskName={name}
+          onCloseModal={handleOpenCloseModal}
+          onCloseQuest={handleDoneWithModal}
+        />
+      )}
+    </>
   );
 };
 

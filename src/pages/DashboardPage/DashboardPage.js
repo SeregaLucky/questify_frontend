@@ -32,11 +32,6 @@ class DashboardPage extends Component {
         <div className={styles.container}>
           <div className={styles.today}>
             <p className={styles.text}>today</p>
-<<<<<<< HEAD
-            {/* <TodayList quests={this.props.collection.today} /> */}
-            {}
-=======
->>>>>>> 78b03f4309a0d8405296d4246548c053d57af7f7
             {this.props.collection.today.map(item => (
               <div key={shortid.generate()} className={styles.card}>
                 <CardContainer
