@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import styles from './CompletedModal.module.css';
 import imgAward from '../../assets/images/award-2-02.svg';
 import iconArrow from '../../assets/icons/right-arrow-sprite.svg';
-
-const MODAL_ROOT = document.querySelector('#modal-root');
 
 export default class CompletedModal extends Component {
   static propTypes = {
@@ -32,7 +29,7 @@ export default class CompletedModal extends Component {
   render() {
     const { onCloseModal, onCloseQuest, taskName } = this.props;
 
-    return createPortal(
+    return (
       <div className={styles.backdrop}>
         <div className={styles.modal}>
           <div className={styles.btnCloseModal}>
@@ -61,8 +58,7 @@ export default class CompletedModal extends Component {
             </button>
           </div>
         </div>
-      </div>,
-      MODAL_ROOT,
+      </div>
     );
   }
 }

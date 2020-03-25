@@ -25,6 +25,7 @@ const CardContainer = ({ questData, newCard }) => {
 
   // --------- Ania's modal logic----------
   const [modal, setOpenModal] = React.useState(false);
+  const [modalComplete, setOpenModalComplete] = React.useState(false);
   //----------------------------------------
 
   const questId = questData ? questData.questId : '';
@@ -45,14 +46,17 @@ const CardContainer = ({ questData, newCard }) => {
   //-------- Delete--------
   const handleOpenCloseModal = () =>
     modal ? setOpenModal(false) : setOpenModal(true);
+
   const handleDeleteWithModal = () => {
     handleDelete();
     handleOpenCloseModal();
   };
   //-------- Done -------------
+  const handleOpenCloseModalComplete = () =>
+    modalComplete ? setOpenModalComplete(false) : setOpenModalComplete(true);
   const handleDoneWithModal = () => {
     if (questData.questId && !done) handleDone();
-    handleOpenCloseModal();
+    handleOpenCloseModalComplete();
   };
   //----------------------------------------
   const handleEditing = () =>
@@ -74,7 +78,7 @@ const CardContainer = ({ questData, newCard }) => {
                 questId: questId,
               }}
               onClickEditing={handleEditing}
-              onClickDone={handleOpenCloseModal}
+              onClickDone={handleOpenCloseModalComplete}
               onClickDelete={handleDeleteWithModal}
             />
           )}
@@ -90,10 +94,10 @@ const CardContainer = ({ questData, newCard }) => {
           )}
         </Card>
       </ThemeProvider>
-      {modal && (
+      {modalComplete && (
         <CompletedModal
           taskName={name}
-          onCloseModal={handleOpenCloseModal}
+          onCloseModal={handleOpenCloseModalComplete}
           onCloseQuest={handleDoneWithModal}
         />
       )}
