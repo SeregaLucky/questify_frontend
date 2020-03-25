@@ -1,6 +1,5 @@
-// const getAllQuests = store => store.tasks.tasks;
 const getAllQuests = store => {
-  // console.log(store.tasks.tasks.tasks.quests);
+  console.log(store.tasks.tasks);
   return store.tasks.tasks;
 };
 
@@ -14,10 +13,9 @@ const getTodayQuests = store => {
 
 const getTomorowQuests = store => {
   const today = String(new Date().toJSON().substr(0, 10));
-  const todayDay = new Date().getDate();
   const allQuests = getAllQuests(store);
   return allQuests.filter(
-    quest => Number(quest.dueDate[8] + quest.dueDate[9]) > today,
+    quest => (quest.done === false) & (quest.dueDate.substr(0, 10) !== today),
   );
 };
 

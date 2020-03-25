@@ -15,3 +15,14 @@
 .diffWrapper {
   display: flex;
 }
+
+.foterWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrapBtn {
+  max-width: 120px;
+  display: flex;
+}

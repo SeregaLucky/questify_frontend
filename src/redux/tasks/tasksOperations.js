@@ -16,15 +16,19 @@ const addQuest = data => dispatch => {
 // id = questId;
 //data = {difficulty, dueDate,group, name};
 const updateQuest = (id, data) => dispatch => {
-  console.log(id);
-  console.log(data);
   dispatch(tasksActions.updateQuestStart());
   api
     .updateQuest(id, data)
     .then(res => dispatch(tasksActions.updateQuestSuccess(res.data)))
     .catch(err => dispatch(tasksActions.updateQuestFailure(err)));
 };
-const deleteQuest = id => dispatch => {};
+const deleteQuest = id => dispatch => {
+  dispatch(tasksActions.deleteQuestStart());
+  api
+    .deleteQuest(id)
+    .then(res => tasksActions.deleteQuestSuccess(res.data))
+    .catch(err => tasksActions.deleteQuestFailure(err));
+};
 
 export default {
   getAllQuests,
