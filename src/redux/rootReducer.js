@@ -8,7 +8,7 @@ import loadingReducer from './loading/loadingReducer';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['nickname'],
+  whitelist: ['nickname', 'userId'],
   // whitelist: ['token'] // uncomment for team made backend
 };
 

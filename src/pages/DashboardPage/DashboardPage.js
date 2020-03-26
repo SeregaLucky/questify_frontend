@@ -19,6 +19,7 @@ import CardEditing from '../../components/Card/CardEding/CardEding';
 class DashboardPage extends Component {
   state = {
     isDoneOpen: false,
+    isOpen: false,
   };
 
   handleClick = e => {
@@ -26,7 +27,7 @@ class DashboardPage extends Component {
   };
 
   handleClickCreate = e => {
-    this.setState(state => ({ isDoneOpen: true }));
+    this.setState(state => ({ isOpen: true }));
   };
 
   render() {
@@ -38,8 +39,8 @@ class DashboardPage extends Component {
             <p className={styles.text}>today</p>
 
             {/* <TodayList quests={this.props.collection.today} /> */}
-            {this.state.isDoneOpen ? (
-              <CardContainer qestData={{}} newCard={true} />
+            {this.state.isOpen ? (
+              <CardContainer questData={{}} newCard={true} />
             ) : null}
 
             {this.props.collection.today.map(item => (
@@ -73,7 +74,27 @@ class DashboardPage extends Component {
                     group: item.group,
                     done: item.done,
                     isQuest: item.isQuest,
-                    challengeSendToUser: item.challengeSendToUser,
+                    challengeSendToUser: item.challengeSendToUser || null,
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.other}>
+            <p className={styles.text}>other</p>
+            {this.props.collection.other.map(item => (
+              <div key={shortid.generate()} className={styles.card}>
+                <CardContainer
+                  questData={{
+                    questId: item._id,
+                    difficulty: item.difficulty,
+                    name: item.name,
+                    dueDate: item.dueDate,
+                    group: item.group,
+                    done: item.done,
+                    isQuest: item.isQuest,
+                    challengeSendToUser: item.challengeSendToUser || null,
                   }}
                 />
               </div>
@@ -102,7 +123,7 @@ class DashboardPage extends Component {
                         group: item.group,
                         done: item.done,
                         isQuest: item.isQuest,
-                        challengeSendToUser: item.challengeSendToUser,
+                        challengeSendToUser: item.challengeSendToUser || null,
                       }}
                     />
                   </div>
@@ -110,7 +131,7 @@ class DashboardPage extends Component {
               : null}
             <CreateQuestButton
               handleClick={this.handleClickCreate}
-              isOpen={this.state.isDoneOpen}
+              isOpen={this.state.isOpen}
             />
           </div>
         </div>
@@ -126,6 +147,7 @@ const mapStateToProps = state => {
       done: Quests.getDoneQuests(state),
       today: Quests.getTodayQuests(state),
       tomorrow: Quests.getTomorowQuests(state),
+      other: Quests.getOtherQuests(state),
     },
   };
 };
