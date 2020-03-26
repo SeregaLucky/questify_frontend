@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 
+//auth
 import authFormSchema from './validationAuthForm';
 import authOperations from '../../redux/auth/authOperations';
 import authSelectors from '../../redux/auth/authSelectors';
+
 import { routes } from '../../routes';
 
 import styles from './AuthForm.module.css';
