@@ -8,7 +8,6 @@ import * as styles from './DashboardPage.module.css';
 import Quests from '../../redux/tasks/tasksSelectors';
 import Header from '../../components/Header/Header';
 import CreateQuestButton from '../../components/CreateQuestButton';
-import TodayList from '../../components/TodayList/TodayList';
 
 //Existing card
 //<CardContainer questData={questData} />
@@ -25,6 +24,10 @@ class DashboardPage extends Component {
     this.setState(state => ({ isDoneOpen: !state.isDoneOpen }));
   };
 
+  handleClickCreate = e => {
+    this.setState(state => ({ isDoneOpen: true }));
+  };
+
   render() {
     return (
       <>
@@ -32,8 +35,12 @@ class DashboardPage extends Component {
         <div className={styles.container}>
           <div className={styles.today}>
             <p className={styles.text}>today</p>
+
             {/* <TodayList quests={this.props.collection.today} /> */}
-            {}
+            {this.state.isDoneOpen ? (
+              <CardContainer qestData={{}} newCard={true} />
+            ) : null}
+
             {this.props.collection.today.map(item => (
               <div key={shortid.generate()} className={styles.card}>
                 <CardContainer
@@ -68,7 +75,6 @@ class DashboardPage extends Component {
                     challengeSendToUser: item.challengeSendToUser,
                   }}
                 />
-                {console.log(`item:  ${JSON.stringify(item)}`)}
               </div>
             ))}
           </div>
@@ -101,6 +107,10 @@ class DashboardPage extends Component {
                   </div>
                 ))
               : null}
+            <CreateQuestButton
+              handleClick={this.handleClickCreate}
+              isOpen={this.state.isDoneOpen}
+            />
           </div>
         </div>
       </>
