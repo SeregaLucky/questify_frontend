@@ -14,7 +14,14 @@
   border-radius: 50%;
 
   color: #fff;
+}
+
+.active__button {
   background-color: var(--orange);
+}
+
+.passive__button {
+  background-color: #96999b;
 }
 
 .createButton:hover {
