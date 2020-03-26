@@ -42,10 +42,9 @@ const updateQuestStart = () => ({
   type: tasksTypes.UPDATE_QUEST_START,
 });
 
-const updateQuestSuccess = (id, data) => ({
+const updateQuestSuccess = data => ({
   type: tasksTypes.UPDATE_QUEST_SUCCESS,
   payload: {
-    id,
     data,
   },
 });

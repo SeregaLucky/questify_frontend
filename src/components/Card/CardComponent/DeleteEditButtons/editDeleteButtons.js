@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  CardActions,
-  IconButton,
-  Select,
-  Divider,
-  Button,
-} from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import { actions } from '../../CardEding/styles/cardStyling';
