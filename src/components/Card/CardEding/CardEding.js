@@ -83,7 +83,7 @@ CardEditing.propTypes = {
     questId: T.string,
     difficulty: T.string.isRequired,
     name: T.string.isRequired,
-    dueDate: T.string.isRequired,
+    dueDate: T.instanceOf(Date).isRequired,
     group: T.string.isRequired,
   }),
 };

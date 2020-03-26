@@ -19,15 +19,15 @@ const updateQuest = (id, data) => dispatch => {
   dispatch(tasksActions.updateQuestStart());
   api
     .updateQuest(id, data)
-    .then(res => dispatch(tasksActions.updateQuestSuccess(res.data)))
+    .then(res => dispatch(tasksActions.updateQuestSuccess(res.data.quest)))
     .catch(err => dispatch(tasksActions.updateQuestFailure(err)));
 };
 const deleteQuest = id => dispatch => {
   dispatch(tasksActions.deleteQuestStart());
   api
     .deleteQuest(id)
-    .then(res => tasksActions.deleteQuestSuccess(res.data))
-    .catch(err => tasksActions.deleteQuestFailure(err));
+    .then(res => dispatch(tasksActions.deleteQuestSuccess(res.data.quest._id)))
+    .catch(err => dispatch(tasksActions.deleteQuestFailure(err)));
 };
 
 export default {
