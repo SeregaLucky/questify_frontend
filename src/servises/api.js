@@ -16,9 +16,14 @@ const axiosRegister = data => {
   });
 };
 
+const getQuests = () => {
+  return axios.get('/quests');
+};
+
 export default {
   createQuest,
   updateQuest,
   deleteQuest,
   axiosRegister,
+  getQuests,
 };
