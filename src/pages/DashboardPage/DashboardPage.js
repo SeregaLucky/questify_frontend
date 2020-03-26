@@ -14,7 +14,7 @@ import TodayList from '../../components/TodayList/TodayList';
 //<CardContainer questData={questData} />
 
 //New card
-//<CardContainer qestData={{}} newCard={true} />
+//<CardContainer questData={{}} newCard={true} />
 
 class DashboardPage extends Component {
   state = {
@@ -37,13 +37,15 @@ class DashboardPage extends Component {
             {this.props.collection.today.map(item => (
               <div key={shortid.generate()} className={styles.card}>
                 <CardContainer
-                  qestData={{
+                  questData={{
                     questId: item._id,
                     difficulty: item.difficulty,
                     name: item.name,
                     dueDate: item.dueDate,
                     group: item.group,
                     done: item.done,
+                    isQuest: item.isQuest,
+                    challengeSendToUser: item.challengeSendToUser,
                   }}
                 />
               </div>
@@ -55,13 +57,15 @@ class DashboardPage extends Component {
             {this.props.collection.tomorrow.map(item => (
               <div key={shortid.generate()} className={styles.card}>
                 <CardContainer
-                  qestData={{
+                  questData={{
                     questId: item._id,
                     difficulty: item.difficulty,
                     name: item.name,
                     dueDate: item.dueDate,
                     group: item.group,
                     done: item.done,
+                    isQuest: item.isQuest,
+                    challengeSendToUser: item.challengeSendToUser,
                   }}
                 />
                 {console.log(`item:  ${JSON.stringify(item)}`)}
@@ -83,13 +87,15 @@ class DashboardPage extends Component {
               ? this.props.collection.done.map(item => (
                   <div key={shortid.generate()} className={styles.card}>
                     <CardContainer
-                      qestData={{
+                      questData={{
                         questId: item._id,
                         difficulty: item.difficulty,
                         name: item.name,
                         dueDate: item.dueDate,
                         group: item.group,
                         done: item.done,
+                        isQuest: item.isQuest,
+                        challengeSendToUser: item.challengeSendToUser,
                       }}
                     />
                   </div>

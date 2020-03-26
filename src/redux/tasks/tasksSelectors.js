@@ -1,5 +1,4 @@
 const getAllQuests = store => {
-  console.log(store.tasks.tasks);
   return store.tasks.tasks;
 };
 
