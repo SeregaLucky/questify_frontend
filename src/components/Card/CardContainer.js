@@ -21,7 +21,6 @@ const CardContainer = ({ questData, newCard }) => {
     questData ? parseISO(questData.dueDate) : new Date(),
   );
   const [group, setGroup] = React.useState(questData ? questData.group : '');
-  const [done, setDone] = React.useState(questData ? questData.done : false);
 
   // --------- Ania's modal logic----------
   const [modal, setOpenModal] = React.useState(false);
@@ -29,6 +28,7 @@ const CardContainer = ({ questData, newCard }) => {
   //----------------------------------------
 
   const questId = questData ? questData.questId : '';
+  const done = questData ? questData.done : false;
 
   //----------handlers------------
   const dispatch = useDispatch();
@@ -36,10 +36,9 @@ const CardContainer = ({ questData, newCard }) => {
   const handleChangeText = ({ target }) => setText(target.value);
   const handleDateChange = date => setSelectedDate(date);
   const handleDestination = ({ target }) => setGroup(target.value);
-  const handleDone = () => {
-    setDone(true);
-    dispatch(tasksOperations.updateQuest(questId, { done }));
-  };
+  const handleDone = () =>
+    dispatch(tasksOperations.updateQuest(questId, { done: true }));
+
   const handleDelete = () => dispatch(tasksOperations.deleteQuest(questId));
 
   // --------- Ania's modal logic----------
@@ -55,7 +54,7 @@ const CardContainer = ({ questData, newCard }) => {
   const handleOpenCloseModalComplete = () =>
     modalComplete ? setOpenModalComplete(false) : setOpenModalComplete(true);
   const handleDoneWithModal = () => {
-    if (questData.questId && !done) handleDone();
+    handleDone();
     handleOpenCloseModalComplete();
   };
   //----------------------------------------
@@ -75,7 +74,7 @@ const CardContainer = ({ questData, newCard }) => {
                 dueDate,
                 group,
                 done,
-                questId: questId,
+                questId,
               }}
               onClickEditing={handleEditing}
               onClickDone={handleOpenCloseModalComplete}
@@ -84,7 +83,7 @@ const CardContainer = ({ questData, newCard }) => {
           )}
           {isEditing && (
             <CardEditing
-              questData={{ difficulty, name, dueDate, group }}
+              questData={{ difficulty, name, dueDate, group, questId }}
               cancelEditing={handleEditing}
               handleDifficulty={handleDifficulty}
               handleChangeText={handleChangeText}

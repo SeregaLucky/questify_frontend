@@ -14,7 +14,7 @@ const tasksReducer = (state = [], { type, payload }) => {
 
     case tasksTypes.UPDATE_QUEST_SUCCESS:
       return state.map(el =>
-        el._id === payload.id ? { ...el, ...payload.data } : el,
+        el._id === payload.data._id ? { ...el, ...payload.data } : el,
       );
 
     default:
