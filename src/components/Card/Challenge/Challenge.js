@@ -1,23 +1,22 @@
 import React from 'react';
 import clsx from 'clsx';
 import { CardHeader } from '@material-ui/core';
+import { IconButton, Divider, Button } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 import { isToday, isTomorrow, format, isValid } from 'date-fns';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import StarIcon from './starIcon';
-import { content } from '../CardEding/styles/cardStyling';
-import styles from './card.module.css';
+import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
+import { content, actions } from '../CardEding/styles/cardStyling';
+import styles from './challenge.module.css';
+import stylesBtn from '../CardEding/styles/cardEditing.module.css';
 import Difficulty from './Difficulty';
 import EditDeleteButtons from './DeleteEditButtons/editDeleteButtons';
 
-const Card = ({
-  questData,
-  onClickEditing,
-  onClickDone,
-  onClickDelete,
-  cancelEditing,
-}) => {
+//challengeSendToUser: true
+const Challenge = ({ questData, onClickDone, onClickDelete, onAccept }) => {
   const cardContentStyles = content();
+  const actionsStyles = actions();
 
   const formatDate = pickedDate => {
     if (isToday(pickedDate)) return 'Today';
@@ -28,10 +27,10 @@ const Card = ({
   };
 
   return (
-    <div onClick={onClickEditing} role="presentation">
+    <div className={styles.challengeWrap}>
       <CardHeader
         title={<Difficulty difficulty={questData.difficulty} />}
-        action={<StarIcon />}
+        action={<EmojiEventsIcon />}
       />
       <CardContent className={cardContentStyles.cardContent}>
         <Typography variant="h6" gutterBottom>
@@ -50,6 +49,24 @@ const Card = ({
         >
           <Typography variant="body2">{questData.group}</Typography>
         </div>
+        {!questData.challengeSendToUser && (
+          <div className={stylesBtn.wrapBtn}>
+            <IconButton
+              aria-label="close"
+              type="button"
+              onClick={onClickDelete}
+              classes={{
+                label: actionsStyles.crossBtn,
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+            <Divider orientation="vertical" flexItem />
+            <Button type="button" onClick={onAccept}>
+              START
+            </Button>
+          </div>
+        )}
         <EditDeleteButtons
           done={questData.done}
           onClickDone={onClickDone}
@@ -60,4 +77,4 @@ const Card = ({
   );
 };
 
-export default Card;
+export default Challenge;

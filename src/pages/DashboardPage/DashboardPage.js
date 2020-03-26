@@ -8,6 +8,7 @@ import * as styles from './DashboardPage.module.css';
 import Quests from '../../redux/tasks/tasksSelectors';
 import Header from '../../components/Header/Header';
 import CreateQuestButton from '../../components/CreateQuestButton';
+import CardEditing from '../../components/Card/CardEding/CardEding';
 
 //Existing card
 //<CardContainer questData={questData} />
@@ -52,7 +53,7 @@ class DashboardPage extends Component {
                     group: item.group,
                     done: item.done,
                     isQuest: item.isQuest,
-                    challengeSendToUser: item.challengeSendToUser,
+                    challengeSendToUser: item.challengeSendToUser || null,
                   }}
                 />
               </div>

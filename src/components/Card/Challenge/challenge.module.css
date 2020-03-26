@@ -1,0 +1,32 @@
+.challengeWrap {
+  background-color: var(--dark-blue);
+}
+
+.chip {
+  width: 120px;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  border-top-right-radius: 23px;
+  border-bottom-right-radius: 23px;
+  margin-bottom: 23px;
+  background-color: #ccdaff;
+}
+
+.chipBg-health {
+  background-color: #ccf7ff;
+}
+
+.diffWrapper {
+  display: flex;
+}
+
+.foterWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrapBtn {
+  max-width: 120px;
+  display: flex;
+}

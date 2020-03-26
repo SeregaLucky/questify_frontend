@@ -75,6 +75,24 @@ const deleteQuestFailure = error => ({
   },
 });
 
+const acceptChallengeStart = () => ({
+  type: tasksTypes.ACCEPT_CHALLENGE_START,
+});
+
+const acceptChallengeSuccess = data => ({
+  type: tasksTypes.ACCEPT_CHALLENGE_SUCCESS,
+  payload: {
+    data,
+  },
+});
+
+const acceptChallengeFailure = error => ({
+  type: tasksTypes.ACCEPT_CHALLENGE_FAILURE,
+  payload: {
+    error,
+  },
+});
+
 export default {
   getQuestsStart,
   getQuestsSuccess,
@@ -88,4 +106,7 @@ export default {
   deleteQuestStart,
   deleteQuestSuccess,
   deleteQuestFailure,
+  acceptChallengeStart,
+  acceptChallengeSuccess,
+  acceptChallengeFailure,
 };

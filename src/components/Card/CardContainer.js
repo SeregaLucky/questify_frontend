@@ -9,6 +9,9 @@ import Content from './CardComponent/Card';
 import CardEditing from './CardEding/CardEding';
 import CompletedModal from '../CompletedModal/CompletedModal';
 import tasksOperations from '../../redux/tasks/tasksOperations';
+import Challenge from './Challenge/Challenge';
+//updateFields: {challengeSendToUser: false}
+//userId: "5e792bb0f3a5ab0f6260b603"
 
 const CardContainer = ({ questData, newCard }) => {
   //State
@@ -21,6 +24,9 @@ const CardContainer = ({ questData, newCard }) => {
     questData ? parseISO(questData.dueDate) : new Date(),
   );
   const [group, setGroup] = React.useState(questData ? questData.group : '');
+  const [challengeSendToUser, setAccept] = React.useState(
+    questData ? questData.challengeSendToUser : false,
+  );
 
   // --------- Ania's modal logic----------
   const [modal, setOpenModal] = React.useState(false);
@@ -29,6 +35,7 @@ const CardContainer = ({ questData, newCard }) => {
 
   const questId = questData ? questData.questId : '';
   const done = questData ? questData.done : false;
+  const { isQuest } = questData;
 
   //----------handlers------------
   const dispatch = useDispatch();
@@ -60,13 +67,22 @@ const CardContainer = ({ questData, newCard }) => {
   //----------------------------------------
   const handleEditing = () =>
     isEditing ? setEditing(false) : setEditing(true);
+  //Challenges
+  const handleAccept = () => {
+    setAccept(true);
+    dispatch(
+      tasksOperations.acceptChallenge(questId, {
+        updateFields: { challengeSendToUser: true },
+      }),
+    );
+  };
 
   const generalStyles = general();
   return (
     <>
       <ThemeProvider theme={theme}>
         <Card className={generalStyles.root}>
-          {!isEditing && (
+          {!isEditing && isQuest && (
             <Content
               questData={{
                 difficulty,
@@ -79,6 +95,22 @@ const CardContainer = ({ questData, newCard }) => {
               onClickEditing={handleEditing}
               onClickDone={handleOpenCloseModalComplete}
               onClickDelete={handleDeleteWithModal}
+            />
+          )}
+          {!isEditing && !isQuest && (
+            <Challenge
+              questData={{
+                difficulty,
+                name,
+                dueDate,
+                group,
+                done,
+                challengeSendToUser,
+                questId,
+              }}
+              onClickDone={handleOpenCloseModalComplete}
+              onClickDelete={handleDeleteWithModal}
+              onAccept={handleAccept}
             />
           )}
           {isEditing && (

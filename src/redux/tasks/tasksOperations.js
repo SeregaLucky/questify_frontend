@@ -30,9 +30,20 @@ const deleteQuest = id => dispatch => {
     .catch(err => dispatch(tasksActions.deleteQuestFailure(err)));
 };
 
+const acceptChallenge = (challenID, data) => dispatch => {
+  dispatch(tasksActions.acceptChallengeStart());
+  api
+    .acceptChallenge(challenID, data)
+    .then(res =>
+      dispatch(tasksActions.acceptChallengeSuccess(res.data.challenge)),
+    )
+    .catch(err => dispatch(tasksActions.acceptChallengeFailure(err)));
+};
+
 export default {
   getAllQuests,
   addQuest,
   updateQuest,
   deleteQuest,
+  acceptChallenge,
 };
