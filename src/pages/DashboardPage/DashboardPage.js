@@ -13,7 +13,7 @@ import CreateQuestButton from '../../components/CreateQuestButton';
 //<CardContainer questData={questData} />
 
 //New card
-//<CardContainer qestData={{}} newCard={true} />
+//<CardContainer questData={{}} newCard={true} />
 
 class DashboardPage extends Component {
   state = {
@@ -51,6 +51,8 @@ class DashboardPage extends Component {
                     dueDate: item.dueDate,
                     group: item.group,
                     done: item.done,
+                    isQuest: item.isQuest,
+                    challengeSendToUser: item.challengeSendToUser,
                   }}
                 />
               </div>
@@ -69,6 +71,8 @@ class DashboardPage extends Component {
                     dueDate: item.dueDate,
                     group: item.group,
                     done: item.done,
+                    isQuest: item.isQuest,
+                    challengeSendToUser: item.challengeSendToUser,
                   }}
                 />
               </div>
@@ -96,6 +100,8 @@ class DashboardPage extends Component {
                         dueDate: item.dueDate,
                         group: item.group,
                         done: item.done,
+                        isQuest: item.isQuest,
+                        challengeSendToUser: item.challengeSendToUser,
                       }}
                     />
                   </div>
