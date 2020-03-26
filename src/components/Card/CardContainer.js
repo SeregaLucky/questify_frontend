@@ -7,6 +7,7 @@ import theme from './CardEding/styles/muiTheme';
 import { general } from './CardEding/styles/cardStyling';
 import Content from './CardComponent/Card';
 import CardEditing from './CardEding/CardEding';
+import CompletedModal from '../CompletedModal/CompletedModal';
 import tasksOperations from '../../redux/tasks/tasksOperations';
 
 const CardContainer = ({ questData, newCard }) => {
@@ -24,6 +25,7 @@ const CardContainer = ({ questData, newCard }) => {
 
   // --------- Ania's modal logic----------
   const [modal, setOpenModal] = React.useState(false);
+  const [modalComplete, setOpenModalComplete] = React.useState(false);
   //----------------------------------------
 
   const questId = questData ? questData.questId : '';
@@ -44,14 +46,17 @@ const CardContainer = ({ questData, newCard }) => {
   //-------- Delete--------
   const handleOpenCloseModal = () =>
     modal ? setOpenModal(false) : setOpenModal(true);
+
   const handleDeleteWithModal = () => {
     handleDelete();
     handleOpenCloseModal();
   };
   //-------- Done -------------
+  const handleOpenCloseModalComplete = () =>
+    modalComplete ? setOpenModalComplete(false) : setOpenModalComplete(true);
   const handleDoneWithModal = () => {
     if (questData.questId && !done) handleDone();
-    handleOpenCloseModal();
+    handleOpenCloseModalComplete();
   };
   //----------------------------------------
   const handleEditing = () =>
@@ -59,35 +64,44 @@ const CardContainer = ({ questData, newCard }) => {
 
   const generalStyles = general();
   return (
-    <ThemeProvider theme={theme}>
-      <Card className={generalStyles.root}>
-        {!isEditing && (
-          <Content
-            questData={{
-              difficulty,
-              name,
-              dueDate,
-              group,
-              done,
-              questId: questId,
-            }}
-            onClickEditing={handleEditing}
-            onClickDone={handleDoneWithModal}
-            onClickDelete={handleDeleteWithModal}
-          />
-        )}
-        {isEditing && (
-          <CardEditing
-            questData={{ difficulty, name, dueDate, group }}
-            cancelEditing={handleEditing}
-            handleDifficulty={handleDifficulty}
-            handleChangeText={handleChangeText}
-            handleDateChange={handleDateChange}
-            handleDestination={handleDestination}
-          />
-        )}
-      </Card>
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        <Card className={generalStyles.root}>
+          {!isEditing && (
+            <Content
+              questData={{
+                difficulty,
+                name,
+                dueDate,
+                group,
+                done,
+                questId: questId,
+              }}
+              onClickEditing={handleEditing}
+              onClickDone={handleOpenCloseModalComplete}
+              onClickDelete={handleDeleteWithModal}
+            />
+          )}
+          {isEditing && (
+            <CardEditing
+              questData={{ difficulty, name, dueDate, group }}
+              cancelEditing={handleEditing}
+              handleDifficulty={handleDifficulty}
+              handleChangeText={handleChangeText}
+              handleDateChange={handleDateChange}
+              handleDestination={handleDestination}
+            />
+          )}
+        </Card>
+      </ThemeProvider>
+      {modalComplete && (
+        <CompletedModal
+          taskName={name}
+          onCloseModal={handleOpenCloseModalComplete}
+          onCloseQuest={handleDoneWithModal}
+        />
+      )}
+    </>
   );
 };
 
