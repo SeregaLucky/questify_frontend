@@ -25,6 +25,10 @@ class DashboardPage extends Component {
     this.setState(state => ({ isDoneOpen: !state.isDoneOpen }));
   };
 
+  handleClickCreate = e => {
+    this.setState(state => ({ isDoneOpen: true }));
+  };
+
   render() {
     return (
       <>
@@ -33,7 +37,9 @@ class DashboardPage extends Component {
           <div className={styles.today}>
             <p className={styles.text}>today</p>
             {/* <TodayList quests={this.props.collection.today} /> */}
-            {}
+            {this.state.isDoneOpen ? (
+              <CardContainer qestData={{}} newCard={true} />
+            ) : null}
             {this.props.collection.today.map(item => (
               <div key={shortid.generate()} className={styles.card}>
                 <CardContainer
@@ -94,6 +100,10 @@ class DashboardPage extends Component {
                   </div>
                 ))
               : null}
+            <CreateQuestButton
+              handleClick={this.handleClickCreate}
+              isOpen={this.state.isDoneOpen}
+            />
           </div>
         </div>
       </>
