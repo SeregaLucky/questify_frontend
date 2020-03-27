@@ -47,7 +47,7 @@ const CardContainer = ({ questData, newCard }) => {
 
   const handleDateChange = date => setSelectedDate(date);
 
-  const handleDestination = ({ target }) => setGroup(target.value);
+  const handleDestination = target => setGroup(target);
 
   const handleEditing = () =>
     isEditing ? setEditing(false) : setEditing(true);
