@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
 import { connect } from 'react-redux';
-//For card rendering ------------
 import CardContainer from '../../components/Card';
-//-----------------
 import * as styles from './DashboardPage.module.css';
 import Quests from '../../redux/tasks/tasksSelectors';
 import Header from '../../components/Header/Header';
 import CreateQuestButton from '../../components/CreateQuestButton';
-import CardEditing from '../../components/Card/CardEding/CardEding';
-
-//Existing card
-//<CardContainer questData={questData} />
-
-//New card
-//<CardContainer questData={{}} newCard={true} />
 
 class DashboardPage extends Component {
   state = {

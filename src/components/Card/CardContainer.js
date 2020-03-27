@@ -10,9 +10,7 @@ import CardEditing from './CardEding/CardEding';
 import CompletedModal from '../CompletedModal/CompletedModal';
 import tasksOperations from '../../redux/tasks/tasksOperations';
 import authSelectors from '../../redux/auth/authSelectors';
-import Challenge from './Challenge/Challenge';
-//updateFields: {challengeSendToUser: false}
-//userId: "5e792bb0f3a5ab0f6260b603"
+import Challenge from './Challenge';
 
 const CardContainer = ({ questData, newCard }) => {
   //-------- State -----------
@@ -47,7 +45,7 @@ const CardContainer = ({ questData, newCard }) => {
 
   const handleDateChange = date => setSelectedDate(date);
 
-  const handleDestination = ({ target }) => setGroup(target.value);
+  const handleDestination = target => setGroup(target);
 
   const handleEditing = () =>
     isEditing ? setEditing(false) : setEditing(true);
