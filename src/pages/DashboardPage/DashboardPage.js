@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import CardContainer from '../../components/Card';
 import * as styles from './DashboardPage.module.css';
 import Quests from '../../redux/tasks/tasksSelectors';
-import Header from '../../components/Header/Header';
+import Header from '../../components/Header';
 import CreateQuestButton from '../../components/CreateQuestButton';
 
 class DashboardPage extends Component {
