@@ -59,7 +59,6 @@ export const content = makeStyles(theme => ({
     justifyContent: 'center',
     marginBottom: '0.6em',
   },
-
   textField: {
     width: '190px',
     alignSelf: 'center',
@@ -103,6 +102,9 @@ export const actions = makeStyles(theme => ({
   // deleteEditRoot: {
   //   width: '20px',
   // },
+  wrapForNew: {
+    marginBottom: '5px',
+  },
   delete: {
     color: '#ee6f9c',
   },

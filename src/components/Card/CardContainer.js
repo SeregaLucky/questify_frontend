@@ -18,13 +18,15 @@ const CardContainer = ({ questData, newCard }) => {
   //-------- State -----------
   const [isEditing, setEditing] = useState(newCard || false);
   const [difficulty, setDifficulty] = React.useState(
-    questData ? questData.difficulty : '',
+    questData.difficulty ? questData.difficulty : 'Easy',
   );
   const [name, setText] = React.useState(questData ? questData.name : '');
   const [dueDate, setSelectedDate] = React.useState(
     questData ? parseISO(questData.dueDate) : new Date(),
   );
-  const [group, setGroup] = React.useState(questData ? questData.group : '');
+  const [group, setGroup] = React.useState(
+    questData.group ? questData.group : 'Stuff',
+  );
   const [challengeSendToUser, setAccept] = React.useState(
     questData ? questData.challengeSendToUser : false,
   );
@@ -127,6 +129,7 @@ const CardContainer = ({ questData, newCard }) => {
           {isEditing && (
             <CardEditing
               questData={{ difficulty, name, dueDate, group, questId, isQuest }}
+              newCard={newCard}
               cancelEditing={handleEditing}
               handleDifficulty={handleDifficulty}
               handleChangeText={handleChangeText}

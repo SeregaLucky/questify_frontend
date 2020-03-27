@@ -15,6 +15,7 @@ import tasksOperations from '../../../redux/tasks/tasksOperations';
 const CardEditing = ({
   cancelEditing,
   questData,
+  newCard,
   handleDifficulty,
   handleChangeText,
   handleDateChange,
@@ -85,6 +86,7 @@ const CardEditing = ({
             value={group}
             onChange={handleDestination}
             cancelEditing={cancelEditing}
+            newCard={newCard}
           />
         </form>
       </Card>
@@ -96,7 +98,7 @@ CardEditing.propTypes = {
   questData: T.shape({
     questId: T.string,
     difficulty: T.string.isRequired,
-    name: T.string.isRequired,
+    name: T.string,
     dueDate: T.instanceOf(Date).isRequired,
     group: T.string.isRequired,
   }),

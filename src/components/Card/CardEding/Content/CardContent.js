@@ -22,7 +22,7 @@ const ContentSection = ({
   const cardContentStyles = content();
   return (
     <CardContent className={cardContentStyles.cardContentEditing}>
-      {!questId && <h3 className={styles.createQuest}>CREATE NEW QUEST</h3>}
+      {!questId && <h3 className={styles.createQuest}>CREATE A NEW QUEST</h3>}
       <TextField
         className={cardContentStyles.textField}
         id="name-quest"
@@ -41,6 +41,7 @@ const ContentSection = ({
             autoOk
             disableToolbar
             disablePast
+            helperText={false}
             variant="inline"
             onChange={onChangeDate}
             labelFunc={() => formatDate(dateValue)}
