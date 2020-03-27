@@ -6,10 +6,11 @@ import { ToastContainer } from 'react-toastify';
 import { store, persistor } from './redux/store';
 import App from './components/App';
 import './stylesheet/main.css';
+import Loader from './components/Loader';
 
 ReactDOM.render(
   <Provider store={store}>
-    <PersistGate persistor={persistor}>
+    <PersistGate persistor={persistor} loading={<Loader />}>
       <App />
       <ToastContainer />
     </PersistGate>
