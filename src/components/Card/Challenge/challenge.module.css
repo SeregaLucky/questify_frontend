@@ -1,5 +1,6 @@
 .challengeWrap {
   background-color: var(--dark-blue);
+  padding: 12px 0 13px 0;
 }
 
 .chip {
@@ -14,6 +15,26 @@
 
 .chipBg-health {
   background-color: #ccf7ff;
+}
+
+.chipBg-family {
+  background-color: #fee6d5;
+}
+
+.chipBg-stuff {
+  background-color: #dadada;
+}
+
+.chipBg-learning {
+  background-color: #fdf6cf;
+}
+
+.chipBg-work {
+  background-color: #d3f6ce;
+}
+
+.chipBg-leisure {
+  background-color: #eed8f2;
 }
 
 .diffWrapper {

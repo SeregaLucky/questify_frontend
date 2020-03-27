@@ -9,7 +9,7 @@ import {
 import CloseIcon from '@material-ui/icons/Close';
 import { actions } from '../styles/cardStyling';
 import styles from '../styles/cardEditing.module.css';
-// import DirectionsSelect from '../../../DirectionsSelect/DirectionsSelect';
+import DirectionsSelect from '../../../DirectionsSelect/DirectionsSelect';
 
 const Footer = ({ value, onChange, cancelEditing }) => {
   const actionsStyles = actions();
@@ -32,6 +32,7 @@ const Footer = ({ value, onChange, cancelEditing }) => {
         <option value="Stuff">Stuff</option>
         <option value="Learning">Learning</option>
         <option value="Work">Work</option>
+        <option value="Productivity">Productivity</option>
       </Select>
       {/* <DirectionsSelect value={value} handleDestination={onChange} /> */}
       {/* ---------------- */}

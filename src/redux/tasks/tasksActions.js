@@ -75,6 +75,8 @@ const deleteQuestFailure = error => ({
   },
 });
 
+//------
+
 const acceptChallengeStart = () => ({
   type: tasksTypes.ACCEPT_CHALLENGE_START,
 });
@@ -88,6 +90,43 @@ const acceptChallengeSuccess = data => ({
 
 const acceptChallengeFailure = error => ({
   type: tasksTypes.ACCEPT_CHALLENGE_FAILURE,
+  payload: {
+    error,
+  },
+});
+
+const updateChallengeStart = () => ({
+  type: tasksTypes.UPDATE_CHALLENGE_START,
+});
+
+const updateChallengeSuccess = data => ({
+  type: tasksTypes.UPDATE_CHALLENGE_SUCCESS,
+  payload: {
+    data,
+  },
+});
+
+const updateChallengeFailure = error => ({
+  type: tasksTypes.UPDATE_CHALLENGE_FAILURE,
+  payload: {
+    error,
+  },
+});
+
+//--
+const deleteChallengeStart = () => ({
+  type: tasksTypes.DELETE_CHALLENGE_START,
+});
+
+const deleteChallengeSuccess = id => ({
+  type: tasksTypes.DELETE_CHALLENGE_SUCCESS,
+  payload: {
+    id,
+  },
+});
+
+const deleteChallengeFailure = error => ({
+  type: tasksTypes.DELETE_CHALLENGE_FAILURE,
   payload: {
     error,
   },
@@ -109,4 +148,10 @@ export default {
   acceptChallengeStart,
   acceptChallengeSuccess,
   acceptChallengeFailure,
+  updateChallengeStart,
+  updateChallengeSuccess,
+  updateChallengeFailure,
+  deleteChallengeStart,
+  deleteChallengeSuccess,
+  deleteChallengeFailure,
 };

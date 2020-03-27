@@ -6,15 +6,21 @@ import CloseIcon from '@material-ui/icons/Close';
 import { isToday, isTomorrow, format, isValid } from 'date-fns';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
-import { content, actions } from '../CardEding/styles/cardStyling';
+import { content, actions } from './challenge.styles';
 import styles from './challenge.module.css';
 import stylesBtn from '../CardEding/styles/cardEditing.module.css';
 import Difficulty from './Difficulty';
 import EditDeleteButtons from './DeleteEditButtons/editDeleteButtons';
+import AmforaIcon from './amforaIcon';
 
 //challengeSendToUser: true
-const Challenge = ({ questData, onClickDone, onClickDelete, onAccept }) => {
+const Challenge = ({
+  questData,
+  onClickEditing,
+  onClickDone,
+  onClickDelete,
+  onAccept,
+}) => {
   const cardContentStyles = content();
   const actionsStyles = actions();
 
@@ -27,13 +33,17 @@ const Challenge = ({ questData, onClickDone, onClickDelete, onAccept }) => {
   };
 
   return (
-    <div className={styles.challengeWrap}>
+    <div
+      className={styles.challengeWrap}
+      onClick={onClickEditing}
+      role="presentation"
+    >
       <CardHeader
         title={<Difficulty difficulty={questData.difficulty} />}
-        action={<EmojiEventsIcon />}
+        action={<AmforaIcon />}
       />
       <CardContent className={cardContentStyles.cardContent}>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h6" gutterBottom color="textSecondary">
           {questData.name}
         </Typography>
         <Typography variant="subtitle2" gutterBottom color="secondary">
@@ -45,6 +55,11 @@ const Challenge = ({ questData, onClickDone, onClickDelete, onAccept }) => {
           className={clsx(
             styles.chip,
             questData.group === 'Health' && styles['chipBg-health'],
+            questData.group === 'Family' && styles['chipBg-family'],
+            questData.group === 'Leisure' && styles['chipBg-leisure'],
+            questData.group === 'Work' && styles['chipBg-work'],
+            questData.group === 'Learning' && styles['chipBg-learning'],
+            questData.group === 'Stuff' && styles['chipBg-stuff'],
           )}
         >
           <Typography variant="body2">{questData.group}</Typography>
@@ -61,17 +76,26 @@ const Challenge = ({ questData, onClickDone, onClickDelete, onAccept }) => {
             >
               <CloseIcon />
             </IconButton>
-            <Divider orientation="vertical" flexItem />
+            <Divider
+              orientation="vertical"
+              flexItem
+              light
+              classes={{
+                light: actionsStyles.devider,
+              }}
+            />
             <Button type="button" onClick={onAccept}>
               START
             </Button>
           </div>
         )}
-        <EditDeleteButtons
-          done={questData.done}
-          onClickDone={onClickDone}
-          onClickDelete={onClickDelete}
-        />
+        {questData.challengeSendToUser && (
+          <EditDeleteButtons
+            done={questData.done}
+            onClickDone={onClickDone}
+            onClickDelete={onClickDelete}
+          />
+        )}
       </div>
     </div>
   );

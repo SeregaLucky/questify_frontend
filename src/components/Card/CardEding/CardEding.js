@@ -20,7 +20,7 @@ const CardEditing = ({
   handleDateChange,
   handleDestination,
 }) => {
-  const { difficulty, dueDate, group, name, questId } = questData;
+  const { difficulty, dueDate, group, name, questId, isQuest } = questData;
   const userId = useSelector(state => authSelectors.getUserId(state));
 
   //------- styles -----------------
@@ -31,7 +31,7 @@ const CardEditing = ({
   const handleSubmit = e => {
     e.preventDefault();
     //if editing
-    if (questData.questId)
+    if (questId && isQuest)
       return dispatch(
         tasksOperations.updateQuest(questId, {
           difficulty,
@@ -40,10 +40,23 @@ const CardEditing = ({
           name,
         }),
       );
+    if (questId && !isQuest)
+      dispatch(
+        tasksOperations.updateChallenge(questId, {
+          updateFields: {
+            difficulty,
+            dueDate,
+            group,
+            name,
+          },
+        }),
+      );
     //if creating brand new quest
-    dispatch(
-      tasksOperations.addQuest({ difficulty, dueDate, group, name, userId }),
-    );
+    if (!questId)
+      dispatch(
+        tasksOperations.addQuest({ difficulty, dueDate, group, name, userId }),
+      );
+
     cancelEditing();
   };
 
@@ -66,6 +79,7 @@ const CardEditing = ({
             dateValue={dueDate}
             formatDate={formatDate}
             onChangeDate={handleDateChange}
+            questId={questId}
           />
           <Footer
             value={group}
