@@ -1,5 +1,6 @@
-.cardWrp {
-  padding: 8px 0 4px 0;
+.challengeWrap {
+  background-color: var(--dark-blue);
+  padding: 12px 0 13px 0;
 }
 
 .chip {

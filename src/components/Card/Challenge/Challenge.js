@@ -1,23 +1,28 @@
 import React from 'react';
 import clsx from 'clsx';
 import { CardHeader } from '@material-ui/core';
+import { IconButton, Divider, Button } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 import { isToday, isTomorrow, format, isValid } from 'date-fns';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import StarIcon from './starIcon';
-import { content } from '../CardEding/styles/cardStyling';
-import styles from './card.module.css';
+import { content, actions } from './challenge.styles';
+import styles from './challenge.module.css';
+import stylesBtn from '../CardEding/styles/cardEditing.module.css';
 import Difficulty from './Difficulty';
 import EditDeleteButtons from './DeleteEditButtons/editDeleteButtons';
+import AmforaIcon from './amforaIcon';
 
-const Card = ({
+//challengeSendToUser: true
+const Challenge = ({
   questData,
   onClickEditing,
   onClickDone,
   onClickDelete,
-  cancelEditing,
+  onAccept,
 }) => {
   const cardContentStyles = content();
+  const actionsStyles = actions();
 
   const formatDate = pickedDate => {
     if (isToday(pickedDate)) return 'Today';
@@ -29,16 +34,16 @@ const Card = ({
 
   return (
     <div
+      className={styles.challengeWrap}
       onClick={onClickEditing}
       role="presentation"
-      className={styles.cardWrp}
     >
       <CardHeader
         title={<Difficulty difficulty={questData.difficulty} />}
-        action={<StarIcon />}
+        action={<AmforaIcon />}
       />
       <CardContent className={cardContentStyles.cardContent}>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h6" gutterBottom color="textSecondary">
           {questData.name}
         </Typography>
         <Typography variant="subtitle2" gutterBottom color="secondary">
@@ -59,14 +64,41 @@ const Card = ({
         >
           <Typography variant="body2">{questData.group}</Typography>
         </div>
-        <EditDeleteButtons
-          done={questData.done}
-          onClickDone={onClickDone}
-          onClickDelete={onClickDelete}
-        />
+        {!questData.challengeSendToUser && (
+          <div className={stylesBtn.wrapBtn}>
+            <IconButton
+              aria-label="close"
+              type="button"
+              onClick={onClickDelete}
+              classes={{
+                label: actionsStyles.crossBtn,
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+            <Divider
+              orientation="vertical"
+              flexItem
+              light
+              classes={{
+                light: actionsStyles.devider,
+              }}
+            />
+            <Button type="button" onClick={onAccept}>
+              START
+            </Button>
+          </div>
+        )}
+        {questData.challengeSendToUser && (
+          <EditDeleteButtons
+            done={questData.done}
+            onClickDone={onClickDone}
+            onClickDelete={onClickDelete}
+          />
+        )}
       </div>
     </div>
   );
 };
 
-export default Card;
+export default Challenge;

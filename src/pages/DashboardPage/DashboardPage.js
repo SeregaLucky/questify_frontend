@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
 import { connect } from 'react-redux';
-//For card rendering ------------
 import CardContainer from '../../components/Card';
-//-----------------
 import * as styles from './DashboardPage.module.css';
 import Quests from '../../redux/tasks/tasksSelectors';
 import Header from '../../components/Header/Header';
 import CreateQuestButton from '../../components/CreateQuestButton';
 
-//Existing card
-//<CardContainer questData={questData} />
-
-//New card
-//<CardContainer qestData={{}} newCard={true} />
-
 class DashboardPage extends Component {
   state = {
     isDoneOpen: false,
+    isOpen: false,
   };
 
   handleClick = e => {
@@ -25,7 +18,7 @@ class DashboardPage extends Component {
   };
 
   handleClickCreate = e => {
-    this.setState(state => ({ isDoneOpen: true }));
+    this.setState(state => ({ isOpen: true }));
   };
 
   render() {
@@ -37,8 +30,8 @@ class DashboardPage extends Component {
             <p className={styles.text}>today</p>
 
             {/* <TodayList quests={this.props.collection.today} /> */}
-            {this.state.isDoneOpen ? (
-              <CardContainer qestData={{}} newCard={true} />
+            {this.state.isOpen ? (
+              <CardContainer questData={{}} newCard={true} />
             ) : null}
 
             {this.props.collection.today.map(item => (
@@ -51,6 +44,8 @@ class DashboardPage extends Component {
                     dueDate: item.dueDate,
                     group: item.group,
                     done: item.done,
+                    isQuest: item.isQuest,
+                    challengeSendToUser: item.challengeSendToUser || null,
                   }}
                 />
               </div>
@@ -69,6 +64,28 @@ class DashboardPage extends Component {
                     dueDate: item.dueDate,
                     group: item.group,
                     done: item.done,
+                    isQuest: item.isQuest,
+                    challengeSendToUser: item.challengeSendToUser || null,
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.other}>
+            <p className={styles.text}>other</p>
+            {this.props.collection.other.map(item => (
+              <div key={shortid.generate()} className={styles.card}>
+                <CardContainer
+                  questData={{
+                    questId: item._id,
+                    difficulty: item.difficulty,
+                    name: item.name,
+                    dueDate: item.dueDate,
+                    group: item.group,
+                    done: item.done,
+                    isQuest: item.isQuest,
+                    challengeSendToUser: item.challengeSendToUser || null,
                   }}
                 />
               </div>
@@ -96,6 +113,8 @@ class DashboardPage extends Component {
                         dueDate: item.dueDate,
                         group: item.group,
                         done: item.done,
+                        isQuest: item.isQuest,
+                        challengeSendToUser: item.challengeSendToUser || null,
                       }}
                     />
                   </div>
@@ -103,7 +122,7 @@ class DashboardPage extends Component {
               : null}
             <CreateQuestButton
               handleClick={this.handleClickCreate}
-              isOpen={this.state.isDoneOpen}
+              isOpen={this.state.isOpen}
             />
           </div>
         </div>
@@ -119,6 +138,7 @@ const mapStateToProps = state => {
       done: Quests.getDoneQuests(state),
       today: Quests.getTodayQuests(state),
       tomorrow: Quests.getTomorowQuests(state),
+      other: Quests.getOtherQuests(state),
     },
   };
 };

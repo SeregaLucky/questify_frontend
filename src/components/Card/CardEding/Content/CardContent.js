@@ -1,18 +1,15 @@
 import React from 'react';
 import DateFnsUtils from '@date-io/date-fns';
-import {
-  TextField,
-  InputLabel,
-  SvgIcon,
-  Grid,
-  CardContent,
-} from '@material-ui/core';
+import { TextField, SvgIcon, Grid, CardContent } from '@material-ui/core';
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+
 import DateRangeIcon from '@material-ui/icons/DateRange';
+
 import { content } from '../styles/cardStyling';
+import styles from '../styles/cardEditing.module.css';
 
 const ContentSection = ({
   textValue,
@@ -20,13 +17,12 @@ const ContentSection = ({
   dateValue,
   formatDate,
   onChangeDate,
+  questId,
 }) => {
   const cardContentStyles = content();
   return (
-    <CardContent className={cardContentStyles.cardContent}>
-      <InputLabel className={cardContentStyles.label} htmlFor="name-quest">
-        CREATE NEW QUEST
-      </InputLabel>
+    <CardContent className={cardContentStyles.cardContentEditing}>
+      {!questId && <h3 className={styles.createQuest}>CREATE A NEW QUEST</h3>}
       <TextField
         className={cardContentStyles.textField}
         id="name-quest"
@@ -34,6 +30,9 @@ const ContentSection = ({
         inputProps={{
           value: textValue,
           onChange: onChangeText,
+          classes: {
+            input: cardContentStyles.input,
+          },
         }}
       />
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -42,6 +41,7 @@ const ContentSection = ({
             autoOk
             disableToolbar
             disablePast
+            helperText={false}
             variant="inline"
             onChange={onChangeDate}
             labelFunc={() => formatDate(dateValue)}
@@ -62,6 +62,9 @@ const ContentSection = ({
             value={dateValue}
             KeyboardButtonProps={{
               'aria-label': 'change date',
+            }}
+            classes={{
+              root: cardContentStyles.formControl,
             }}
           />
         </Grid>

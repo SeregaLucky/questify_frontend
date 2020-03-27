@@ -53,15 +53,45 @@ const updateQuest = (id, data) => dispatch => {
   dispatch(tasksActions.updateQuestStart());
   api
     .updateQuest(id, data)
-    .then(res => dispatch(tasksActions.updateQuestSuccess(res.data)))
+    .then(res => dispatch(tasksActions.updateQuestSuccess(res.data.quest)))
     .catch(err => dispatch(tasksActions.updateQuestFailure(err)));
 };
 const deleteQuest = id => dispatch => {
   dispatch(tasksActions.deleteQuestStart());
   api
     .deleteQuest(id)
-    .then(res => tasksActions.deleteQuestSuccess(res.data))
-    .catch(err => tasksActions.deleteQuestFailure(err));
+    .then(res => dispatch(tasksActions.deleteQuestSuccess(res.data.quest._id)))
+    .catch(err => dispatch(tasksActions.deleteQuestFailure(err)));
+};
+
+const acceptChallenge = (challenID, data) => dispatch => {
+  dispatch(tasksActions.acceptChallengeStart());
+  api
+    .doSomethingWithChallenge(challenID, data)
+    .then(res =>
+      dispatch(tasksActions.acceptChallengeSuccess(res.data.challenge)),
+    )
+    .catch(err => dispatch(tasksActions.acceptChallengeFailure(err)));
+};
+
+const updateChallenge = (challenID, data) => dispatch => {
+  dispatch(tasksActions.updateChallengeStart());
+  api
+    .doSomethingWithChallenge(challenID, data)
+    .then(res =>
+      dispatch(tasksActions.updateChallengeSuccess(res.data.challenge)),
+    )
+    .catch(err => dispatch(tasksActions.updateChallengeFailure(err)));
+};
+
+const deleteChallenge = (challenID, data) => dispatch => {
+  dispatch(tasksActions.deleteChallengeStart());
+  api
+    .doSomethingWithChallenge(challenID, data)
+    .then(res =>
+      dispatch(tasksActions.deleteChallengeSuccess(res.data.challenge._id)),
+    )
+    .catch(err => dispatch(tasksActions.deleteChallengeFailure(err)));
 };
 
 export default {
@@ -69,5 +99,8 @@ export default {
   addQuest,
   updateQuest,
   deleteQuest,
+  acceptChallenge,
   getQuestsByUser,
+  updateChallenge,
+  deleteChallenge,
 };

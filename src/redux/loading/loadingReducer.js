@@ -10,6 +10,9 @@ const loadingReducer = (state = false, { type }) => {
     case tasksTypes.ADD_QUEST_START:
     case tasksTypes.UPDATE_QUEST_START:
     case tasksTypes.DELETE_QUEST_START:
+    case tasksTypes.ACCEPT_CHALLENGE_START:
+    case tasksTypes.UPDATE_CHALLENGE_START:
+    case tasksTypes.DELETE_CHALLENGE_START:
       return true;
 
     case authTypes.REGISTER_SUCCESS:
@@ -24,6 +27,12 @@ const loadingReducer = (state = false, { type }) => {
     case tasksTypes.UPDATE_QUEST_FAILURE:
     case tasksTypes.DELETE_QUEST_SUCCESS:
     case tasksTypes.DELETE_QUEST_FAILURE:
+    case tasksTypes.ACCEPT_CHALLENGE_SUCCESS:
+    case tasksTypes.ACCEPT_CHALLENGE_FAILURE:
+    case tasksTypes.UPDATE_CHALLENGE_SUCCESS:
+    case tasksTypes.UPDATE_CHALLENGE_FAILURE:
+    case tasksTypes.DELETE_CHALLENGE_SUCCESS:
+    case tasksTypes.DELETE_CHALLENGE_FAILURE:
       return false;
 
     default:
