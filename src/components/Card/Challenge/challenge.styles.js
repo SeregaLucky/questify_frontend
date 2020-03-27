@@ -18,6 +18,7 @@ export const content = makeStyles(theme => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
     marginBottom: '1.2em',
+    marginBottom: '1.75em',
   },
 }));
 
