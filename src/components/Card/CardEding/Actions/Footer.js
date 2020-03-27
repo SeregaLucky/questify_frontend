@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import {
   CardActions,
   IconButton,
@@ -9,12 +10,18 @@ import {
 import CloseIcon from '@material-ui/icons/Close';
 import { actions } from '../styles/cardStyling';
 import styles from '../styles/cardEditing.module.css';
-// import DirectionsSelect from '../../../DirectionsSelect/DirectionsSelect';
+import DirectionsSelect from '../../../DirectionsSelect/DirectionsSelect';
 
-const Footer = ({ value, onChange, cancelEditing }) => {
+const Footer = ({ value, onChange, cancelEditing, newCard }) => {
   const actionsStyles = actions();
   return (
-    <CardActions disableSpacing className={actionsStyles.cardActions}>
+    <CardActions
+      disableSpacing
+      className={clsx(
+        actionsStyles.cardActions,
+        newCard && actionsStyles.wrapForNew,
+      )}
+    >
       {/* Here goes the DirectionSelect instead of my Select component */}
       <Select
         native
@@ -32,6 +39,7 @@ const Footer = ({ value, onChange, cancelEditing }) => {
         <option value="Stuff">Stuff</option>
         <option value="Learning">Learning</option>
         <option value="Work">Work</option>
+        <option value="Productivity">Productivity</option>
       </Select>
       {/* <DirectionsSelect value={value} handleDestination={onChange} /> */}
       {/* ---------------- */}

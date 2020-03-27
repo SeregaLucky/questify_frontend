@@ -59,10 +59,43 @@ const deleteQuest = id => dispatch => {
     .catch(err => dispatch(tasksActions.deleteQuestFailure(err)));
 };
 
+const acceptChallenge = (challenID, data) => dispatch => {
+  dispatch(tasksActions.acceptChallengeStart());
+  api
+    .doSomethingWithChallenge(challenID, data)
+    .then(res =>
+      dispatch(tasksActions.acceptChallengeSuccess(res.data.challenge)),
+    )
+    .catch(err => dispatch(tasksActions.acceptChallengeFailure(err)));
+};
+
+const updateChallenge = (challenID, data) => dispatch => {
+  dispatch(tasksActions.updateChallengeStart());
+  api
+    .doSomethingWithChallenge(challenID, data)
+    .then(res =>
+      dispatch(tasksActions.updateChallengeSuccess(res.data.challenge)),
+    )
+    .catch(err => dispatch(tasksActions.updateChallengeFailure(err)));
+};
+
+const deleteChallenge = (challenID, data) => dispatch => {
+  dispatch(tasksActions.deleteChallengeStart());
+  api
+    .doSomethingWithChallenge(challenID, data)
+    .then(res =>
+      dispatch(tasksActions.deleteChallengeSuccess(res.data.challenge._id)),
+    )
+    .catch(err => dispatch(tasksActions.deleteChallengeFailure(err)));
+};
+
 export default {
   getAllQuests,
   addQuest,
   updateQuest,
   deleteQuest,
+  acceptChallenge,
   getQuestsByUser,
+  updateChallenge,
+  deleteChallenge,
 };
