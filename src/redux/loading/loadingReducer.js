@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux';
 import tasksTypes from '../tasks/tasksTypes';
 import authTypes from '../auth/authTypes';
 
@@ -30,4 +31,6 @@ const loadingReducer = (state = false, { type }) => {
   }
 };
 
-export default loadingReducer;
+export default combineReducers({
+  isLoading: loadingReducer,
+});

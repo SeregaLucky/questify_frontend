@@ -4,8 +4,11 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { routes } from '../routes';
 import AuthPage from '../pages/AuthPage/AuthPage';
 import DashboardPage from '../pages/DashboardPage/DashboardPage';
-
+import Loader from '../components/Loader';
+import loadingSelectors from '../redux/loading/loadingSelectors';
 import tasksOperations from '../redux/tasks/tasksOperations';
+
+// console.log(loadingSelectors);
 
 class App extends Component {
   componentDidMount() {
@@ -13,8 +16,10 @@ class App extends Component {
   }
 
   render() {
+    const { isLoading } = this.props;
     return (
       <BrowserRouter>
+        {isLoading && <Loader />}
         <Switch>
           <Route exact path={routes.AUTH_PAGE} component={AuthPage} />
 
@@ -26,9 +31,12 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  isLoading: loadingSelectors.isLoading(state),
+});
 
 const mapDispatchToProps = dispatch => ({
   onGetQuests: () => dispatch(tasksOperations.getQuestsByUser()),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
