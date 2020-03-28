@@ -25,7 +25,6 @@ const getQuestsByUser = () => (dispatch, getState) => {
       const {
         data: { data },
       } = response;
-      dispatch(authActions.registerSuccess(data.user, data.user._id));
       dispatch(tasksActions.getQuestsSuccess(data.tasks));
     })
     .catch(error => {
