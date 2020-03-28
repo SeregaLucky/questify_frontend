@@ -3,27 +3,29 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import api from '../../servises/api';
 import tasksActions from './tasksActions';
+import authActions from '../auth/authActions';
 
 const getAllQuests = () => dispatch => {};
 
 const getQuestsByUser = () => (dispatch, getState) => {
   const state = getState();
   const nickname = state.auth.nickname;
-  const userId = state.auth.userId;
 
   if (!nickname) {
     return;
   }
 
+  const userNickname = { nickname: nickname };
+
   dispatch(tasksActions.getQuestsStart());
+
   api
-    .getQuests()
+    .getQuests(userNickname)
     .then(response => {
-      dispatch(
-        tasksActions.getQuestsSuccess(
-          response.data.quests.filter(tasks => tasks.userId === userId),
-        ),
-      );
+      const {
+        data: { data },
+      } = response;
+      dispatch(tasksActions.getQuestsSuccess(data.tasks));
     })
     .catch(error => {
       toast.error('Something went wrong! Failed to load tasks', {

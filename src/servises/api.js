@@ -13,13 +13,11 @@ const doSomethingWithChallenge = (challId, data) =>
   axios.put(`/challenges/${challId}`, data);
 
 const axiosRegister = data => {
-  return axios.post('/login', data).then(response => {
-    return response;
-  });
+  return axios.post('/login', data);
 };
 
-const getQuests = () => {
-  return axios.get('/quests');
+const getQuests = data => {
+  return axios.post('/login', data);
 };
 
 export default {
