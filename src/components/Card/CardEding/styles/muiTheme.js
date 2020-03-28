@@ -30,8 +30,14 @@ const theme = createMuiTheme({
       },
     },
     MuiInputBase: {
-      root: {
+      input: {
+        textAlign: 'center',
         color: 'var(--vary-dark)',
+      },
+    },
+    MuiCardContent: {
+      root: {
+        padding: '5px',
       },
     },
   },
@@ -45,6 +51,10 @@ const theme = createMuiTheme({
     },
     error: {
       main: '#f50057',
+    },
+    text: {
+      primary: '#131212',
+      secondary: '#ffffff',
     },
   },
   status: {

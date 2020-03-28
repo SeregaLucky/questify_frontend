@@ -1,3 +1,3 @@
-const isLoading = state => state.global.loading;
+const isLoading = state => state.isLoading.isLoading;
 
-export default isLoading;
+export default { isLoading };

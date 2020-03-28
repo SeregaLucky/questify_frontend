@@ -2,3 +2,10 @@
   max-width: 120px;
   display: flex;
 }
+
+.createQuest {
+  color: var(--light-gray);
+  text-align: center;
+  font-family: 'HelveticaNeueCyrRoman', sans-serif;
+  font-size: 12px;
+}
