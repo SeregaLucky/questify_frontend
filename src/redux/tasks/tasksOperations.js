@@ -28,8 +28,6 @@ const getQuestsByUser = () => (dispatch, getState) => {
       dispatch(tasksActions.getQuestsSuccess(data.tasks));
     })
     .catch(error => {
-      console.log(error);
-
       toast.error('Something went wrong! Failed to load tasks', {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
