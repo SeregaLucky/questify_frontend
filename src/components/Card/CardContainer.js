@@ -9,6 +9,8 @@ import Content from './CardComponent/Card';
 import CardEditing from './CardEding/CardEding';
 import CompletedModal from '../CompletedModal/CompletedModal';
 import CompletedChallengeModal from '../CompletedModal/CompletedChallengeModal';
+import DeleteQuestModal from '../DeleteQuestModal/DeleteQuestModal';
+import DeleteChallengeModal from '../DeleteQuestModal/DeleteChallengeModal';
 import tasksOperations from '../../redux/tasks/tasksOperations';
 import authSelectors from '../../redux/auth/authSelectors';
 import Challenge from './Challenge';
@@ -30,6 +32,7 @@ const CardContainer = ({ questData, newCard }) => {
     questData ? questData.challengeSendToUser : false,
   );
   const [modalComplete, setOpenModalComplete] = React.useState(false);
+  const [modalDelete, setOpenModalDelete] = React.useState(false);
 
   //-------- Other data -----------
   const questId = questData ? questData.questId : '';
@@ -54,6 +57,9 @@ const CardContainer = ({ questData, newCard }) => {
   const handleOpenCloseModalComplete = () =>
     modalComplete ? setOpenModalComplete(false) : setOpenModalComplete(true);
 
+  const handleOpenCloseModalDelete = () =>
+    modalDelete ? setOpenModalDelete(false) : setOpenModalDelete(true);
+
   const handleDoneWithModal = () => {
     handleDone();
     handleOpenCloseModalComplete();
@@ -62,6 +68,16 @@ const CardContainer = ({ questData, newCard }) => {
   const handleDoneChallengeWithModal = () => {
     handleDoneChallange();
     handleOpenCloseModalComplete();
+  };
+
+  const handleDeleteWithModal = () => {
+    handleDelete();
+    handleOpenCloseModalDelete();
+  };
+
+  const handleDeleteChallengeWithModal = () => {
+    handleDeleteChallange();
+    handleOpenCloseModalDelete();
   };
   //----------quests handlers ------------
   const handleDone = () =>
@@ -110,7 +126,7 @@ const CardContainer = ({ questData, newCard }) => {
               }}
               onClickEditing={handleEditing}
               onClickDone={handleOpenCloseModalComplete}
-              onClickDelete={handleDelete}
+              onClickDelete={handleOpenCloseModalDelete}
             />
           )}
           {!isEditing && !isQuest && (
@@ -126,7 +142,7 @@ const CardContainer = ({ questData, newCard }) => {
               }}
               onClickEditing={handleEditing}
               onClickDone={handleOpenCloseModalComplete}
-              onClickDelete={handleDeleteChallange}
+              onClickDelete={handleOpenCloseModalDelete}
               onAccept={handleAccept}
             />
           )}
@@ -155,6 +171,18 @@ const CardContainer = ({ questData, newCard }) => {
           taskName={name}
           onCloseModal={handleOpenCloseModalComplete}
           onCloseChallenge={handleDoneChallengeWithModal}
+        />
+      )}
+      {modalDelete && isQuest && (
+        <DeleteQuestModal
+          onCloseModal={handleOpenCloseModalDelete}
+          onDeleteQuest={handleDeleteWithModal}
+        />
+      )}
+      {modalDelete && !isQuest && (
+        <DeleteChallengeModal
+          onCloseModal={handleOpenCloseModalDelete}
+          onDeleteChallenge={handleDeleteChallengeWithModal}
         />
       )}
     </>

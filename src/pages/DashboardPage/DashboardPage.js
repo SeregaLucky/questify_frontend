@@ -136,17 +136,7 @@ const mapStateToProps = state => {
     collection: {
       all: Quests.getAllQuests(state),
       done: Quests.getDoneQuests(state),
-      today: /*Quests.getTodayQuests(state)*/ [
-        {
-          name: 'Basic name for challenge',
-          group: 'Learning',
-          difficulty: 'Easy',
-          dueData: 1282172623,
-          done: false,
-          isQuest: false,
-          challengeSendToUser: true,
-        },
-      ],
+      today: Quests.getTodayQuests(state),
       tomorrow: Quests.getTomorowQuests(state),
       other: Quests.getOtherQuests(state),
     },

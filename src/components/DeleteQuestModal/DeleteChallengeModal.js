@@ -2,10 +2,10 @@ import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import styles from './DeleteQuestModal.module.css';
 
-export default class DeleteQuestModal extends Component {
+export default class DeleteChalllengeModal extends Component {
   static propTypes = {
     onCloseModal: PropTypes.func.isRequired,
-    onDeleteQuest: PropTypes.func.isRequired,
+    onDeleteChallenge: PropTypes.func.isRequired,
   };
 
   backdropRef = createRef();
@@ -33,7 +33,7 @@ export default class DeleteQuestModal extends Component {
   };
 
   render() {
-    const { onCloseModal, onDeleteQuest } = this.props;
+    const { onCloseModal, onDeleteChallenge } = this.props;
 
     return (
       <div
@@ -43,7 +43,7 @@ export default class DeleteQuestModal extends Component {
         role="presentation"
       >
         <div className={styles.modal}>
-          <p className={styles.modalText}>Delete this Quest?</p>
+          <p className={styles.modalText}>Delete this Challenge?</p>
           <div className={styles.btnCloseModal}>
             <button
               type="button"
@@ -55,7 +55,7 @@ export default class DeleteQuestModal extends Component {
             <button
               type="button"
               className={styles.btnDelete}
-              onClick={onDeleteQuest}
+              onClick={onDeleteChallenge}
             >
               delete
             </button>

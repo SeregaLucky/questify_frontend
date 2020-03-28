@@ -1,0 +1,95 @@
+.backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 54, 91, 0.302);
+  box-shadow: 0px 10px 20px 0px rgba(0, 54, 91, 0.15);
+  border-radius: 10px;
+  z-index: 999;
+}
+
+.modal {
+  position: absolute;
+  top: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 236px;
+  height: 145px;
+  background-color: #ffffff;
+  padding: 44px 0 44px 0;
+  border-radius: 9px;
+  box-shadow: 0px 8px 20px 0px rgba(0, 54, 91, 0.16);
+}
+
+.modalText {
+  font-size: 15px;
+  font-family: 'HelveticaNeueCyrBold', sans-serif;
+  line-height: 0.733;
+  letter-spacing: 0.09em;
+  color: #232323;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.btnCloseModal {
+  width: 173px;
+  height: 23px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btnCancel,
+.btnDelete {
+  font-size: 15px;
+  font-family: 'HelveticaNeueCyrRoman', sans-serif;
+  line-height: 0.733;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  width: 86px;
+}
+
+.btnCancel {
+  color: #00d500;
+  text-align: left;
+  border-right: 1px solid #b6c4ca;
+}
+
+.btnCancel:hover,
+.btnCancel:focus {
+  color: #009b3c;
+}
+
+.btnDelete {
+  color: #ff0236;
+  text-align: right;
+}
+
+.btnDelete:hover,
+.btnDelete:focus {
+  color: #e2223d;
+}
+
+@media (min-width: 1920px) {
+  .backdrop {
+    border-radius: 11px;
+  }
+
+  .modal {
+    border-radius: 10px;
+    width: 262px;
+    top: 110px;
+  }
+}
