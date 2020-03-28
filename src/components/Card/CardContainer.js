@@ -8,6 +8,7 @@ import { general } from './CardEding/styles/cardStyling';
 import Content from './CardComponent/Card';
 import CardEditing from './CardEding/CardEding';
 import CompletedModal from '../CompletedModal/CompletedModal';
+import CompletedChallengeModal from '../CompletedModal/CompletedChallengeModal';
 import tasksOperations from '../../redux/tasks/tasksOperations';
 import authSelectors from '../../redux/auth/authSelectors';
 import Challenge from './Challenge';
@@ -55,6 +56,11 @@ const CardContainer = ({ questData, newCard }) => {
 
   const handleDoneWithModal = () => {
     handleDone();
+    handleOpenCloseModalComplete();
+  };
+
+  const handleDoneChallengeWithModal = () => {
+    handleDoneChallange();
     handleOpenCloseModalComplete();
   };
   //----------quests handlers ------------
@@ -119,7 +125,7 @@ const CardContainer = ({ questData, newCard }) => {
                 questId,
               }}
               onClickEditing={handleEditing}
-              onClickDone={handleDoneChallange}
+              onClickDone={handleOpenCloseModalComplete}
               onClickDelete={handleDeleteChallange}
               onAccept={handleAccept}
             />
@@ -137,11 +143,18 @@ const CardContainer = ({ questData, newCard }) => {
           )}
         </Card>
       </ThemeProvider>
-      {modalComplete && (
+      {modalComplete && isQuest && (
         <CompletedModal
           taskName={name}
           onCloseModal={handleOpenCloseModalComplete}
           onCloseQuest={handleDoneWithModal}
+        />
+      )}
+      {modalComplete && !isQuest && (
+        <CompletedChallengeModal
+          taskName={name}
+          onCloseModal={handleOpenCloseModalComplete}
+          onCloseChallenge={handleDoneChallengeWithModal}
         />
       )}
     </>
