@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import shortid from 'shortid';
 import { connect } from 'react-redux';
 import CardContainer from '../../components/Card';
 import * as styles from './DashboardPage.module.css';
@@ -13,15 +12,18 @@ class DashboardPage extends Component {
     isOpen: false,
   };
 
-  handleClick = e => {
+  handleClick = () => {
     this.setState(state => ({ isDoneOpen: !state.isDoneOpen }));
   };
 
-  handleClickCreate = e => {
-    this.setState(state => ({ isOpen: true }));
+  handleClickCreate = () => {
+    // this.setState(state => ({ isOpen: true }));
+    this.setState(state => ({ isOpen: !state.isOpen }));
   };
 
   render() {
+    const { collection } = this.props;
+    const { isDoneOpen, isOpen } = this.state;
     return (
       <>
         <Header />
@@ -29,13 +31,16 @@ class DashboardPage extends Component {
           <div className={styles.today}>
             <p className={styles.text}>today</p>
 
-            {/* <TodayList quests={this.props.collection.today} /> */}
-            {this.state.isOpen ? (
-              <CardContainer questData={{}} newCard={true} />
+            {isOpen ? (
+              <CardContainer
+                questData={{}}
+                newCard={true}
+                closeForm={this.handleClickCreate}
+              />
             ) : null}
 
-            {this.props.collection.today.map(item => (
-              <div key={shortid.generate()} className={styles.card}>
+            {collection.today.map(item => (
+              <div key={item._id} className={styles.card}>
                 <CardContainer
                   questData={{
                     questId: item._id,
@@ -54,8 +59,8 @@ class DashboardPage extends Component {
 
           <div className={styles.tomorrow}>
             <p className={styles.text}>tomorrow</p>
-            {this.props.collection.tomorrow.map(item => (
-              <div key={shortid.generate()} className={styles.card}>
+            {collection.tomorrow.map(item => (
+              <div key={item._id} className={styles.card}>
                 <CardContainer
                   questData={{
                     questId: item._id,
@@ -74,8 +79,8 @@ class DashboardPage extends Component {
 
           <div className={styles.other}>
             <p className={styles.text}>other</p>
-            {this.props.collection.other.map(item => (
-              <div key={shortid.generate()} className={styles.card}>
+            {collection.other.map(item => (
+              <div key={item._id} className={styles.card}>
                 <CardContainer
                   questData={{
                     questId: item._id,
@@ -93,7 +98,7 @@ class DashboardPage extends Component {
           </div>
 
           <div className={styles.done}>
-            {this.state.isDoneOpen ? (
+            {isDoneOpen ? (
               <p className={styles.text} onClick={this.handleClick}>
                 done &#9650;
               </p>
@@ -102,9 +107,9 @@ class DashboardPage extends Component {
                 done &#9660;
               </p>
             )}
-            {this.state.isDoneOpen
-              ? this.props.collection.done.map(item => (
-                  <div key={shortid.generate()} className={styles.card}>
+            {isDoneOpen
+              ? collection.done.map(item => (
+                  <div key={item._id} className={styles.card}>
                     <CardContainer
                       questData={{
                         questId: item._id,
@@ -122,7 +127,7 @@ class DashboardPage extends Component {
               : null}
             <CreateQuestButton
               handleClick={this.handleClickCreate}
-              isOpen={this.state.isOpen}
+              isOpen={isOpen}
             />
           </div>
         </div>
