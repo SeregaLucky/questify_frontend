@@ -35,7 +35,7 @@ const Challenge = ({
   return (
     <div
       className={styles.challengeWrap}
-      onClick={onClickEditing}
+      onClick={questData.challengeSendToUser && onClickEditing}
       role="presentation"
     >
       <CardHeader

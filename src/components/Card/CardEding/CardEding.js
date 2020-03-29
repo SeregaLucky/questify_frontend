@@ -20,6 +20,7 @@ const CardEditing = ({
   handleChangeText,
   handleDateChange,
   handleDestination,
+  handleCloseForm,
 }) => {
   const { difficulty, dueDate, group, name, questId, isQuest } = questData;
   const userId = useSelector(state => authSelectors.getUserId(state));
@@ -32,7 +33,8 @@ const CardEditing = ({
   const handleSubmit = e => {
     e.preventDefault();
     //if editing
-    if (questId && isQuest)
+    if (questId && isQuest) {
+      handleCloseForm();
       return dispatch(
         tasksOperations.updateQuest(questId, {
           difficulty,
@@ -41,8 +43,10 @@ const CardEditing = ({
           name,
         }),
       );
-    if (questId && !isQuest)
-      dispatch(
+    }
+    if (questId && !isQuest) {
+      handleCloseForm();
+      return dispatch(
         tasksOperations.updateChallenge(questId, {
           updateFields: {
             difficulty,
@@ -52,11 +56,14 @@ const CardEditing = ({
           },
         }),
       );
+    }
     //if creating brand new quest
-    if (!questId)
-      dispatch(
+    if (!questId) {
+      handleCloseForm();
+      return dispatch(
         tasksOperations.addQuest({ difficulty, dueDate, group, name, userId }),
       );
+    }
 
     cancelEditing();
   };
@@ -87,6 +94,7 @@ const CardEditing = ({
             onChange={handleDestination}
             cancelEditing={cancelEditing}
             newCard={newCard}
+            handleCloseForm={handleCloseForm}
           />
         </form>
       </Card>

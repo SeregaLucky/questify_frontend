@@ -10,13 +10,7 @@ import styles from './card.module.css';
 import Difficulty from './Difficulty';
 import EditDeleteButtons from './DeleteEditButtons/editDeleteButtons';
 
-const Card = ({
-  questData,
-  onClickEditing,
-  onClickDone,
-  onClickDelete,
-  cancelEditing,
-}) => {
+const Card = ({ questData, onClickEditing, onClickDone, onClickDelete }) => {
   const cardContentStyles = content();
 
   const formatDate = pickedDate => {

@@ -32,8 +32,14 @@ export default class DeleteChalllengeModal extends Component {
     this.props.onCloseModal();
   };
 
+  handleCloseDeletion = () => {
+    const { onCloseModal, cancelEditing } = this.props;
+    onCloseModal();
+    cancelEditing();
+  };
+
   render() {
-    const { onCloseModal, onDeleteChallenge } = this.props;
+    const { onDeleteChallenge } = this.props;
 
     return (
       <div
@@ -48,7 +54,7 @@ export default class DeleteChalllengeModal extends Component {
             <button
               type="button"
               className={styles.btnCancel}
-              onClick={onCloseModal}
+              onClick={this.handleCloseDeletion}
             >
               cancel
             </button>

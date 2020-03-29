@@ -17,7 +17,8 @@ class DashboardPage extends Component {
   };
 
   handleClickCreate = () => {
-    this.setState(state => ({ isOpen: true }));
+    // this.setState(state => ({ isOpen: true }));
+    this.setState(state => ({ isOpen: !state.isOpen }));
   };
 
   render() {
@@ -30,7 +31,13 @@ class DashboardPage extends Component {
           <div className={styles.today}>
             <p className={styles.text}>today</p>
 
-            {isOpen ? <CardContainer questData={{}} newCard={true} /> : null}
+            {isOpen ? (
+              <CardContainer
+                questData={{}}
+                newCard={true}
+                closeForm={this.handleClickCreate}
+              />
+            ) : null}
 
             {collection.today.map(item => (
               <div key={item._id} className={styles.card}>

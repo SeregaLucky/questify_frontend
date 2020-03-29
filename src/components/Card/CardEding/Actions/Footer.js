@@ -6,8 +6,18 @@ import { actions } from '../styles/cardStyling';
 import styles from '../styles/cardEditing.module.css';
 import DirectionsSelect from '../../../DirectionsSelect/DirectionsSelect';
 
-const Footer = ({ value, onChange, cancelEditing, newCard }) => {
+const Footer = ({
+  value,
+  onChange,
+  cancelEditing,
+  newCard,
+  handleCloseForm,
+}) => {
   const actionsStyles = actions();
+  const onClose = () => {
+    cancelEditing();
+    if (newCard) return handleCloseForm();
+  };
   return (
     <CardActions
       disableSpacing
@@ -21,7 +31,7 @@ const Footer = ({ value, onChange, cancelEditing, newCard }) => {
         <IconButton
           aria-label="close"
           type="button"
-          onClick={cancelEditing}
+          onClick={onClose}
           classes={{
             label: actionsStyles.crossBtn,
           }}
