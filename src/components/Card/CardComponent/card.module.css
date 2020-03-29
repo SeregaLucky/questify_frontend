@@ -1,3 +1,7 @@
+.cardWrp {
+  padding: 8px 0 4px 0;
+}
+
 .chip {
   width: 120px;
   padding: 10px 15px;
@@ -12,6 +16,37 @@
   background-color: #ccf7ff;
 }
 
+.chipBg-family {
+  background-color: #fee6d5;
+}
+
+.chipBg-stuff {
+  background-color: #dadada;
+}
+
+.chipBg-learning {
+  background-color: #fdf6cf;
+}
+
+.chipBg-work {
+  background-color: #d3f6ce;
+}
+
+.chipBg-leisure {
+  background-color: #eed8f2;
+}
+
 .diffWrapper {
+  display: flex;
+}
+
+.foterWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrapBtn {
+  max-width: 120px;
   display: flex;
 }

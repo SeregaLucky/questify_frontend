@@ -1,45 +1,37 @@
 import React from 'react';
-import {
-  CardActions,
-  IconButton,
-  Select,
-  Divider,
-  Button,
-} from '@material-ui/core';
+import clsx from 'clsx';
+import { CardActions, IconButton, Divider, Button } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import { actions } from '../styles/cardStyling';
 import styles from '../styles/cardEditing.module.css';
-// import DirectionsSelect from '../../../DirectionsSelect/DirectionsSelect';
+import DirectionsSelect from '../../../DirectionsSelect/DirectionsSelect';
 
-const Footer = ({ value, onChange, cancelEditing }) => {
+const Footer = ({
+  value,
+  onChange,
+  cancelEditing,
+  newCard,
+  handleCloseForm,
+}) => {
   const actionsStyles = actions();
+  const onClose = () => {
+    cancelEditing();
+    if (newCard) return handleCloseForm();
+  };
   return (
-    <CardActions disableSpacing className={actionsStyles.cardActions}>
-      {/* Here goes the DirectionSelect instead of my Select component */}
-      <Select
-        native
-        value={value}
-        onChange={onChange}
-        inputProps={{
-          name: 'chip',
-          id: 'filled-age-native-simple',
-        }}
-      >
-        <option value="" />
-        <option value="Family">Family</option>
-        <option value="Health">Health</option>
-        <option value="Leisure">Leisure</option>
-        <option value="Stuff">Stuff</option>
-        <option value="Learning">Learning</option>
-        <option value="Work">Work</option>
-      </Select>
-      {/* <DirectionsSelect value={value} handleDestination={onChange} /> */}
-      {/* ---------------- */}
+    <CardActions
+      disableSpacing
+      className={clsx(
+        actionsStyles.cardActions,
+        newCard && actionsStyles.wrapForNew,
+      )}
+    >
+      <DirectionsSelect value={value} handleDestination={onChange} />
       <div className={styles.wrapBtn}>
         <IconButton
           aria-label="close"
           type="button"
-          onClick={cancelEditing}
+          onClick={onClose}
           classes={{
             label: actionsStyles.crossBtn,
           }}

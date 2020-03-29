@@ -11,7 +11,14 @@
   margin: auto;
 }
 
-.logo_link {
+/* .logo_link {
+  font-weight: 700;
+  font-size: 15px;
+  font-family: 'HelveticaNeueCyrBold';
+  color: var(--light-blue);
+  line-height: 1;
+} */
+.logo {
   font-weight: 700;
   font-size: 15px;
   font-family: 'HelveticaNeueCyrBold';
@@ -61,6 +68,7 @@
   width: var(--size);
   height: var(--size);
   display: flex;
+  border: none;
   /* display: inline-block; */
   align-items: center;
   margin: 0 19px;

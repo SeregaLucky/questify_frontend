@@ -24,7 +24,10 @@ const CardHeaderSection = ({ value, onChange }) => {
             </IconButton>
           </>
         }
-        classes={{ action: headerStyles.action }}
+        classes={{
+          root: headerStyles.root,
+          action: headerStyles.action,
+        }}
       />
     </>
   );
