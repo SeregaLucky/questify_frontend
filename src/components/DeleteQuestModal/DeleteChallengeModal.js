@@ -25,11 +25,13 @@ export default class DeleteChalllengeModal extends Component {
     this.props.onCloseModal();
   };
   handleBackdropClick = e => {
+    const { onCloseModal, cancelEditing } = this.props;
     const { current } = this.backdropRef;
     if (current && e.target !== current) {
       return;
     }
-    this.props.onCloseModal();
+    onCloseModal();
+    cancelEditing();
   };
 
   handleCloseDeletion = () => {
