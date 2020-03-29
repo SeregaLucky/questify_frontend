@@ -6,6 +6,7 @@ export default class DeleteQuestModal extends Component {
   static propTypes = {
     onCloseModal: PropTypes.func.isRequired,
     onDeleteQuest: PropTypes.func.isRequired,
+    cancelEditing: PropTypes.func.isRequired,
   };
 
   backdropRef = createRef();
@@ -32,8 +33,14 @@ export default class DeleteQuestModal extends Component {
     this.props.onCloseModal();
   };
 
+  handleCloseDeletion = () => {
+    const { onCloseModal, cancelEditing } = this.props;
+    onCloseModal();
+    cancelEditing();
+  };
+
   render() {
-    const { onCloseModal, onDeleteQuest } = this.props;
+    const { onDeleteQuest } = this.props;
 
     return (
       <div
@@ -48,7 +55,7 @@ export default class DeleteQuestModal extends Component {
             <button
               type="button"
               className={styles.btnCancel}
-              onClick={onCloseModal}
+              onClick={this.handleCloseDeletion}
             >
               cancel
             </button>

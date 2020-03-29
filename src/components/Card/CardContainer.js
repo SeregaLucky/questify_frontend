@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { parseISO } from 'date-fns';
+import { parseISO, format, isToday, isTomorrow, isValid } from 'date-fns';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import theme from './CardEding/styles/muiTheme';
@@ -15,15 +15,15 @@ import tasksOperations from '../../redux/tasks/tasksOperations';
 import authSelectors from '../../redux/auth/authSelectors';
 import Challenge from './Challenge';
 
-const CardContainer = ({ questData, newCard }) => {
+const CardContainer = ({ questData, newCard, closeForm }) => {
   //-------- State -----------
   const [isEditing, setEditing] = useState(newCard || false);
   const [difficulty, setDifficulty] = React.useState(
     questData.difficulty ? questData.difficulty : 'Easy',
   );
-  const [name, setText] = React.useState(questData ? questData.name : '');
+  const [name, setText] = React.useState(questData.name ? questData.name : '');
   const [dueDate, setSelectedDate] = React.useState(
-    questData ? parseISO(questData.dueDate) : new Date(),
+    questData.dueDate ? parseISO(questData.dueDate) : new Date(),
   );
   const [group, setGroup] = React.useState(
     questData.group ? questData.group : 'Stuff',
@@ -110,6 +110,7 @@ const CardContainer = ({ questData, newCard }) => {
     );
 
   const generalStyles = general();
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -155,6 +156,7 @@ const CardContainer = ({ questData, newCard }) => {
               handleChangeText={handleChangeText}
               handleDateChange={handleDateChange}
               handleDestination={handleDestination}
+              handleCloseForm={closeForm}
             />
           )}
         </Card>
@@ -176,12 +178,14 @@ const CardContainer = ({ questData, newCard }) => {
       {modalDelete && isQuest && (
         <DeleteQuestModal
           onCloseModal={handleOpenCloseModalDelete}
+          cancelEditing={handleEditing}
           onDeleteQuest={handleDeleteWithModal}
         />
       )}
       {modalDelete && !isQuest && (
         <DeleteChallengeModal
           onCloseModal={handleOpenCloseModalDelete}
+          cancelEditing={handleEditing}
           onDeleteChallenge={handleDeleteChallengeWithModal}
         />
       )}
