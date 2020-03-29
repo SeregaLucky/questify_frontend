@@ -54,8 +54,10 @@ const CardContainer = ({ questData, newCard, closeForm }) => {
   const handleEditing = () =>
     isEditing ? setEditing(false) : setEditing(true);
 
-  const handleOpenCloseModalComplete = () =>
+  const handleOpenCloseModalComplete = () => {
     modalComplete ? setOpenModalComplete(false) : setOpenModalComplete(true);
+    handleEditing();
+  };
 
   const handleOpenCloseModalDelete = () =>
     modalDelete ? setOpenModalDelete(false) : setOpenModalDelete(true);
@@ -112,84 +114,82 @@ const CardContainer = ({ questData, newCard, closeForm }) => {
   const generalStyles = general();
 
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <Card className={generalStyles.root}>
-          {!isEditing && isQuest && (
-            <Content
-              questData={{
-                difficulty,
-                name,
-                dueDate,
-                group,
-                done,
-                questId,
-              }}
-              onClickEditing={handleEditing}
-              onClickDone={handleOpenCloseModalComplete}
-              onClickDelete={handleOpenCloseModalDelete}
-            />
-          )}
-          {!isEditing && !isQuest && (
-            <Challenge
-              questData={{
-                difficulty,
-                name,
-                dueDate,
-                group,
-                done,
-                challengeSendToUser,
-                questId,
-              }}
-              onClickEditing={handleEditing}
-              onClickDone={handleOpenCloseModalComplete}
-              onClickDelete={handleOpenCloseModalDelete}
-              onAccept={handleAccept}
-            />
-          )}
-          {isEditing && (
-            <CardEditing
-              questData={{ difficulty, name, dueDate, group, questId, isQuest }}
-              newCard={newCard}
-              cancelEditing={handleEditing}
-              handleDifficulty={handleDifficulty}
-              handleChangeText={handleChangeText}
-              handleDateChange={handleDateChange}
-              handleDestination={handleDestination}
-              handleCloseForm={closeForm}
-            />
-          )}
-        </Card>
-      </ThemeProvider>
-      {modalComplete && isQuest && (
-        <CompletedModal
-          taskName={name}
-          onCloseModal={handleOpenCloseModalComplete}
-          onCloseQuest={handleDoneWithModal}
-        />
-      )}
-      {modalComplete && !isQuest && (
-        <CompletedChallengeModal
-          taskName={name}
-          onCloseModal={handleOpenCloseModalComplete}
-          onCloseChallenge={handleDoneChallengeWithModal}
-        />
-      )}
-      {modalDelete && isQuest && (
-        <DeleteQuestModal
-          onCloseModal={handleOpenCloseModalDelete}
-          cancelEditing={handleEditing}
-          onDeleteQuest={handleDeleteWithModal}
-        />
-      )}
-      {modalDelete && !isQuest && (
-        <DeleteChallengeModal
-          onCloseModal={handleOpenCloseModalDelete}
-          cancelEditing={handleEditing}
-          onDeleteChallenge={handleDeleteChallengeWithModal}
-        />
-      )}
-    </>
+    <ThemeProvider theme={theme}>
+      <Card className={generalStyles.root}>
+        {!isEditing && isQuest && (
+          <Content
+            questData={{
+              difficulty,
+              name,
+              dueDate,
+              group,
+              done,
+              questId,
+            }}
+            onClickEditing={handleEditing}
+            onClickDone={handleOpenCloseModalComplete}
+            onClickDelete={handleOpenCloseModalDelete}
+          />
+        )}
+        {!isEditing && !isQuest && (
+          <Challenge
+            questData={{
+              difficulty,
+              name,
+              dueDate,
+              group,
+              done,
+              challengeSendToUser,
+              questId,
+            }}
+            onClickEditing={handleEditing}
+            onClickDone={handleOpenCloseModalComplete}
+            onClickDelete={handleOpenCloseModalDelete}
+            onAccept={handleAccept}
+          />
+        )}
+        {isEditing && (
+          <CardEditing
+            questData={{ difficulty, name, dueDate, group, questId, isQuest }}
+            newCard={newCard}
+            cancelEditing={handleEditing}
+            handleDifficulty={handleDifficulty}
+            handleChangeText={handleChangeText}
+            handleDateChange={handleDateChange}
+            handleDestination={handleDestination}
+            handleCloseForm={closeForm}
+          />
+        )}
+        {modalDelete && isQuest && (
+          <DeleteQuestModal
+            onCloseModal={handleOpenCloseModalDelete}
+            cancelEditing={handleEditing}
+            onDeleteQuest={handleDeleteWithModal}
+          />
+        )}
+        {modalComplete && isQuest && (
+          <CompletedModal
+            taskName={name}
+            onCloseModal={handleOpenCloseModalComplete}
+            onCloseQuest={handleDoneWithModal}
+          />
+        )}
+        {modalDelete && !isQuest && (
+          <DeleteChallengeModal
+            onCloseModal={handleOpenCloseModalDelete}
+            cancelEditing={handleEditing}
+            onDeleteChallenge={handleDeleteChallengeWithModal}
+          />
+        )}
+        {modalComplete && !isQuest && (
+          <CompletedChallengeModal
+            taskName={name}
+            onCloseModal={handleOpenCloseModalComplete}
+            onCloseChallenge={handleDoneChallengeWithModal}
+          />
+        )}
+      </Card>
+    </ThemeProvider>
   );
 };
 
