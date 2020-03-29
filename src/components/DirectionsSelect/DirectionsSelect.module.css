@@ -2,7 +2,7 @@
   flex-direction: row;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  width: 150px;
+  width: 170px;
   height: 40px;
   margin-left: -40px;
   position: relative;
@@ -10,7 +10,7 @@
 .boxDropDown {
   display: flex;
   flex-direction: column;
-  width: 150px;
+  width: 170px;
   height: 40px;
   align-items: center;
   border-top-right-radius: 20px;
@@ -20,14 +20,15 @@
   font-family: 'HelveticaNeueCyr-Light', sans-serif;
   font-size: 14px;
   position: relative;
-  width: 150px;
+  width: 170px;
   height: 40px;
   text-align: center;
   padding: 9px;
   border: 2px solid #f2f3f7;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  color: rgb(177, 174, 174);
+  /* color: rgb(177, 174, 174); */
+  color: black;
   z-index: 1;
 }
 .ulStuff {
@@ -44,7 +45,7 @@
   font-size: 14px;
   width: 120px;
   height: 25px;
-  margin-left: 80px;
+  margin-left: 100px;
   text-align: left;
   padding: 5px;
   border-top-right-radius: 20px;
@@ -53,7 +54,6 @@
 }
 .liStuff:hover {
   color: rgb(177, 174, 174);
-  /* background-color: rgb(233, 233, 233); */
   background-color: #f2f3f7;
   cursor: pointer;
 }
