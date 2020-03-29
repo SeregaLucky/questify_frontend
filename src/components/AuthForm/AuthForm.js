@@ -14,16 +14,19 @@ import styles from './AuthForm.module.css';
 
 class AuthForm extends Component {
   render() {
-    if (this.props.isAuth) {
+    const { isAuth, onRegister } = this.props;
+
+    if (isAuth) {
       return <Redirect to={routes.DASHBOARD_PAGE} />;
     }
+
     return (
       <div>
         <Formik
           initialValues={{ nickname: '' }}
           validationSchema={authFormSchema}
           onSubmit={async (nickname, { resetForm }) => {
-            this.props.onRegister(nickname);
+            onRegister(nickname);
             resetForm();
           }}
         >

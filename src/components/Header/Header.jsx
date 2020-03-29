@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+// import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { routes } from '../../routes';
 import cubok from './../../assets/icons/cubok.png';
 import logout_icon from './../../assets/icons/logout_icon.png';
@@ -10,7 +11,8 @@ function Header({ user, onLogOut, onModal }) {
     <div className={style.fluid}>
       <div className={style.container}>
         {/* Logo */}
-        <Link className={style.logo_link}>Questify</Link>
+        {/* <Link className={style.logo_link}>Questify</Link> */}
+        <h1 className={style.logo}>Questify</h1>
 
         {/* Name */}
         <div className={style.user}>
