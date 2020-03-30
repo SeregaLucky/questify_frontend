@@ -29,7 +29,7 @@ class DirectionsSelect extends Component {
   componentDidMount() {
     if (this.state.itemStatus !== this.props.value) {
       this.setState({
-        itemStatus: 'some one',
+        itemStatus: this.props.value.toUpperCase(),
       });
     }
   }
@@ -51,7 +51,7 @@ class DirectionsSelect extends Component {
 
   render() {
     const { isOpen, itemStatus, list } = this.state;
-    const { handleDestination } = this.props;
+    const { handleDestination, value } = this.props;
     return (
       <div className={dropdown} onClick={this.toggle}>
         {isOpen ? (
@@ -76,7 +76,7 @@ class DirectionsSelect extends Component {
             {itemStatus}
             <div
               className={
-                itemStatus !== 'some one' ? btnIconDropDisable : btnIconDrop
+                itemStatus !== value ? btnIconDropDisable : btnIconDrop
               }
             ></div>
           </button>
