@@ -1,9 +1,9 @@
 import React from 'react';
 import { IconButton } from '@material-ui/core';
 import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
-import { header } from './challenge.styles';
+import { header } from '../Challenge/challenge.styles';
 
-const StarIcon = () => {
+const AmforaIcon = () => {
   const headerStyles = header();
   return (
     <>
@@ -20,4 +20,4 @@ const StarIcon = () => {
   );
 };
 
-export default StarIcon;
+export default AmforaIcon;

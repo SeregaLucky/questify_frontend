@@ -53,9 +53,6 @@ const getDoneQuests = createSelector(getAllQuests, tasks =>
   tasks.filter(quest => quest.done === true),
 );
 
-//undone guests + qusts due date of which not today or tomorrow
-const getTheRestQests = store => {};
-
 const getQuestById = (store, id) => {
   const quests = getAllQuests(store);
 

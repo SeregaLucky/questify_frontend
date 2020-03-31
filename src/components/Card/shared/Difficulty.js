@@ -1,6 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import styles from './challenge.module.css';
+import T from 'prop-types';
+import styles from '../Challenge/challenge.module.css';
 import DifIcon from './difficultyIcons';
 
 const Difficulty = ({ difficulty }) => {
@@ -14,6 +15,10 @@ const Difficulty = ({ difficulty }) => {
       </Typography>
     </div>
   );
+};
+
+Difficulty.propTypes = {
+  difficulty: T.string.isRequired,
 };
 
 export default Difficulty;

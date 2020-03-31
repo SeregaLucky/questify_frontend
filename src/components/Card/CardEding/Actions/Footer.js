@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import clsx from 'clsx';
 import { CardActions, IconButton, Divider, Button } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
@@ -43,6 +44,14 @@ const Footer = ({
       </div>
     </CardActions>
   );
+};
+
+Footer.propTypes = {
+  value: T.string.isRequired,
+  onChange: T.func.isRequired,
+  cancelEditing: T.func.isRequired,
+  newCard: T.bool,
+  handleCloseForm: T.func,
 };
 
 export default Footer;

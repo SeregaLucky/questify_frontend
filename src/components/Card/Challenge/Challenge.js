@@ -1,19 +1,19 @@
 import React from 'react';
 import clsx from 'clsx';
+import T from 'prop-types';
 import { CardHeader } from '@material-ui/core';
 import { IconButton, Divider, Button } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
-import { isToday, isTomorrow, format, isValid } from 'date-fns';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { content, actions } from './challenge.styles';
 import styles from './challenge.module.css';
 import stylesBtn from '../CardEding/styles/cardEditing.module.css';
-import Difficulty from './Difficulty';
-import EditDeleteButtons from './DeleteEditButtons/editDeleteButtons';
-import AmforaIcon from './amforaIcon';
+import Difficulty from '../shared/Difficulty';
+import EditDeleteButtons from '../shared/editDeleteButtons';
+import AmforaIcon from '../shared/amforaIcon';
+import formatDate from '../helpers/dateHelper';
 
-//challengeSendToUser: true
 const Challenge = ({
   questData,
   onClickEditing,
@@ -23,14 +23,6 @@ const Challenge = ({
 }) => {
   const cardContentStyles = content();
   const actionsStyles = actions();
-
-  const formatDate = pickedDate => {
-    if (isToday(pickedDate)) return 'Today';
-    if (isTomorrow(pickedDate)) return 'Tomorrow';
-    return isValid(pickedDate)
-      ? format(pickedDate, 'dd MMMM yyyy')
-      : 'Invalid date';
-  };
 
   return (
     <div
@@ -99,6 +91,23 @@ const Challenge = ({
       </div>
     </div>
   );
+};
+
+Challenge.propTypes = {
+  questData: T.shape({
+    questId: T.string,
+    difficulty: T.string.isRequired,
+    name: T.string,
+    dueDate: T.instanceOf(Date).isRequired,
+    group: T.string.isRequired,
+    done: T.bool.isRequired,
+    isQuest: T.bool,
+    challengeSendToUser: T.bool,
+  }).isRequired,
+  onClickEditing: T.func.isRequired,
+  onClickDone: T.func.isRequired,
+  onClickDelete: T.func.isRequired,
+  onAccept: T.func.isRequired,
 };
 
 export default Challenge;

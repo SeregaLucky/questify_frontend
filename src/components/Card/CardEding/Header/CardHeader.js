@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import { CardHeader, IconButton } from '@material-ui/core';
 import StarRoundedIcon from '@material-ui/icons/StarRounded';
 import SelectPriority from './SelectPriority';
@@ -32,5 +33,8 @@ const CardHeaderSection = ({ value, onChange }) => {
     </>
   );
 };
-
+CardHeaderSection.propTypes = {
+  value: T.string.isRequired,
+  onChange: T.func.isRequired,
+};
 export default CardHeaderSection;
