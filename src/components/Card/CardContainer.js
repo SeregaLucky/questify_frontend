@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { parseISO, format, isToday, isTomorrow, isValid } from 'date-fns';
+import T from 'prop-types';
+import { parseISO } from 'date-fns';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import theme from './CardEding/styles/muiTheme';
@@ -191,6 +192,21 @@ const CardContainer = ({ questData, newCard, closeForm }) => {
       </Card>
     </ThemeProvider>
   );
+};
+
+CardContainer.propTypes = {
+  questData: T.shape({
+    questId: T.string,
+    difficulty: T.string,
+    name: T.string,
+    dueDate: T.string,
+    group: T.string,
+    done: T.bool,
+    isQuest: T.bool,
+    challengeSendToUser: T.bool,
+  }),
+  newCard: T.bool,
+  closeForm: T.func,
 };
 
 export default CardContainer;

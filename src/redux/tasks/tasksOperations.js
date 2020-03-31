@@ -1,9 +1,7 @@
-//add notification library for displaying success/error messages
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import api from '../../servises/api';
 import tasksActions from './tasksActions';
-import authActions from '../auth/authActions';
 
 const getAllQuests = () => dispatch => {};
 

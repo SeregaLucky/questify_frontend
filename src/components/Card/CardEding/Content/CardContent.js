@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import DateFnsUtils from '@date-io/date-fns';
 import { TextField, SvgIcon, Grid, CardContent } from '@material-ui/core';
 import {
@@ -71,6 +72,15 @@ const ContentSection = ({
       </MuiPickersUtilsProvider>
     </CardContent>
   );
+};
+
+ContentSection.propTypes = {
+  textValue: T.string,
+  onChangeText: T.func.isRequired,
+  dateValue: T.instanceOf(Date).isRequired,
+  formatDate: T.func.isRequired,
+  onChangeDate: T.func.isRequired,
+  questId: T.string,
 };
 
 export default ContentSection;
