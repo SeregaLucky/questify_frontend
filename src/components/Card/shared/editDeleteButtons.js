@@ -1,9 +1,10 @@
 import React from 'react';
+import T from 'prop-types';
 import { IconButton } from '@material-ui/core';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
-import { actions } from '../../CardEding/styles/cardStyling';
-import styles from '../challenge.module.css';
+import { actions } from '../CardEding/styles/cardStyling';
+import styles from '../CardComponent/card.module.css';
 
 const EditDeleteButtons = ({ done, onClickDone, onClickDelete }) => {
   const actionsStyles = actions();
@@ -36,6 +37,12 @@ const EditDeleteButtons = ({ done, onClickDone, onClickDelete }) => {
       </div>
     </>
   );
+};
+
+EditDeleteButtons.propTypes = {
+  done: T.bool.isRequired,
+  onClickDone: T.func.isRequired,
+  onClickDelete: T.func.isRequired,
 };
 
 export default EditDeleteButtons;

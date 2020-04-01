@@ -3,6 +3,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 export const general = makeStyles(theme => ({
   root: {
     maxWidth: 345,
+    position: 'relative',
   },
   media: {
     height: 0,

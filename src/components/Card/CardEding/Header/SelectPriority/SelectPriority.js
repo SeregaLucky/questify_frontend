@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import { Select, MenuItem, SvgIcon } from '@material-ui/core';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import * as styles from '../../styles/materialUIStyles';
@@ -89,5 +90,9 @@ const SelectPriority = ({ value, onChangeDiff }) => {
       </Select>
     </>
   );
+};
+SelectPriority.propTypes = {
+  value: T.string.isRequired,
+  onChangeDiff: T.func.isRequired,
 };
 export default SelectPriority;
