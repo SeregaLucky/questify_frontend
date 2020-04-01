@@ -35,7 +35,8 @@
 .card {
   width: 284px;
   height: 266px;
-  background-color: var(--background-color);
+  background-color: var(--light-gray);
+  /* background-color: var(--background-color); */
   text-align: center;
   position: relative;
 }

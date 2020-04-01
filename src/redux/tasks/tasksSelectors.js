@@ -42,8 +42,10 @@ const getOtherQuests = createSelector(getAllQuests, tasks =>
           Number(otherQuest.dueDate.substr(5, 2)) === month &&
           Number(otherQuest.dueDate.substr(8, 2)) - day > 1) ||
         (Number(otherQuest.dueDate.substr(0, 4)) === year &&
-          Number(otherQuest.dueDate.substr(5, 2)) !== month) ||
+          Number(otherQuest.dueDate.substr(5, 2)) !== month &&
+          Number(otherQuest.dueDate.substr(8, 2)) !== 1) ||
         (Number(otherQuest.dueDate.substr(0, 4)) !== year &&
+          Number(otherQuest.dueDate.substr(5, 2)) === 1 &&
           Number(otherQuest.dueDate.substr(5, 2)) !== 1 &&
           Number(otherQuest.dueDate.substr(8, 2)) !== 1),
     ),
