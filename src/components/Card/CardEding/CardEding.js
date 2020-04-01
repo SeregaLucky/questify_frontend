@@ -82,6 +82,7 @@ const CardEditing = ({
           />
           <Footer
             value={group}
+            textValue={name}
             onChange={handleDestination}
             cancelEditing={cancelEditing}
             newCard={newCard}

@@ -108,7 +108,7 @@ const CardContainer = ({ questData, newCard, closeForm }) => {
     dispatch(
       tasksOperations.deleteChallenge(questId, {
         userId: userId,
-        updateFields: { challengeSendToUser: false },
+        updateFields: { challengeSendToUser: false, done: false },
       }),
     );
 

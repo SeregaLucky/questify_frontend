@@ -25,9 +25,7 @@ export const general = makeStyles(theme => ({
 }));
 export const header = makeStyles(theme => ({
   root: {
-    '&.MuiCardHeader-root-158': {
-      padding: '10px',
-    },
+    padding: '8px !important',
   },
   startRoot: {
     widht: '20px',
@@ -41,11 +39,6 @@ export const header = makeStyles(theme => ({
 }));
 
 export const content = makeStyles(theme => ({
-  // label: {
-  //   textAlign: 'center',
-  //   fontFamily: 'HelveticaNeueCyrBold, sans-serif',
-  //   marginBottom: '10px',
-  // },
   cardContent: {
     display: 'flex',
     flexDirection: 'column',
@@ -100,9 +93,6 @@ export const actions = makeStyles(theme => ({
   crossBtn: {
     color: '#f50057',
   },
-  // deleteEditRoot: {
-  //   width: '20px',
-  // },
   wrapForNew: {
     marginBottom: '5px',
   },

@@ -28,8 +28,11 @@ const ContentSection = ({
         className={cardContentStyles.textField}
         id="name-quest"
         type="text"
+        placeholder="Name your quest"
+        label={<p>less than 28 symbols</p>}
         inputProps={{
           value: textValue,
+          maxLength: 27,
           onChange: onChangeText,
           classes: {
             input: cardContentStyles.input,

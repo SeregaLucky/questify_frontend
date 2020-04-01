@@ -9,6 +9,7 @@ import DirectionsSelect from '../../../DirectionsSelect/DirectionsSelect';
 
 const Footer = ({
   value,
+  textValue,
   onChange,
   cancelEditing,
   newCard,
@@ -19,6 +20,7 @@ const Footer = ({
     cancelEditing();
     if (newCard) return handleCloseForm();
   };
+  const isButtonDisabled = textValue ? false : true;
   return (
     <CardActions
       disableSpacing
@@ -40,7 +42,9 @@ const Footer = ({
           <CloseIcon />
         </IconButton>
         <Divider orientation="vertical" flexItem />
-        <Button type="submit">START</Button>
+        <Button type="submit" disabled={isButtonDisabled}>
+          START
+        </Button>
       </div>
     </CardActions>
   );
@@ -48,6 +52,7 @@ const Footer = ({
 
 Footer.propTypes = {
   value: T.string.isRequired,
+  textValue: T.string,
   onChange: T.func.isRequired,
   cancelEditing: T.func.isRequired,
   newCard: T.bool,
