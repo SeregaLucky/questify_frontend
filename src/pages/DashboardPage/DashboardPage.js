@@ -17,7 +17,6 @@ class DashboardPage extends Component {
   };
 
   handleClickCreate = () => {
-    // this.setState(state => ({ isOpen: true }));
     this.setState(state => ({ isOpen: !state.isOpen }));
   };
 
