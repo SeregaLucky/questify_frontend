@@ -70,7 +70,7 @@ class DashboardPage extends Component {
             ))}
           </div>
 
-          <div className={styles.other}>
+          {/* <div className={styles.other}>
             <p className={styles.text}>other</p>
             {collection.other.map(item => (
               <div key={item._id} className={styles.card}>
@@ -88,7 +88,7 @@ class DashboardPage extends Component {
                 />
               </div>
             ))}
-          </div>
+          </div> */}
 
           <div className={styles.done}>
             {isDoneOpen ? (
