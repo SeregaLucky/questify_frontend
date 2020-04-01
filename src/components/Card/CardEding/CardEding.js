@@ -12,7 +12,6 @@ import authSelectors from '../../../redux/auth/authSelectors';
 import tasksOperations from '../../../redux/tasks/tasksOperations';
 import formatDate from '../helpers/dateHelper';
 import styles2 from './styles/cardEditing.module.css';
-import { styles } from '@material-ui/pickers/views/Calendar/Calendar';
 
 const CardEditing = ({
   cancelEditing,
