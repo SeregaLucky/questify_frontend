@@ -2,11 +2,6 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 
 const theme = createMuiTheme({
   overrides: {
-    MuiCard: {
-      root: {
-        border: '1px solid var(--light-blue)',
-      },
-    },
     MuiSvgIcon: {
       root: {
         '&:hover': {
