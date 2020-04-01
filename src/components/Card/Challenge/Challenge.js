@@ -6,7 +6,7 @@ import { IconButton, Divider, Button } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { content, actions } from './challenge.styles';
+import { content, actions, header } from './challenge.styles';
 import styles from './challenge.module.css';
 import stylesBtn from '../CardEding/styles/cardEditing.module.css';
 import Difficulty from '../shared/Difficulty';
@@ -22,6 +22,7 @@ const Challenge = ({
   onAccept,
 }) => {
   const cardContentStyles = content();
+  const headerStyles = header();
   const actionsStyles = actions();
 
   return (
@@ -33,16 +34,20 @@ const Challenge = ({
       <CardHeader
         title={<Difficulty difficulty={questData.difficulty} />}
         action={<AmforaIcon />}
+        className={headerStyles.root}
       />
       <CardContent className={cardContentStyles.cardContent}>
-        <Typography variant="h6" gutterBottom color="textSecondary">
+        <Typography variant="subtitle2" gutterBottom color="secondary">
+          CHALLENGE
+        </Typography>
+        <Typography variant="subtitle1" gutterBottom color="textSecondary">
           {questData.name}
         </Typography>
         <Typography variant="subtitle2" gutterBottom color="secondary">
           {formatDate(questData.dueDate)}
         </Typography>
       </CardContent>
-      <div className={styles.foterWrapper}>
+      <div className={styles.footerWrapper}>
         <div
           className={clsx(
             styles.chip,

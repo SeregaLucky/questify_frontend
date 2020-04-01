@@ -1,6 +1,9 @@
 .challengeWrap {
   background-color: var(--dark-blue);
   padding: 12px 0 13px 0;
+  height: 266px;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .chip {
@@ -41,10 +44,13 @@
   display: flex;
 }
 
-.foterWrapper {
+.footerWrapper {
+  position: absolute;
+  bottom: 0%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .wrapBtn {
