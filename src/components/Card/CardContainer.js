@@ -100,7 +100,8 @@ const CardContainer = ({ questData, newCard, closeForm }) => {
   const handleDoneChallange = () =>
     dispatch(
       tasksOperations.updateChallenge(questId, {
-        updateFields: { done: true },
+        userId: userId,
+        updateFields: { challengeSendToUser: true, done: true },
       }),
     );
 
