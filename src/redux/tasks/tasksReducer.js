@@ -16,14 +16,17 @@ const tasksReducer = (state = [], { type, payload }) => {
       return state.map(el =>
         el._id === payload.data._id ? { ...el, ...payload.data } : el,
       );
+
     case tasksTypes.ACCEPT_CHALLENGE_SUCCESS:
       return state.map(el =>
         el._id === payload.data._id ? { ...el, ...payload.data } : el,
       );
+
     case tasksTypes.UPDATE_CHALLENGE_SUCCESS:
       return state.map(el =>
         el._id === payload.data._id ? { ...el, ...payload.data } : el,
       );
+
     case tasksTypes.DELETE_CHALLENGE_SUCCESS:
       return state.filter(el => el._id !== payload.id);
 
@@ -42,6 +45,7 @@ const tasksErrorReducer = (state = null, { type, payload }) => {
     case tasksTypes.UPDATE_CHALLENGE_FAILURE:
     case tasksTypes.DELETE_CHALLENGE_FAILURE:
       return payload.error;
+
     default:
       return state;
   }

@@ -23,6 +23,7 @@ class DashboardPage extends Component {
   render() {
     const { collection } = this.props;
     const { isDoneOpen, isOpen } = this.state;
+
     return (
       <>
         <Header />

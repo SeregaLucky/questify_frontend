@@ -8,7 +8,7 @@ import * as style from './Header.module.css';
 
 function Header({ user, onLogOut, onModal }) {
   return user ? (
-    <div className={style.fluid}>
+    <header className={style.fluid}>
       <div className={style.container}>
         {/* Logo */}
         {/* <Link className={style.logo_link}>Questify</Link> */}
@@ -31,7 +31,7 @@ function Header({ user, onLogOut, onModal }) {
           </button>
         </div>
       </div>
-    </div>
+    </header>
   ) : (
     <Redirect to={routes.AUTH_PAGE} />
   );

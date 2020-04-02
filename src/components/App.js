@@ -17,6 +17,7 @@ class App extends Component {
 
   render() {
     const { isLoading } = this.props;
+
     return (
       <BrowserRouter>
         {isLoading && <Loader />}
@@ -31,6 +32,7 @@ class App extends Component {
     );
   }
 }
+
 const mapStateToProps = state => ({
   isLoading: loadingSelectors.isLoading(state),
 });

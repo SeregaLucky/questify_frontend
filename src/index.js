@@ -15,5 +15,6 @@ ReactDOM.render(
       <ToastContainer />
     </PersistGate>
   </Provider>,
+
   document.getElementById('root'),
 );

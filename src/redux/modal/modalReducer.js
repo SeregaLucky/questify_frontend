@@ -4,6 +4,7 @@ const modalReduser = (state = false, { type }) => {
   switch (type) {
     case modalTypes.SHOW_MODAL:
       return true;
+
     case modalTypes.CLOSE_MODAL:
       return false;
 

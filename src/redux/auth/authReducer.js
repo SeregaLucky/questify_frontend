@@ -24,6 +24,7 @@ const nicknameReducer = (state = null, { type, payload }) => {
   switch (type) {
     case authTypes.REGISTER_SUCCESS:
       return payload.nickname;
+
     case authTypes.LOGOUT_SUCCESS:
       return null;
 
@@ -48,6 +49,7 @@ const userIdReducer = (state = null, { type, payload }) => {
   switch (type) {
     case authTypes.REGISTER_SUCCESS:
       return payload._id;
+
     case authTypes.LOGOUT_SUCCESS:
       return null;
 
@@ -73,6 +75,7 @@ const errorReducer = (state = null, { type, payload }) => {
     case authTypes.REGISTER_FAILURE:
     case authTypes.LOGOUT_FAILURE:
       return payload.error;
+
     case authTypes.REGISTER_START:
     case authTypes.LOGOUT_START:
       return null;
