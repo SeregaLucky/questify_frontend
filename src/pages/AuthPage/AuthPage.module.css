@@ -18,7 +18,7 @@
 
   font-size: 23px;
   letter-spacing: 1.5pt;
-  line-height: 0.5;
+  /* line-height: 0.5; */
   color: var(--light-blue);
 }
 
@@ -78,7 +78,7 @@
   }
 
   .title {
-    padding-top: 340px;
+    /* padding-top: 340px; */
   }
 
   .desc {

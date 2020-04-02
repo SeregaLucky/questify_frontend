@@ -5,6 +5,7 @@
   background-color: var(--light-gray);
   padding-left: 18px;
   padding-right: 18px;
+  min-height: calc(100vh - 81px);
 }
 
 .today {
