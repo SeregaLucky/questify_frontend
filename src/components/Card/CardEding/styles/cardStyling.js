@@ -4,6 +4,7 @@ export const general = makeStyles(theme => ({
   root: {
     maxWidth: 345,
     position: 'relative',
+    boxShadow: '0px 1px 56px 4px rgba(153,153,153,0.81)',
   },
   media: {
     height: 0,

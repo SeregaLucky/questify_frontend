@@ -1,7 +1,8 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
 export const header = makeStyles(theme => ({
   root: {
-    widht: '25px',
+    paddingTop: '5px !important',
+    paddingBottom: '16px !important',
   },
   action: {
     display: 'flex',

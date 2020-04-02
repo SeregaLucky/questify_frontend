@@ -3,6 +3,11 @@
   display: flex;
 }
 
+.editingWrp {
+  border: 2px solid var(--light-blue);
+  border-radius: 10px;
+}
+
 .createQuest {
   color: var(--light-gray);
   text-align: center;

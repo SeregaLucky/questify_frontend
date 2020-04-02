@@ -38,7 +38,15 @@ const addQuest = data => dispatch => {
   dispatch(tasksActions.addQuestStart());
   api
     .createQuest(data)
-    .then(res => dispatch(tasksActions.addQuestSuccess(res.data.quest)))
+    .then(res => {
+      dispatch(tasksActions.addQuestSuccess(res.data.quest));
+      toast('🎯You have successfully added a new quest!', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 4000,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    })
     .catch(err => dispatch(tasksActions.addQuestFailure(err)));
 };
 
@@ -48,14 +56,30 @@ const updateQuest = (id, data) => dispatch => {
   dispatch(tasksActions.updateQuestStart());
   api
     .updateQuest(id, data)
-    .then(res => dispatch(tasksActions.updateQuestSuccess(res.data.quest)))
+    .then(res => {
+      dispatch(tasksActions.updateQuestSuccess(res.data.quest));
+      toast('🎉Good job!', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 2000,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    })
     .catch(err => dispatch(tasksActions.updateQuestFailure(err)));
 };
 const deleteQuest = id => dispatch => {
   dispatch(tasksActions.deleteQuestStart());
   api
     .deleteQuest(id)
-    .then(res => dispatch(tasksActions.deleteQuestSuccess(res.data.quest._id)))
+    .then(res => {
+      dispatch(tasksActions.deleteQuestSuccess(res.data.quest._id));
+      toast.error('The quest is gone 👋🏻😶...', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 4000,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    })
     .catch(err => dispatch(tasksActions.deleteQuestFailure(err)));
 };
 
@@ -63,9 +87,15 @@ const acceptChallenge = (challenID, data) => dispatch => {
   dispatch(tasksActions.acceptChallengeStart());
   api
     .doSomethingWithChallenge(challenID, data)
-    .then(res =>
-      dispatch(tasksActions.acceptChallengeSuccess(res.data.challenge)),
-    )
+    .then(res => {
+      dispatch(tasksActions.acceptChallengeSuccess(res.data.challenge));
+      toast.info('🏋️‍♂️Challenge accepted!', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 4000,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    })
     .catch(err => dispatch(tasksActions.acceptChallengeFailure(err)));
 };
 
@@ -73,9 +103,15 @@ const updateChallenge = (challenID, data) => dispatch => {
   dispatch(tasksActions.updateChallengeStart());
   api
     .doSomethingWithChallenge(challenID, data)
-    .then(res =>
-      dispatch(tasksActions.updateChallengeSuccess(res.data.challenge)),
-    )
+    .then(res => {
+      dispatch(tasksActions.updateChallengeSuccess(res.data.challenge));
+      toast('🎉Good job!', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 2000,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    })
     .catch(err => dispatch(tasksActions.updateChallengeFailure(err)));
 };
 
@@ -83,9 +119,15 @@ const deleteChallenge = (challenID, data) => dispatch => {
   dispatch(tasksActions.deleteChallengeStart());
   api
     .doSomethingWithChallenge(challenID, data)
-    .then(res =>
-      dispatch(tasksActions.deleteChallengeSuccess(res.data.challenge._id)),
-    )
+    .then(res => {
+      dispatch(tasksActions.deleteChallengeSuccess(res.data.challenge._id));
+      toast.error('The challenge is gone 👋🏻😶...', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 4000,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    })
     .catch(err => dispatch(tasksActions.deleteChallengeFailure(err)));
 };
 

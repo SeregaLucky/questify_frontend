@@ -11,6 +11,7 @@ import Footer from './Actions/Footer';
 import authSelectors from '../../../redux/auth/authSelectors';
 import tasksOperations from '../../../redux/tasks/tasksOperations';
 import formatDate from '../helpers/dateHelper';
+import styles2 from './styles/cardEditing.module.css';
 
 const CardEditing = ({
   cancelEditing,
@@ -68,29 +69,31 @@ const CardEditing = ({
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Card className={generalStyles.root}>
-        <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-          <CardHeaderSection value={difficulty} onChange={handleDifficulty} />
-          <ContentSection
-            textValue={name}
-            onChangeText={handleChangeText}
-            dateValue={dueDate}
-            formatDate={formatDate}
-            onChangeDate={handleDateChange}
-            questId={questId}
-          />
-          <Footer
-            value={group}
-            textValue={name}
-            onChange={handleDestination}
-            cancelEditing={cancelEditing}
-            newCard={newCard}
-            handleCloseForm={handleCloseForm}
-          />
-        </form>
-      </Card>
-    </ThemeProvider>
+    <div className={styles2.editingWrp}>
+      <ThemeProvider theme={theme}>
+        <Card className={generalStyles.root}>
+          <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+            <CardHeaderSection value={difficulty} onChange={handleDifficulty} />
+            <ContentSection
+              textValue={name}
+              onChangeText={handleChangeText}
+              dateValue={dueDate}
+              formatDate={formatDate}
+              onChangeDate={handleDateChange}
+              questId={questId}
+            />
+            <Footer
+              value={group}
+              textValue={name}
+              onChange={handleDestination}
+              cancelEditing={cancelEditing}
+              newCard={newCard}
+              handleCloseForm={handleCloseForm}
+            />
+          </form>
+        </Card>
+      </ThemeProvider>
+    </div>
   );
 };
 

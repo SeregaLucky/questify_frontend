@@ -4,7 +4,7 @@ const theme = createMuiTheme({
   overrides: {
     MuiCard: {
       root: {
-        border: '1px solid var(--light-blue)',
+        borderRadius: '10px',
       },
     },
     MuiSvgIcon: {
