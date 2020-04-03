@@ -19,10 +19,12 @@ export default class DeleteChalllengeModal extends Component {
   }
 
   handleKeyPress = e => {
+    const { onCloseModal, cancelEditing } = this.props;
     if (e.code !== 'Escape') {
       return;
     }
-    this.props.onCloseModal();
+    onCloseModal();
+    cancelEditing();
   };
   handleBackdropClick = e => {
     const { onCloseModal, cancelEditing } = this.props;
