@@ -20,17 +20,21 @@ export default class DeleteQuestModal extends Component {
   }
 
   handleKeyPress = e => {
+    const { onCloseModal, cancelEditing } = this.props;
     if (e.code !== 'Escape') {
       return;
     }
-    this.props.onCloseModal();
+    onCloseModal();
+    cancelEditing();
   };
   handleBackdropClick = e => {
     const { current } = this.backdropRef;
+    const { onCloseModal, cancelEditing } = this.props;
     if (current && e.target !== current) {
       return;
     }
-    this.props.onCloseModal();
+    onCloseModal();
+    cancelEditing();
   };
 
   handleCloseDeletion = () => {
